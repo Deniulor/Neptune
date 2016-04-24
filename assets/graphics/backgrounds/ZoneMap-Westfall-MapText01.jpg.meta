@@ -1,0 +1,28 @@
+{
+  "ver": "1.0.0",
+  "uuid": "4d778ef9-b38b-466d-b9a4-946a11ad38fc",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "ZoneMap-Westfall-MapText01": {
+      "ver": "1.0.2",
+      "uuid": "cbf7274c-bc44-4c9a-aa80-166bd5d2f797",
+      "rawTextureUuid": "4d778ef9-b38b-466d-b9a4-946a11ad38fc",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 800,
+      "height": 533,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
