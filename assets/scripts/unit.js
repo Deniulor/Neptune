@@ -16,6 +16,7 @@ cc.Class({
         HP:100,
         Mov:3,//移动力
         Rng:1,//攻击距离
+        isDead:"",
     },
 
     // use this for initialization
@@ -26,12 +27,19 @@ cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
+        if(this.HP <= 0){
+            this.isDead = "true";
+        }
         var atb = this.getATB();
         var str;
         if(atb > 0){
             str = cc.js.formatStr("ATB:%s", atb.toFixed(1));
         }else {
             str = "Ready";
+        }
+        var childrenCount = this.node.childrenCount;
+        if(childrenCount <=0){
+            return;
         }
         this.node.getChildByName("ATB").getComponent(cc.Label).string = str;
         if(this.showHpDuration !== undefined && this.showHpDuration > 0.05){
@@ -57,8 +65,22 @@ cc.Class({
         this.HP -= damage;
         this.showHpDuration = this.showHPDuration | 0.5;
         this.showHpDuration += 0.5;
-        if(this.HP < 0){
+        if(this.HP <= 0){
             this.HP = 0;
+            var fadeOut = cc.fadeOut(2);
+            var fadeIn = cc.fadeIn(0.1);
+            var finish = cc.callFunc(this.change, this);
+            this.node.runAction(cc.sequence(fadeOut,finish,fadeIn));
+            this.isdead = "true";
+            this.node.height = 60;
+            this.node.weight = 60;
+            this.node.removeAllChildren();
         }
+    },
+    change: function(){
+        var thisSprite = this.node.getComponent(cc.Sprite);
+            cc.loader.loadRes("dead.png/dead", function (err, spriteFrame) {
+            thisSprite.spriteFrame = spriteFrame;
+                });
     }
 });

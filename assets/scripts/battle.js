@@ -169,7 +169,7 @@ cc.Class({
         
         if(!this.selected){
             // 未选择单位 -> 尝试进行选择单位
-            if(touchUnit !== null && touchUnit.getComponent("unit").getATB() <= 0){
+            if(touchUnit !== null && touchUnit.getComponent("unit").getATB() <= 0 && touchUnit.getComponent("unit").isDead!=="true"){
                 this.selected = touchUnit;
                 this.clearFuncLayer();
                 this.showMovable();
@@ -186,20 +186,23 @@ cc.Class({
                 this.clearFuncLayer();
             } else { //选中了单位
                 // 选中己方单位 切换单位
-                if(touchUnit.getComponent('unit').camp == this.selected.getComponent('unit').camp){
+                if(touchUnit.getComponent("unit").isDead!=="true"){
+                   if(touchUnit.getComponent('unit').camp == this.selected.getComponent('unit').camp){
                     this.selected = touchUnit;
                     this.clearFuncLayer();
                     this.showMovable();
-                } else {// 敌方单位
-                    if(this.funcLayer.getTileGIDAt(x, 6 - y) == 4){ // 且在攻击范围内
-                        this.attack(touchUnit);
-                        this.clearFuncLayer();
-                    } else {
-                        this.selected = touchUnit;
-                        this.clearFuncLayer();
-                        this.showMovable();
-                    }
+                    } else {// 敌方单位
+                        if(this.funcLayer.getTileGIDAt(x, 6 - y) == 4){ // 且在攻击范围内
+                            this.attack(touchUnit);
+                            this.clearFuncLayer();
+                        } else {
+                            this.selected = touchUnit;
+                            this.clearFuncLayer();
+                            this.showMovable();
+                        }
+                } 
                 }
+                
             }
         }
     },
