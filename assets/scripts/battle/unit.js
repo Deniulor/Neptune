@@ -79,7 +79,7 @@ cc.Class({
     },
     change: function(){
         var thisSprite = this.node.getComponent(cc.Sprite);
-            cc.loader.loadRes("dead.png/dead", function (err, spriteFrame) {
+            cc.loader.loadRes("graphics/unit/dead.png/dead", function (err, spriteFrame) {
             thisSprite.spriteFrame = spriteFrame;
                 });
     }
