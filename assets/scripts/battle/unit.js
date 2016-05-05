@@ -12,11 +12,19 @@ cc.Class({
         // },
         // ...
         camp:"",
-        ATB:50,
+        ATB:5,
         HP:100,
         Mov:3,//移动力
         Rng:1,//攻击距离
         isDead:"",
+    },
+    
+    init:function(camp="", atb=5, hp=100, mov=3, rng=1){
+        this.camp = camp;
+        this.ATB = atb;
+        this.HP = hp;
+        this.Mov = mov;
+        this.Rng = rng;
     },
 
     // use this for initialization

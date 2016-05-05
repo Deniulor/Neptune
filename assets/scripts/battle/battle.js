@@ -18,6 +18,10 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+        unitPrefab: {
+            default: null,
+            type: cc.Prefab
+        },
     },
     
     /// 基础函数 - 获取一个点周围的点坐标
@@ -60,6 +64,10 @@ cc.Class({
         var x = parseInt((loc.x + 3 - 40) / 60);
         var y = parseInt((loc.y + 3 - (x + 1) % 2 * 40) / 80);
         return cc.p(x, y);
+    },
+    
+    toPixelLog:function(x, y){
+        return cc.p(x * 60 + 40, y * 80 + (x + 1) % 2 * 40);
     },
 
     /// 基础函数 - 获取两个点坐标之间的路径
@@ -131,6 +139,9 @@ cc.Class({
     // 加载事件
     onLoad: function () {
         var self = this;
+        // 创建单位
+        self.createUnits();
+
         cc.eventManager.addListener({
             event:cc.EventListener.TOUCH_ONE_BY_ONE,
             onTouchBegan: function(){ return true; },
@@ -151,6 +162,42 @@ cc.Class({
                 this.debugLayer.addChild(node);
             }
         }
+    },
+    
+    createUnits:function(){
+        // 使用给定的模板在场景中生成一个新节点
+        var knight1 = cc.instantiate(this.unitPrefab);
+        knight1.getComponent('unit').init("Knight", 3, 100, 3, 1);
+        knight1.setPosition(this.toPixelLog(0, 1));
+        cc.loader.loadRes("graphics/unit/knight.png/knight", function (err, spriteFrame) {
+            knight1.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
+        this.node.addChild(knight1);
+        
+        var knight2 = cc.instantiate(this.unitPrefab);
+        knight2.getComponent('unit').init("Knight", 3, 100, 3, 1);
+        knight2.setPosition(this.toPixelLog(0, 3));
+        cc.loader.loadRes("graphics/unit/knight.png/knight", function (err, spriteFrame) {
+            knight2.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
+        this.node.addChild(knight2);
+        
+        
+        var archer1 = cc.instantiate(this.unitPrefab);
+        archer1.getComponent('unit').init("Archer", 3.5, 100, 2, 3);
+        archer1.setPosition(this.toPixelLog(7, 3));
+        cc.loader.loadRes("graphics/unit/archer.png/archer", function (err, spriteFrame) {
+            archer1.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
+        this.node.addChild(archer1);
+        
+        var archer2 = cc.instantiate(this.unitPrefab);
+        archer2.getComponent('unit').init("Archer", 3.5, 100, 2, 3);
+        archer2.setPosition(this.toPixelLog(7, 5));
+        cc.loader.loadRes("graphics/unit/archer.png/archer", function (err, spriteFrame) {
+            archer2.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
+        this.node.addChild(archer2);
     },
 
     // 点击结束事件

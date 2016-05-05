@@ -36,9 +36,9 @@ cc.Class({
             }
             var unit = node.unit.getComponent('unit');
             var atb = unit.getATB();
-            if(atb > 0){
-               cc.log("atb" + atb); 
-            }
+            // if(atb > 0){
+            //   cc.log("atb" + atb); 
+            // }
             node.setPosition(atb * 100, 20);
         }
     },
