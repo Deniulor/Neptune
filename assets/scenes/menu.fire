@@ -327,7 +327,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "choose",
+    "component": "menu",
     "handler": "details"
   },
   {
@@ -551,7 +551,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "choose",
+    "component": "menu",
     "handler": "practice"
   },
   {

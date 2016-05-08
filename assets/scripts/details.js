@@ -15,19 +15,11 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        var fadeOut = cc.fadeOut(5);
-        // var delay = cc.delayTime(3);
-        var finish = cc.callFunc(this.change, this);
-        this.node.runAction(cc.sequence(fadeOut,finish));
-        // this.node.runAction(cc.fadeOut(5));
-        
+
     },
-    change: function(){
-        // this.node.on(cc.Node.EventType.TOUCH_END,function(event){
-        //     cc.director.loadScene('choose');
-        // },this);
-         cc.director.loadScene('menu');
-    }
+    close:function() {
+       cc.director.loadScene('menu');
+    },
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
