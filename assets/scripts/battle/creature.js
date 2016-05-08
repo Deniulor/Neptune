@@ -49,7 +49,7 @@ cc.Class({
         if(childrenCount <=0){
             return;
         }
-        this.node.getChildByName("ATB").getComponent(cc.Label).string = str;
+        this.node.getChildByName("Label").getComponent(cc.Label).string = str;
         if(this.showHpDuration !== undefined && this.showHpDuration > 0.05){
             this.showHP = this.showHP - (this.showHP - this.HP) / this.showHpDuration * dt;
             this.showHpDuration -= dt;
@@ -57,7 +57,7 @@ cc.Class({
         if(this.showHP - this.HP < 1){
             this.showHP = this.HP;
         }
-        this.node.getChildByName("hpBar").getComponent(cc.ProgressBar).progress = this.showHP / 100;
+        this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / 100;
     },
     
     getATB: function(){

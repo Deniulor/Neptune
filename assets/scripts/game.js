@@ -16,16 +16,16 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        var atksprite = this.atkPlayer.getComponent(cc.Sprite);
-        var atkheadID = this.atkHead;
-        cc.loader.loadRes("graphics/portrait/" + atkheadID + ".jpg/"+atkheadID, function (err, spriteFrame) {
-            atksprite.spriteFrame = spriteFrame;
-        });
-        var defheadID = this.defHead;
-        var defsprite = this.defPlayer.getComponent(cc.Sprite);
-        cc.loader.loadRes("graphics/portrait/" + defheadID + ".jpg/"+defheadID, function (err, spriteFrame) {
-            defsprite.spriteFrame = spriteFrame;
-        });
+        // var atksprite = this.atkPlayer.getComponent(cc.Sprite);
+        // var atkheadID = this.atkHead;
+        // cc.loader.loadRes("graphics/portrait/" + atkheadID + ".jpg/"+atkheadID, function (err, spriteFrame) {
+        //     atksprite.spriteFrame = spriteFrame;
+        // });
+        // var defheadID = this.defHead;
+        // var defsprite = this.defPlayer.getComponent(cc.Sprite);
+        // cc.loader.loadRes("graphics/portrait/" + defheadID + ".jpg/"+defheadID, function (err, spriteFrame) {
+        //     defsprite.spriteFrame = spriteFrame;
+        // });
     },
 
     // called every frame, uncomment this function to activate update callback

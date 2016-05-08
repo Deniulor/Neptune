@@ -9,7 +9,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Unit",
+    "_name": "Creature",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -71,7 +71,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ATB",
+    "_name": "Label",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -147,11 +147,11 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "03967llN8VD0owVQFrSBnBo"
+    "fileId": "380dbsmfjRIAolvnQygtwv1"
   },
   {
     "__type__": "cc.Node",
-    "_name": "hpBar",
+    "_name": "HpBar",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -296,7 +296,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "e65c8N0NF9Nx5d+eFGEHdPg"
+    "fileId": "1ef13qXIDREQ56vCU518HY1"
   },
   {
     "__type__": "cc.Sprite",
@@ -346,7 +346,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "fd931+aEjNNk6Gjh61YO2Gq"
+    "fileId": "86741t57g5HWJCAfruwDtoh"
   },
   {
     "__type__": "cc.Sprite",
@@ -393,6 +393,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "72f981kFCRIAJ0setN0JMha"
+    "fileId": "2c922UrYUhINb0QBssyfdq3"
   }
 ]
