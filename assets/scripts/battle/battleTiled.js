@@ -26,6 +26,11 @@ cc.Class({
     },
 
     /// 基础函数 - 获取一个点周围的点坐标
+    isLocValid:function (r){
+        return r.x >= 0 && r.x < this.MapWidth && r.y >= 0 && r.y < this.MapHeight;
+    },
+
+    /// 基础函数 - 获取一个点周围的点坐标
     getRound:function (x, y){
         return [cc.p(x + 0, y + 1),// 上
                 cc.p(x + 1, y + 1 - x % 2),// 右上

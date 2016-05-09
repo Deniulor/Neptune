@@ -2,17 +2,8 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //    default: null,
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
         camp:"",
-        ATB:5,
+        Atb:5,
         HP:100,
         Mov:3,//移动力
         Rng:1,//攻击距离
@@ -21,16 +12,16 @@ cc.Class({
     
     init:function(camp="", atb=5, hp=100, mov=3, rng=1){
         this.camp = camp;
-        this.ATB = atb;
+        this.Atb = atb;
         this.HP = hp;
         this.Mov = mov;
         this.Rng = rng;
+        this.curAtb = atb * Math.random();
+        this.showHP = this.HP;
     },
 
     // use this for initialization
     onLoad: function () {
-        this.ATB = this.ATB * 1000;
-        this.showHP = this.HP;
     },
 
     // called every frame, uncomment this function to activate update callback
@@ -61,12 +52,11 @@ cc.Class({
     },
     
     getATB: function(){
-        var atb = (!this.lastActiveTime ? 0 : this.lastActiveTime)  + this.ATB - new Date().getTime();
-        return atb < 0 ? 0 :atb / 1000;// 从毫秒转为秒
+        return this.curAtb;
     },
     
     onMoved: function(){
-        this.lastActiveTime = new Date().getTime();
+        this.curAtb = this.Atb;
     },
     
     onDamage: function(damage){
@@ -84,11 +74,13 @@ cc.Class({
             this.node.weight = 60;
             this.node.removeAllChildren();
         }
+        this.curAtb = this.Atb;
     },
+    
     change: function(){
         var thisSprite = this.node.getComponent(cc.Sprite);
             cc.loader.loadRes("graphics/unit/dead.png/dead", function (err, spriteFrame) {
             thisSprite.spriteFrame = spriteFrame;
-                });
+        });
     }
 });
