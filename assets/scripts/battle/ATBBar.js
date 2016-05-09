@@ -36,6 +36,9 @@ cc.Class({
                 continue;
             }
             var creature = node.creature.getComponent('creature');
+            if(creature.HP <= 0 ){
+                continue;
+            }
             creature.curAtb -= dt;
             if(creature.curAtb <= 0){
                 this.battle.selected = node.creature;

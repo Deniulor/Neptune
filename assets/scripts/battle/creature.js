@@ -7,7 +7,6 @@ cc.Class({
         HP:100,
         Mov:3,//移动力
         Rng:1,//攻击距离
-        isDead:"",
     },
     
     init:function(camp="", atb=5, hp=100, mov=3, rng=1){
@@ -26,9 +25,6 @@ cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        if(this.HP <= 0){
-            this.isDead = "true";
-        }
         var atb = this.getATB();
         var str;
         if(atb > 0){
@@ -66,12 +62,10 @@ cc.Class({
         if(this.HP <= 0){
             this.HP = 0;
             var fadeOut = cc.fadeOut(2);
-            var fadeIn = cc.fadeIn(0.1);
             var finish = cc.callFunc(this.change, this);
-            this.node.runAction(cc.sequence(fadeOut,finish,fadeIn));
-            this.isdead = "true";
-            this.node.height = 60;
-            this.node.weight = 60;
+            var fadeIn = cc.fadeIn(0.1);
+            var checkIfWinner = cc.callFunc(this.battle.checkIfWinner, this.battle);
+            this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,checkIfWinner));
             this.node.removeAllChildren();
         }
         this.curAtb = this.Atb;
@@ -79,8 +73,10 @@ cc.Class({
     
     change: function(){
         var thisSprite = this.node.getComponent(cc.Sprite);
-            cc.loader.loadRes("graphics/unit/dead.png/dead", function (err, spriteFrame) {
+        cc.loader.loadRes("graphics/unit/dead.png/dead", function (err, spriteFrame) {
             thisSprite.spriteFrame = spriteFrame;
+            this.node.height = 80;
+            this.node.weight = 80;
         });
     }
 });

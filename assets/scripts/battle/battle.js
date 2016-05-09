@@ -35,8 +35,9 @@ cc.Class({
             return;
         }
         var loc = event.getLocation();
-        loc = this.node.convertToNodeSpace(loc);
-        loc = this.tiled.toHexagonLoc(loc);
+        var temp = this.node.convertToNodeSpace(loc);
+        loc = this.tiled.toHexagonLoc(temp);
+        cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
         if(!this.tiled.isLocValid(loc)){ // 在可操作区域内
             return;
         }
@@ -46,18 +47,21 @@ cc.Class({
         }
 
         if(action == 4){
-            cc.log('moveto');
+            this.moveto(loc.x, loc.y);
             this.selected = null;
             this.clearFuncLayer();
             return;
         }
 
-        var targetCreature = this.getCreatureOn(x,y).getComponent('creature');
-        if(action == 5 && !targetCreature.isDead && targetCreature.camp != this.selected.getComponent('creature').camp){
-            cc.log('attackto');
-            this.selected = null;
-            this.clearFuncLayer();
-            return;
+        if(action == 5){
+            let node = this.getCreatureOn(loc.x, loc.y);
+            let creature = node ? node.getComponent('creature') : null;
+            if(creature !== null && creature.HP > 0 && creature.camp != this.selected.getComponent('creature').camp){
+                this.attack(node);
+                this.selected = null;
+                this.clearFuncLayer();
+                return;
+            }
         }
     },
     
@@ -67,14 +71,16 @@ cc.Class({
         
         // 使用给定的模板在场景中生成一个新节点
         var knight1 = cc.instantiate(this.creaturePrefab);
-        knight1.getComponent('creature').init("Knight", 3, 100, 3, 1);
+        knight1.getComponent('creature').init("player1", 3, 100, 3, 1);
+        knight1.getComponent('creature').battle = this;
         knight1.setPosition(this.tiled.toPixelLoc(0, 0));
         knight1.getComponent(cc.Sprite).spriteFrame = c1;
         this.creatures.addChild(knight1);
         
         var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init("Knight", 3, 100, 3, 1);
-        knight2.setPosition(this.tiled.toPixelLoc(0, 2));
+        knight2.getComponent('creature').init("player1", 3, 100, 3, 1);
+        knight2.getComponent('creature').battle = this;
+        knight2.setPosition(this.tiled.toPixelLoc(4, 2));
         knight2.getComponent(cc.Sprite).spriteFrame = c1;
         this.creatures.addChild(knight2);
         
@@ -83,24 +89,26 @@ cc.Class({
         var c2 = new cc.SpriteFrame(url2, cc.Rect(0, 0, 329, 337));
         
         var archer1 = cc.instantiate(this.creaturePrefab);
-        archer1.getComponent('creature').init("Archer", 3.5, 100, 2, 3);
+        archer1.getComponent('creature').init("player2", 3.5, 100, 2, 3);
+        archer1.getComponent('creature').battle = this;
         archer1.setPosition(this.tiled.toPixelLoc(12, 3));
         archer1.getComponent(cc.Sprite).spriteFrame = c2;
         this.creatures.addChild(archer1);
         
         var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init("Archer", 3.5, 100, 2, 3);
-        archer2.setPosition(this.tiled.toPixelLoc(12, 1));
+        archer2.getComponent('creature').init("player2", 3.5, 100, 2, 3);
+        archer2.getComponent('creature').battle = this;
+        archer2.setPosition(this.tiled.toPixelLoc(7, 2));
         archer2.getComponent(cc.Sprite).spriteFrame = c2;
         this.creatures.addChild(archer2);
     },
     
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空
     getCreatureOn:function(x, y){
-        var from = this.tiled.toPixelLoc(x, y);
         for(var i = this.creatures.children.length - 1; i >= 0; --i){
             var child = this.creatures.children[i];
-            if(child.getPositionX() == from.x && child.getPositionY() == from.y){
+            var loc = this.tiled.toHexagonLoc(child.getPosition());
+            if(loc.x == x && loc.y == y){
                 return child;
             }
         }
@@ -113,7 +121,7 @@ cc.Class({
         while (i--) {
             if (arr[i].x == px && arr[i].y == py) {  
                 return arr[i];
-            }  
+            }
         }  
         return null;  
     },
@@ -182,4 +190,92 @@ cc.Class({
             }
         }
     },
+
+    // 将已选择的单位移动到相应点
+    moveto:function(to_x, to_y){
+        var from = this.tiled.toHexagonLoc(this.selected.getPosition());
+        var self = this;
+        var path = this.tiled.getPath(from, cc.p(to_x,to_y), function(x, y){
+            var creature = self.getCreatureOn(x, y);
+            if(creature !== null && creature != self.selected){
+                true; // 不允许穿人
+            }
+        });
+        if(!path || path.length <= 0){
+            cc.log("没有找到出路");
+            return;
+        }
+        for(var i = 0; i < path.length; ++i){
+            path[i] = cc.moveTo(0.05, this.tiled.toPixelLoc(path[i].x, path[i].y)); 
+        }
+        this.selected.getComponent('creature').onMoved();
+        this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+        this.selected.runAction(cc.sequence(path));
+    },
+    
+    // 用已选择单位攻击指定的单位
+    attack:function(target){
+        var from = this.tiled.toHexagonLoc(this.selected.getPosition());
+        var to = this.tiled.toHexagonLoc(target.getPosition());
+        
+        var self = this;
+        var path = this.tiled.getPath(from, to, function(x, y){
+            var creature = self.getCreatureOn(x, y);
+            if(creature !== null && creature != self.selected){
+                true; // 不允许穿人
+            }
+        });
+        
+        do{
+            var p = path.pop();
+        } while(this.funcLayer.getTileGIDAt(p.x, 3 - p.y) == 5);
+        
+        for(var i = 0; i < path.length; ++i){
+            path[i] = cc.moveTo(0.05, this.tiled.toPixelLoc(path[i].x, path[i].y)); 
+        }
+        path.push(cc.moveTo(0.05, this.tiled.toPixelLoc(p.x, p.y)));
+        
+        var jump = cc.jumpTo(0.5,this.tiled.toPixelLoc(to.x, to.y));
+        path.push(jump);
+        var atk = cc.spawn(cc.sequence(cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10),cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10)));
+        path.push(atk);
+        path.push(cc.moveTo(0.5, this.tiled.toPixelLoc(p.x, p.y))); 
+        if(this.selected.zIndex != target.zIndex){
+            let max = Math.max(this.selected.zIndex, target.zIndex);
+            let min = Math.min(this.selected.zIndex, target.zIndex);
+            this.selected.zIndex = max;
+            target.zIndex = min;
+        } else {
+            this.selected.zIndex ++; 
+        }
+        path.push(cc.callFunc(function(){
+            target.getComponent('creature').onDamage(30);
+        }));
+        this.selected.getComponent('creature').onMoved();
+        this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+        this.selected.runAction(cc.sequence(path));
+    },
+    
+    checkIfWinner:function(){
+        var player1 = 0;
+        var player2 = 0;
+        for(var i = 0; i < this.creatures.children.length; ++i){
+            var creature = this.creatures.children[i].getComponent('creature');
+            if(creature.HP <= 0){
+                continue;
+            }
+            if(creature.camp == 'player1' ){
+                player1 ++;
+            } else if(creature.camp == 'player2'){
+                player2 ++;
+            }
+        }
+        if(player1 <= 0 && player2 <= 0){
+            cc.log('draw!');
+        } else if(player1 <= 0){
+            cc.log('player2 win!');
+        } else if(player2 <= 0){
+            cc.log('player1 win!');
+        }
+    }
 });

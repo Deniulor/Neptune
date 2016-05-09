@@ -178,7 +178,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ATB Bar",
+    "_name": "atbBar",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -608,7 +608,7 @@
     "_opacityModifyRGB": false,
     "_reorderChildDirty": false,
     "_id": "7aae54p3ehFQbyxhhW8RMV5",
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 16
