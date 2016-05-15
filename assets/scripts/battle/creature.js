@@ -73,7 +73,7 @@ cc.Class({
     
     change: function(){
         var thisSprite = this.node.getComponent(cc.Sprite);
-        cc.loader.loadRes("graphics/unit/dead.png/dead", function (err, spriteFrame) {
+        cc.loader.loadRes("graphics/creature/skeleton.png/skeleton", function (err, spriteFrame) {
             thisSprite.spriteFrame = spriteFrame;
             this.node.height = 80;
             this.node.weight = 80;
