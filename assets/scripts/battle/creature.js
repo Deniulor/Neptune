@@ -73,10 +73,9 @@ cc.Class({
     
     change: function(){
         var thisSprite = this.node.getComponent(cc.Sprite);
+        var tnode = this.node;
         cc.loader.loadRes("graphics/creature/skeleton.png/skeleton", function (err, spriteFrame) {
             thisSprite.spriteFrame = spriteFrame;
-            this.node.height = 80;
-            this.node.weight = 80;
         });
     }
 });

@@ -14,6 +14,10 @@ cc.Class({
             default: null,
             type: cc.Prefab
         },
+        winnerPrefab:{
+            default: null,
+            type: cc.Prefab
+        },
     },
     
     // 加载事件
@@ -24,7 +28,7 @@ cc.Class({
         self.clearFuncLayer();
         
         // 放置单位
-        self.putonCreatures();
+        self.initBattle();
         self.node.on("touchend", self.onTouchEnded, self);
     },
     
@@ -65,20 +69,23 @@ cc.Class({
         }
     },
     
-    putonCreatures:function(){
+    initBattle:function(){
+        // 初始化单位列表
+        this.creatures.removeAllChildren();
+        
         var url1 = cc.url.raw('resources/graphics/creature/creature1.png');
-        var c1 = new cc.SpriteFrame(url1, cc.Rect(0, 0, 329, 337));
+        var c1 = new cc.SpriteFrame(url1);
         
         // 使用给定的模板在场景中生成一个新节点
-        var knight1 = cc.instantiate(this.creaturePrefab);
-        knight1.getComponent('creature').init("player1", 3, 100, 3, 1);
-        knight1.getComponent('creature').battle = this;
-        knight1.setPosition(this.tiled.toPixelLoc(0, 0));
-        knight1.getComponent(cc.Sprite).spriteFrame = c1;
-        this.creatures.addChild(knight1);
+        // var knight1 = cc.instantiate(this.creaturePrefab);
+        // knight1.getComponent('creature').init("player1", 3, 10, 3, 1);
+        // knight1.getComponent('creature').battle = this;
+        // knight1.setPosition(this.tiled.toPixelLoc(0, 0));
+        // knight1.getComponent(cc.Sprite).spriteFrame = c1;
+        // this.creatures.addChild(knight1);
         
         var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init("player1", 3, 100, 3, 1);
+        knight2.getComponent('creature').init("player1", 3, 10, 3, 1);
         knight2.getComponent('creature').battle = this;
         knight2.setPosition(this.tiled.toPixelLoc(4, 2));
         knight2.getComponent(cc.Sprite).spriteFrame = c1;
@@ -86,21 +93,23 @@ cc.Class({
         
         
         var url2 = cc.url.raw('resources/graphics/creature/creature2.png');
-        var c2 = new cc.SpriteFrame(url2, cc.Rect(0, 0, 329, 337));
+        var c2 = new cc.SpriteFrame(url2);
         
-        var archer1 = cc.instantiate(this.creaturePrefab);
-        archer1.getComponent('creature').init("player2", 3.5, 100, 2, 3);
-        archer1.getComponent('creature').battle = this;
-        archer1.setPosition(this.tiled.toPixelLoc(12, 3));
-        archer1.getComponent(cc.Sprite).spriteFrame = c2;
-        this.creatures.addChild(archer1);
+        // var archer1 = cc.instantiate(this.creaturePrefab);
+        // archer1.getComponent('creature').init("player2", 3.5, 10, 2, 3);
+        // archer1.getComponent('creature').battle = this;
+        // archer1.setPosition(this.tiled.toPixelLoc(12, 3));
+        // archer1.getComponent(cc.Sprite).spriteFrame = c2;
+        // this.creatures.addChild(archer1);
         
         var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init("player2", 3.5, 100, 2, 3);
+        archer2.getComponent('creature').init("player2", 3.5, 10, 2, 3);
         archer2.getComponent('creature').battle = this;
         archer2.setPosition(this.tiled.toPixelLoc(7, 2));
         archer2.getComponent(cc.Sprite).spriteFrame = c2;
         this.creatures.addChild(archer2);
+        
+        
     },
     
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空
@@ -272,10 +281,19 @@ cc.Class({
         }
         if(player1 <= 0 && player2 <= 0){
             cc.log('draw!');
-        } else if(player1 <= 0){
-            cc.log('player2 win!');
-        } else if(player2 <= 0){
-            cc.log('player1 win!');
-        }
+        } else{
+            if(player1 <= 0){
+                var w = 'blue';
+            } else if(player2 <= 0){
+                var w = 'red';
+            } else {
+                return;
+            }
+            
+            // 使用给定的模板创建winner界面
+            var winner = cc.instantiate(this.winnerPrefab);
+            winner.getComponent('winner').setWinner(w);
+            this.node.parent.parent.addChild(winner);
+        } 
     }
 });
