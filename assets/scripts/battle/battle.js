@@ -239,16 +239,18 @@ cc.Class({
             var p = path.pop();
         } while(this.funcLayer.getTileGIDAt(p.x, 3 - p.y) == 5);
         
+        var seq = [];
         for(var i = 0; i < path.length; ++i){
-            path[i] = cc.moveTo(0.05, this.tiled.toPixelLoc(path[i].x, path[i].y)); 
+            seq[i] = cc.moveTo(0.05, this.tiled.toPixelLoc(path[i].x, path[i].y)); 
         }
-        path.push(cc.moveTo(0.05, this.tiled.toPixelLoc(p.x, p.y)));
+        seq.push(cc.moveTo(0.05, this.tiled.toPixelLoc(p.x, p.y)));
         
-        var jump = cc.jumpTo(0.5,this.tiled.toPixelLoc(to.x, to.y));
-        path.push(jump);
+        var jump = this.tiled.toPixelLoc(to.x, to.y);
+        jump = cc.jumpTo(0.5, jump.x, jump.y, 20, 1);
+        seq.push(jump);
         var atk = cc.spawn(cc.sequence(cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10),cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10)));
-        path.push(atk);
-        path.push(cc.moveTo(0.5, this.tiled.toPixelLoc(p.x, p.y))); 
+        seq.push(atk);
+        seq.push(cc.moveTo(0.5, this.tiled.toPixelLoc(p.x, p.y))); 
         if(this.selected.zIndex != target.zIndex){
             let max = Math.max(this.selected.zIndex, target.zIndex);
             let min = Math.min(this.selected.zIndex, target.zIndex);
@@ -257,12 +259,12 @@ cc.Class({
         } else {
             this.selected.zIndex ++; 
         }
-        path.push(cc.callFunc(function(){
+        seq.push(cc.callFunc(function(){
             target.getComponent('creature').onDamage(30);
         }));
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
-        this.selected.runAction(cc.sequence(path));
+        this.selected.runAction(cc.sequence(seq));
     },
     
     checkIfWinner:function(){

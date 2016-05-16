@@ -653,6 +653,9 @@
     },
     "creaturePrefab": {
       "__uuid__": "d14e1647-a62a-428c-99b6-0a9c22a60c44"
+    },
+    "winnerPrefab": {
+      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
     }
   },
   {
@@ -688,8 +691,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 548,
-      "y": 16
+      "x": 546,
+      "y": 12
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -766,8 +769,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -554,
-      "y": 14
+      "x": -556,
+      "y": 16
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -807,7 +810,7 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
-    "_srcBlendFactor": 0,
+    "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
   },
