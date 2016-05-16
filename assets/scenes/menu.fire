@@ -40,7 +40,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "e87ccb85-daeb-44c0-bac6-70482f5fd97e"
   },
   {
@@ -92,7 +91,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "033e4CrE05Ee7NXoIiggwmA",
     "_active": true,
     "_components": [
@@ -145,8 +143,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -233,
-      "y": -215
+      "x": -231,
+      "y": -202
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -154,7 +152,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "c26daxm+k1HFpw3ZLpUd1i7",
     "_active": true,
     "_components": [
@@ -209,7 +206,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "3b170xEZBBLkayizCwU1CmS",
     "_active": true,
     "_components": [
@@ -249,6 +245,7 @@
       "__uuid__": "4b467163-3e51-4b5a-91f8-e2e67bdf61be"
     },
     "_type": 1,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -366,8 +363,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 288,
-      "y": -210
+      "x": 331.3,
+      "y": -192.3
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -375,7 +372,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "b6e4eQtvNBDbLi+xHs9ffG6",
     "_active": true,
     "_components": [
@@ -411,7 +407,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 124,
+      "width": 200,
       "height": 60
     },
     "_children": [],
@@ -421,8 +417,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 13,
-      "y": 1
+      "x": -9.1,
+      "y": 8.8
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -430,7 +426,6 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_reorderChildDirty": false,
     "_id": "c34c6PIhlVDAY5Xdf1g32yZ",
     "_active": true,
     "_components": [
@@ -449,14 +444,17 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_fontSize": 30,
+    "_fontSize": 40,
     "_lineHeight": 30,
     "_enableWrapText": false,
-    "_isSystemFontUsed": true,
-    "_N$string": "",
+    "_isSystemFontUsed": false,
+    "_N$string": "练习模式",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$overflow": 1
+    "_N$overflow": 1,
+    "_N$file": {
+      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
+    }
   },
   {
     "__type__": "cc.Sprite",
@@ -470,6 +468,7 @@
       "__uuid__": "40161b52-e03e-4826-9c72-443efcdb15de"
     },
     "_type": 1,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -580,6 +579,7 @@
       "__uuid__": "3d4d9543-e8cf-4ef6-9cfb-0307ddf19d5b"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
