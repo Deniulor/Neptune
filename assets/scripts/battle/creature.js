@@ -15,7 +15,7 @@ cc.Class({
         this.HP = hp;
         this.Mov = mov;
         this.Rng = rng;
-        this.curAtb = atb * Math.random();
+        this.curAtb = atb * Math.random() + 0.1;
         this.showHP = this.HP;
     },
 
