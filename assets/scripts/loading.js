@@ -15,7 +15,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        var fadeOut = cc.fadeOut(5);
+        var fadeOut = cc.fadeOut(2);
         // var delay = cc.delayTime(3);
         var finish = cc.callFunc(this.change, this);
         this.node.runAction(cc.sequence(fadeOut,finish));

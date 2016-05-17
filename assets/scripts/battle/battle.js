@@ -85,7 +85,7 @@ cc.Class({
         // this.creatures.addChild(knight1);
         
         var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init("player1", 3, 10, 3, 1);
+        knight2.getComponent('creature').init("player1", 2, 10, 3, 1);
         knight2.getComponent('creature').battle = this;
         knight2.setPosition(this.tiled.toPixelLoc(4, 2));
         knight2.getComponent(cc.Sprite).spriteFrame = c1;
@@ -149,6 +149,8 @@ cc.Class({
         if(!this.selected){
             return;
         }
+        var self = this;
+        
         var fromCreature = this.selected.getComponent("creature");
         var distance = fromCreature.Mov + fromCreature.Rng;
         var from = this.tiled.toHexagonLoc(this.selected.getPosition());
@@ -159,43 +161,45 @@ cc.Class({
             this.distance = distance;
         };
         
-        var open = [];
-        open.push(new node(from.x, from.y, 0));
-        var closed = [];
-        while(open.length > 0){
-            var curnode = open.pop();
-            closed.push(curnode);
-            if(curnode.distance > fromCreature.Mov){
+        var searched = [];
+        
+        var idx = 1;
+        var dfs = function(curnode){
+            var d = curnode.distance + 1;
+            if(d > distance){
+                return;
+            }
+            var round = self.tiled.getRound(curnode.x, curnode.y);
+            for(var i = round.length - 1; i >= 0; i -- ){
+                var r = round[i];
+                if(!self.tiled.isLocValid(r)){ //坐标是否有效
+                    continue;
+                }
+                //cc.log('%s:(%s,%s) -> (%s,%s)  d:%s', idx++, curnode.x, curnode.y,  r.x, r.y, d);
+                var nodeInSearched = self.search(searched, r.x, r.y);
+                if(nodeInSearched === null){
+                    searched.push(new node(r.x, r.y, d));
+                } else if(nodeInSearched.distance > d){
+                    nodeInSearched.distance = d;
+                }
+                dfs(new node(r.x, r.y, d));
+            }
+        }
+        
+        dfs(new node(from.x, from.y, 0));
+        
+        for(var i = 0; i < searched.length; ++i){
+            var curnode = searched[i];
+            
+            var u = this.getCreatureOn(curnode.x, curnode.y);
+            if(u !== null ){
+                if(u.getComponent("creature").camp != fromCreature.camp){
+                    this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
+                }
+            } else if(curnode.distance > fromCreature.Mov){
                 this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
             } else {
                 this.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
-            }
-            var u = this.getCreatureOn(curnode.x, curnode.y);
-            if(u !== null && u.getComponent("creature").camp != fromCreature.camp){
-                this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
-                continue;//不允许穿敌人
-            }
-            var d = curnode.distance + 1;
-            if(d > distance){
-                continue;
-            }
-            var round = this.tiled.getRound(curnode.x, curnode.y);
-            for(var i = round.length - 1; i >= 0; i -- ){
-                var r = round[i];
-                if(!this.tiled.isLocValid(r)){ //坐标是否有效
-                    continue;
-                }
-                if(this.search(closed, r.x, r.y) !== null){
-                    continue; // 已经遍历过了
-                }
-                var nodeInOpen = this.search(open, r.x, r.y);
-                if(nodeInOpen === null){
-                    open.push(new node(r.x, r.y, d));
-                } else {
-                    if(nodeInOpen.distance > d){
-                        nodeInOpen.distance = d;
-                    }
-                }
             }
         }
     },
