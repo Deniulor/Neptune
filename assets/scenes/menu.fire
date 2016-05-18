@@ -40,6 +40,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "e87ccb85-daeb-44c0-bac6-70482f5fd97e"
   },
   {
@@ -91,6 +92,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "033e4CrE05Ee7NXoIiggwmA",
     "_active": true,
     "_components": [
@@ -152,6 +154,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "c26daxm+k1HFpw3ZLpUd1i7",
     "_active": true,
     "_components": [
@@ -206,6 +209,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "3b170xEZBBLkayizCwU1CmS",
     "_active": true,
     "_components": [
@@ -245,7 +249,6 @@
       "__uuid__": "4b467163-3e51-4b5a-91f8-e2e67bdf61be"
     },
     "_type": 1,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -372,6 +375,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "b6e4eQtvNBDbLi+xHs9ffG6",
     "_active": true,
     "_components": [
@@ -426,6 +430,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "c34c6PIhlVDAY5Xdf1g32yZ",
     "_active": true,
     "_components": [
@@ -447,14 +452,11 @@
     "_fontSize": 40,
     "_lineHeight": 30,
     "_enableWrapText": false,
-    "_isSystemFontUsed": false,
+    "_isSystemFontUsed": true,
     "_N$string": "练习模式",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$overflow": 1,
-    "_N$file": {
-      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
-    }
+    "_N$overflow": 1
   },
   {
     "__type__": "cc.Sprite",
@@ -468,7 +470,6 @@
       "__uuid__": "40161b52-e03e-4826-9c72-443efcdb15de"
     },
     "_type": 1,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -579,7 +580,6 @@
       "__uuid__": "3d4d9543-e8cf-4ef6-9cfb-0307ddf19d5b"
     },
     "_type": 0,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
