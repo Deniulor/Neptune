@@ -47,46 +47,50 @@ cc.Class({
         }
        this.pLayoutNode.setPosition(p1,p2);
         
-        var touchStart =function (event){
-          this.startVecPos =event.touch.getLocation();
-        };
-        this.node.on(cc.Node.EventType.TOUCH_START,touchStart,this); 
+        // var touchStart =function (event){
+        //   this.startVecPos =event.touch.getLocation();
+        // };
+        // this.node.on(cc.Node.EventType.TOUCH_START,touchStart,this); 
         
-        var touchEnd =function (event){
-            var eP = 0;
-            var sP = 0;
-            switch(this.pLayout.type){
-                case cc.Layout.Type.NONE:
-                    console.error("不支持无方向的Layout");
-                    break;
-                case cc.Layout.Type.HORIZONTAL:
-                    eP = event.touch.getLocation().x;
-                    sP = this.startVecPos.x;
-                    break;
-                case cc.Layout.Type.VERTICAL:
-                    eP = event.touch.getLocation().y;
-                    sP = this.startVecPos.y;
-                    break;
-            }
-            if(Math.abs(eP - sP) >= this.Item_MoveDis){
-                if(eP > sP){
-                    if(this.pageIndex>=1){
-                        this.pageIndex-=1;
-                        this.doAction(0);
-                    }
-                }else{ 
-                    if(this.pageIndex<this.Item_Count-1){
-                        this.pageIndex+=1;
-                        this.doAction(1);
-                    }
-                }
-            }
-        };
-        this.node.on(cc.Node.EventType.TOUCH_END,touchEnd,this); 
+        // var touchEnd =function (event){
+        //     var eP = 0;
+        //     var sP = 0;
+        //     switch(this.pLayout.type){
+        //         case cc.Layout.Type.NONE:
+        //             console.error("不支持无方向的Layout");
+        //             break;
+        //         case cc.Layout.Type.HORIZONTAL:
+        //             eP = event.touch.getLocation().x;
+        //             sP = this.startVecPos.x;
+        //             break;
+        //         case cc.Layout.Type.VERTICAL:
+        //             eP = event.touch.getLocation().y;
+        //             sP = this.startVecPos.y;
+        //             break;
+        //     }
+        //     if(Math.abs(eP - sP) >= this.Item_MoveDis){
+        //         if(eP > sP){
+        //             if(this.pageIndex>=1){
+        //                 this.pageIndex-=1;
+        //                 this.doAction(0);
+        //             }
+        //         }else{ 
+        //             if(this.pageIndex<this.Item_Count-1){
+        //                 this.pageIndex+=1;
+        //                 this.doAction(1);
+        //             }
+        //         }
+        //     }
+        // };
+        // this.node.on(cc.Node.EventType.TOUCH_END,touchEnd,this); 
         
     },
     
-    doAction:function(dir){
+    doAction1:function(dir){
+        if(this.pageIndex>=this.Item_Count-1){
+            return;
+        }
+        this.pageIndex+=1;
         var p1 = 0;
         var p2 = 0;
         switch(this.pLayout.type){
@@ -94,23 +98,45 @@ cc.Class({
                 console.error("不支持无方向的Layout");
                 break;
             case cc.Layout.Type.HORIZONTAL:
-                if(dir == 1){
-                    p1 = -this.Item_Width-this.pLayout.spacingX;
-                }else{
-                    p1 = this.Item_Width+this.pLayout.spacingX;
-                }
+                
+                p1 = -this.Item_Width-this.pLayout.spacingX;
+                
                 p2 = 0;
                 break;
             case cc.Layout.Type.VERTICAL:
                 p1 = 0;
-                if(dir == 1){
-                    p2 = -this.Item_Height-this.pLayout.spacingY;
-                }else{
-                    p2 = this.Item_Height+this.pLayout.spacingY;
-                }
+                
+                p2 = -this.Item_Height-this.pLayout.spacingY;
+                
                 break;
         }
-        this.pLayoutNode.runAction(cc.moveBy(0.3,p1, p2));
+        this.pLayoutNode.runAction(cc.moveBy(0.1,p1, p2));
+    },
+    doAction2:function(dir){
+        if(this.pageIndex<1){
+            return;
+            }
+        this.pageIndex-=1;
+        var p1 = 0;
+        var p2 = 0;
+        switch(this.pLayout.type){
+            case cc.Layout.Type.NONE:
+                console.error("不支持无方向的Layout");
+                break;
+            case cc.Layout.Type.HORIZONTAL:
+                
+                    p1 = this.Item_Width+this.pLayout.spacingX;
+                
+                p2 = 0;
+                break;
+            case cc.Layout.Type.VERTICAL:
+                p1 = 0;
+                
+                    p2 = this.Item_Height+this.pLayout.spacingY;
+                
+                break;
+        }
+        this.pLayoutNode.runAction(cc.moveBy(0.1,p1, p2));
     },
     
 });
