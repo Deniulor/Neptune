@@ -3,7 +3,6 @@
     "__type__": "cc.Prefab",
     "_name": "",
     "_objFlags": 0,
-    "_rawFiles": null,
     "data": {
       "__id__": 1
     }
@@ -50,9 +49,9 @@
     "_skewY": 0,
     "_localZOrder": 0,
     "_globalZOrder": 0,
-    "_ignoreAnchorPointForPosition": false,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "",
     "_active": true,
     "_components": [
@@ -90,8 +89,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 200
+      "width": 20,
+      "height": 20
     },
     "_children": [],
     "_rotationX": 0,
@@ -107,9 +106,9 @@
     "_skewY": 0,
     "_localZOrder": 0,
     "_globalZOrder": 0,
-    "_ignoreAnchorPointForPosition": false,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "",
     "_active": true,
     "_components": [
@@ -136,7 +135,18 @@
       "__uuid__": "9bbda31e-ad49-43c9-aaf2-f7d9896bac69"
     },
     "_type": 1,
-    "_useOriginalSize": false,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_atlas": null
   },
   {
@@ -152,9 +162,15 @@
       "width": 300,
       "height": 200
     },
-    "autoResize": true,
+    "_resize": 0,
     "_N$layoutType": 1,
-    "_N$margin": 0,
+    "_N$cellSize": {
+      "__type__": "cc.Size",
+      "width": 40,
+      "height": 40
+    },
+    "_N$startAxis": 0,
+    "_N$padding": 0,
     "_N$spacingX": 0,
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
@@ -166,7 +182,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "54da7aOizdIfaxzweBhHHJ7"
+    "fileId": "15225Wbfn9M6aFXAiVfVwEJ"
   },
   {
     "__type__": "cc.Mask",
@@ -175,10 +191,12 @@
     "node": {
       "__id__": 1
     },
-    "_enabled": false
+    "_enabled": false,
+    "_type": 0,
+    "_segements": 64
   },
   {
-    "__type__": "f9527PbW4tJzaGHvWclS7B5",
+    "__type__": "a7f86JhmB5PFKieHT4gCNHF",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -196,6 +214,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "7cb71dmxxRBP6DdpHvYvQ8K"
+    "fileId": "4b265Bcs/dAg7a2cA6x9KaA"
   }
 ]
