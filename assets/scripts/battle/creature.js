@@ -4,7 +4,9 @@ cc.Class({
     properties: {
         camp:"",
         Atb:5,
+        MaxHP:100,
         HP:100,
+        showHP:100,
         Mov:3,//移动力
         Rng:1,//攻击距离
     },
@@ -12,6 +14,7 @@ cc.Class({
     init:function(camp="", atb=5, hp=100, mov=3, rng=1){
         this.camp = camp;
         this.Atb = atb;
+        this.MaxHP = hp;
         this.HP = hp;
         this.Mov = mov;
         this.Rng = rng;
@@ -43,7 +46,7 @@ cc.Class({
         if(this.showHP - this.HP < 1){
             this.showHP = this.HP;
         }
-        this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / 100;
+        this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / this.MaxHP;
     },
     
     getATB: function(){
