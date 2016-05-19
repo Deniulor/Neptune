@@ -36,13 +36,14 @@
         "__id__": 2
       },
       {
-        "__id__": 18
+        "__id__": 19
       }
     ],
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "e87ccb85-daeb-44c0-bac6-70482f5fd97e"
   },
   {
@@ -94,17 +95,18 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "033e4CrE05Ee7NXoIiggwmA",
     "_active": true,
     "_components": [
-      {
-        "__id__": 15
-      },
       {
         "__id__": 16
       },
       {
         "__id__": 17
+      },
+      {
+        "__id__": 18
       }
     ],
     "_prefab": null
@@ -155,6 +157,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "c26daxm+k1HFpw3ZLpUd1i7",
     "_active": true,
     "_components": [
@@ -209,6 +212,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "3b170xEZBBLkayizCwU1CmS",
     "_active": true,
     "_components": [
@@ -251,7 +255,6 @@
       "__uuid__": "4b467163-3e51-4b5a-91f8-e2e67bdf61be"
     },
     "_type": 1,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -378,6 +381,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "b6e4eQtvNBDbLi+xHs9ffG6",
     "_active": true,
     "_components": [
@@ -386,6 +390,9 @@
       },
       {
         "__id__": 13
+      },
+      {
+        "__id__": 15
       }
     ],
     "_prefab": null
@@ -432,6 +439,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "c34c6PIhlVDAY5Xdf1g32yZ",
     "_active": true,
     "_components": [
@@ -474,7 +482,6 @@
       "__uuid__": "40161b52-e03e-4826-9c72-443efcdb15de"
     },
     "_type": 1,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -558,6 +565,24 @@
     "handler": "practice"
   },
   {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 9
+    },
+    "_enabled": true,
+    "_defaultClip": {
+      "__uuid__": "f795a5ca-418a-4797-a046-a52262734325"
+    },
+    "_clips": [
+      {
+        "__uuid__": "f795a5ca-418a-4797-a046-a52262734325"
+      }
+    ],
+    "playOnLoad": true
+  },
+  {
     "__type__": "cc.Canvas",
     "_name": "",
     "_objFlags": 1835008,
@@ -585,7 +610,6 @@
       "__uuid__": "3d4d9543-e8cf-4ef6-9cfb-0307ddf19d5b"
     },
     "_type": 0,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -651,11 +675,12 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
     "_id": "cb462oMCUlJLp4JR+mWjnUg",
     "_active": true,
     "_components": [
       {
-        "__id__": 19
+        "__id__": 20
       }
     ],
     "_prefab": null
@@ -665,7 +690,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 18
+      "__id__": 19
     },
     "_enabled": true,
     "_useOriginalSize": false,
