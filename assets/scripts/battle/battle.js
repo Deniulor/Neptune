@@ -77,15 +77,15 @@ cc.Class({
         var c1 = new cc.SpriteFrame(url1);
         
         // 使用给定的模板在场景中生成一个新节点
-        // var knight1 = cc.instantiate(this.creaturePrefab);
-        // knight1.getComponent('creature').init("player1", 3, 10, 3, 1);
-        // knight1.getComponent('creature').battle = this;
-        // knight1.setPosition(this.tiled.toPixelLoc(0, 0));
-        // knight1.getComponent(cc.Sprite).spriteFrame = c1;
-        // this.creatures.addChild(knight1);
+        var knight1 = cc.instantiate(this.creaturePrefab);
+        knight1.getComponent('creature').init("player1", 3, 50, 3, 1);
+        knight1.getComponent('creature').battle = this;
+        knight1.setPosition(this.tiled.toPixelLoc(0, 0));
+        knight1.getComponent(cc.Sprite).spriteFrame = c1;
+        this.creatures.addChild(knight1);
         
         var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init("player1", 2, 10, 3, 1);
+        knight2.getComponent('creature').init("player1", 2, 50, 3, 1);
         knight2.getComponent('creature').battle = this;
         knight2.setPosition(this.tiled.toPixelLoc(4, 2));
         knight2.getComponent(cc.Sprite).spriteFrame = c1;
@@ -103,7 +103,7 @@ cc.Class({
         // this.creatures.addChild(archer1);
         
         var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init("player2", 3.5, 10, 2, 3);
+        archer2.getComponent('creature').init("player2", 3.5, 50, 2, 3);
         archer2.getComponent('creature').battle = this;
         archer2.setPosition(this.tiled.toPixelLoc(7, 2));
         archer2.getComponent(cc.Sprite).spriteFrame = c2;
