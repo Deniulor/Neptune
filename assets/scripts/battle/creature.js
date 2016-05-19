@@ -32,8 +32,7 @@ cc.Class({
         }else {
             str = "Ready";
         }
-        var childrenCount = this.node.childrenCount;
-        if(childrenCount <=0){
+        if(!this.node.getChildByName("HpBar")){
             return;
         }
         this.node.getChildByName("Label").getComponent(cc.Label).string = str;
@@ -66,16 +65,15 @@ cc.Class({
             var fadeIn = cc.fadeIn(0.1);
             var checkIfWinner = cc.callFunc(this.battle.checkIfWinner, this.battle);
             this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,checkIfWinner));
-            this.node.removeAllChildren();
         }
         this.curAtb = this.Atb;
     },
     
     change: function(){
-        var thisSprite = this.node.getComponent(cc.Sprite);
         var tnode = this.node;
+        tnode.getChildByName("HpBar").removeFromParent();
         cc.loader.loadRes("graphics/creature/skeleton.png/skeleton", function (err, spriteFrame) {
-            thisSprite.spriteFrame = spriteFrame;
+            tnode.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = spriteFrame;
         });
     }
 });

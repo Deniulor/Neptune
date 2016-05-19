@@ -81,14 +81,14 @@ cc.Class({
         knight1.getComponent('creature').init("player1", 3, 50, 3, 1);
         knight1.getComponent('creature').battle = this;
         knight1.setPosition(this.tiled.toPixelLoc(0, 0));
-        knight1.getComponent(cc.Sprite).spriteFrame = c1;
+        knight1.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c1;
         this.creatures.addChild(knight1);
         
         var knight2 = cc.instantiate(this.creaturePrefab);
         knight2.getComponent('creature').init("player1", 2, 50, 3, 1);
         knight2.getComponent('creature').battle = this;
         knight2.setPosition(this.tiled.toPixelLoc(4, 2));
-        knight2.getComponent(cc.Sprite).spriteFrame = c1;
+        knight2.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c1;
         this.creatures.addChild(knight2);
         
         
@@ -99,14 +99,14 @@ cc.Class({
         // archer1.getComponent('creature').init("player2", 3.5, 10, 2, 3);
         // archer1.getComponent('creature').battle = this;
         // archer1.setPosition(this.tiled.toPixelLoc(12, 3));
-        // archer1.getComponent(cc.Sprite).spriteFrame = c2;
+        // archer1.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c2;
         // this.creatures.addChild(archer1);
         
         var archer2 = cc.instantiate(this.creaturePrefab);
         archer2.getComponent('creature').init("player2", 3.5, 50, 2, 3);
         archer2.getComponent('creature').battle = this;
         archer2.setPosition(this.tiled.toPixelLoc(7, 2));
-        archer2.getComponent(cc.Sprite).spriteFrame = c2;
+        archer2.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c2;
         this.creatures.addChild(archer2);
         
         
@@ -249,12 +249,29 @@ cc.Class({
         }
         seq.push(cc.moveTo(0.05, this.tiled.toPixelLoc(p.x, p.y)));
         
-        var jump = this.tiled.toPixelLoc(to.x, to.y);
-        jump = cc.jumpTo(0.5, jump.x, jump.y, 20, 1);
-        seq.push(jump);
+        var distLoc = this.tiled.toPixelLoc(p.x, p.y);
+        var targetLoc = this.tiled.toPixelLoc(to.x, to.y);
+        
+        var attackAct = [];
+        var jump = cc.jumpBy(0.5, targetLoc.x - distLoc.x, targetLoc.y - distLoc.y, 20, 1);
+        attackAct.push(jump);
+        
+        
         var atk = cc.spawn(cc.sequence(cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10),cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10)));
-        seq.push(atk);
-        seq.push(cc.moveTo(0.5, this.tiled.toPixelLoc(p.x, p.y))); 
+        attackAct.push(atk);
+        attackAct.push(cc.moveBy(0.5, cc.p(distLoc.x - targetLoc.x, distLoc.y - targetLoc.y)));
+        
+        attackAct.push(cc.callFunc(function(){
+            target.getComponent('creature').onDamage(30);
+        }));
+        
+        var actor = this.selected.getChildByName('Sprite');
+        seq.push(cc.callFunc(function(){
+            if(actor) {
+                actor.runAction(cc.sequence(attackAct));
+            }
+        }));
+        
         if(this.selected.zIndex != target.zIndex){
             let max = Math.max(this.selected.zIndex, target.zIndex);
             let min = Math.min(this.selected.zIndex, target.zIndex);
@@ -263,9 +280,6 @@ cc.Class({
         } else {
             this.selected.zIndex ++; 
         }
-        seq.push(cc.callFunc(function(){
-            target.getComponent('creature').onDamage(30);
-        }));
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         this.selected.runAction(cc.sequence(seq));
