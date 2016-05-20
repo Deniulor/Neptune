@@ -153,7 +153,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "7b93508kCFPjLfWFCM2voW2"
+    "fileId": "74565cRWCRM46QERAlARSUG"
   },
   {
     "__type__": "cc.Node",
@@ -233,7 +233,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "e4dcaDi/SZJt7p75AR9QbNB"
+    "fileId": "77d41ZVufVDirklF5BPO+qP"
   },
   {
     "__type__": "cc.Node",
@@ -329,7 +329,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -20,
+      "x": -15,
       "y": 0
     },
     "_skewX": 0,
@@ -382,7 +382,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "79e3ccBiSdDB7ZiTWF1Nf0b"
+    "fileId": "91aefPXSh1Ly6eyC8VU1tvB"
   },
   {
     "__type__": "cc.Sprite",
@@ -422,7 +422,7 @@
       "__id__": 10
     },
     "_N$mode": 0,
-    "_N$totalLength": 100,
+    "_N$totalLength": 30,
     "_N$progress": 1,
     "_N$reverse": false
   },
@@ -432,7 +432,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "1d161MVH9hOF4vu9BTwm2W1"
+    "fileId": "ff08b/5yZVO2Kc2ioP7lQzo"
   },
   {
     "__type__": "ee1ff0NhmBI1op8aFkd0DJ0",
@@ -444,7 +444,9 @@
     "_enabled": true,
     "camp": "Knight",
     "Atb": 5,
+    "MaxHP": 100,
     "HP": 100,
+    "showHP": 100,
     "Mov": 3,
     "Rng": 1
   },
@@ -454,6 +456,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "e269cOGCZRO+KygpqCLTTFt"
+    "fileId": "fc191peDQ1FMrjprxl+FWjR"
   }
 ]
