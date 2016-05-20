@@ -18,6 +18,10 @@ cc.Class({
             default: null,
             type: cc.Prefab
         },
+        battleMusic: {
+            default: null,
+            url: cc.AudioClip
+        },
     },
     
     // 加载事件
@@ -30,6 +34,8 @@ cc.Class({
         // 放置单位
         self.initBattle();
         self.node.on("touchend", self.onTouchEnded, self);
+        cc.audioEngine.stopAllEffects();
+        this.soundID = cc.audioEngine.playEffect(this.battleMusic, true);
     },
     
     
@@ -314,6 +320,7 @@ cc.Class({
             var winner = cc.instantiate(this.winnerPrefab);
             winner.getComponent('winner').setWinner(w);
             this.node.parent.parent.addChild(winner);
+            cc.audioEngine.stopEffect(this.soundID);
         } 
     }
 });

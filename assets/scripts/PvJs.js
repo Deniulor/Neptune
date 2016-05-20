@@ -17,7 +17,11 @@ cc.Class({
         Item_MoveDis:{
             default:5,
             tooltip:"设定触发翻页的距离(像素)"
-        }
+        },
+        pageSound: {
+            default: null,
+            url: cc.AudioClip
+        },
     },
 
     // use this for initialization
@@ -85,7 +89,10 @@ cc.Class({
         // this.node.on(cc.Node.EventType.TOUCH_END,touchEnd,this); 
         
     },
-    
+    playPageSound: function () {
+        // 调用声音引擎播放声音
+        cc.audioEngine.playEffect(this.pageSound, false)
+    },
     doAction1:function(dir){
         if(this.pageIndex>=this.Item_Count-1){
             return;
@@ -111,6 +118,7 @@ cc.Class({
                 break;
         }
         this.pLayoutNode.runAction(cc.moveBy(0.1,p1, p2));
+        this.playPageSound();
     },
     doAction2:function(dir){
         if(this.pageIndex<1){
@@ -137,6 +145,7 @@ cc.Class({
                 break;
         }
         this.pLayoutNode.runAction(cc.moveBy(0.1,p1, p2));
+        this.playPageSound();
     },
     
 });

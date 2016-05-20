@@ -158,7 +158,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "fdb70jK8/ZFfpm7PEf6Ur0c"
+    "fileId": "afad5SnMHlLK4S1t8ATSaGj"
   },
   {
     "__type__": "cc.Node",
@@ -302,7 +302,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "4fc73xmUVVA845iaWFAUEaW"
+    "fileId": "78e9bSuvQlNNaSmQndzPfAx"
   },
   {
     "__type__": "cc.Sprite",
@@ -336,7 +336,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "e2f72I8tDNIgYx/QO5EjGl8"
+    "fileId": "b16f9rjifRHxapae1E1jc0s"
   },
   {
     "__type__": "cc.Node",
@@ -480,7 +480,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "26295f0lZVKnKd6jbUjhRS0"
+    "fileId": "0c361HNPQhE1Z4Z1w/CTnWZ"
   },
   {
     "__type__": "cc.Sprite",
@@ -582,7 +582,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "919eebhlflKAbmVKy4c7sYi"
+    "fileId": "af52cY1hwFK07eZonZWJPYS"
   },
   {
     "__type__": "cc.Node",
@@ -726,7 +726,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "d0b93+K3ftCq7/GHP4sBxg+"
+    "fileId": "da5146LdelPn6TnrksOGz8w"
   },
   {
     "__type__": "cc.Sprite",
@@ -828,7 +828,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "6c464RQ4ctIlb4/VO2JoCTe"
+    "fileId": "b417ad2WcpGeqUmp0Ki0GY4"
   },
   {
     "__type__": "3389bJ+rZpJRbpiFHtRfi6v",
@@ -837,7 +837,10 @@
     "node": {
       "__id__": 1
     },
-    "_enabled": true
+    "_enabled": true,
+    "winMusic": {
+      "__uuid__": "f4c689e8-07c7-48fb-a5fb-7ac7eabee05c"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -845,6 +848,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "f666aUUaydP9LtTkrrVVGxz"
+    "fileId": "311c4wo5apMFopbDWAPZa6L"
   }
 ]

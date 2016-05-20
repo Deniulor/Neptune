@@ -631,7 +631,10 @@
     "node": {
       "__id__": 2
     },
-    "_enabled": true
+    "_enabled": true,
+    "menuMusic": {
+      "__uuid__": "0bb4e57a-bcfa-4de8-a167-5505cbfbf31a"
+    }
   },
   {
     "__type__": "cc.Node",

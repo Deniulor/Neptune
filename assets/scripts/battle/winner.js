@@ -2,7 +2,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // ...
+        winMusic: {
+            default: null,
+            url: cc.AudioClip
+        },
     },
     
     setWinner:function(winner){
@@ -10,6 +13,8 @@ cc.Class({
         var url = cc.url.raw('resources/graphics/ui/' + this.winner + '.png');
         var frame = new cc.SpriteFrame(url);
         this.node.getChildByName('content').getChildByName('camp').getComponent(cc.Sprite).spriteFrame = frame;
+        cc.repeatForever(cc.audioEngine.playEffect(this.winMusic, false));
+        
     },
 
     // use this for initialization
