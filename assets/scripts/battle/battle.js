@@ -55,15 +55,16 @@ cc.Class({
         if( action === 0){
             return; // 点击到非功能区
         }
-
-        if(action == 4){
+        
+        var AreaMove = 4, AreaAttack = 5;
+        if(action == AreaMove){
             this.moveto(loc.x, loc.y);
             this.selected = null;
             this.clearFuncLayer();
             return;
         }
 
-        if(action == 5){
+        if(action == AreaAttack){
             let node = this.getCreatureOn(loc.x, loc.y);
             let creature = node ? node.getComponent('creature') : null;
             if(creature !== null && creature.HP > 0 && creature.camp != this.selected.getComponent('creature').camp){
@@ -150,6 +151,17 @@ cc.Class({
         }
     },
     
+    /// 基础函数 设置当前单位
+    setSelected:function(creature){
+        if(this.selected){
+            this.selected.getChildByName('Selected').active = false;
+        }
+        this.selected = creature;
+        if(this.selected){
+            this.selected.getChildByName('Selected').active = true;
+        }
+    },
+    
     /// 显示选择单位的可移动范围
     showMovable:function(){
         if(!this.selected){
@@ -230,6 +242,7 @@ cc.Class({
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         this.selected.runAction(cc.sequence(path));
+        this.setSelected(null);
     },
     
     // 用已选择单位攻击指定的单位
@@ -289,6 +302,7 @@ cc.Class({
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         this.selected.runAction(cc.sequence(seq));
+        this.setSelected(null);
     },
     
     checkIfWinner:function(){

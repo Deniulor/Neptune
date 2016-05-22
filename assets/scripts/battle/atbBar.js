@@ -42,7 +42,7 @@ cc.Class({
             }
             creature.curAtb -= dt;
             if(creature.curAtb <= 0){
-                this.battle.selected = node.creature;
+                this.battle.setSelected(node.creature);
                 this.battle.showMovable();
                 this.stop = true;
             }
