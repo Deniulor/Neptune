@@ -50,6 +50,7 @@ cc.Class({
                 var fadeIn = cc.fadeIn(0.1);
                 var checkIfWinner = cc.callFunc(this.battle.checkIfWinner, this.battle);
                 this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,checkIfWinner));
+                this.icon.runAction(cc.fadeOut(2));
             }
         }
         if(this.showHP - this.HP < 1){

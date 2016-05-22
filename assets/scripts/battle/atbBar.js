@@ -18,6 +18,7 @@ cc.Class({
             var uSprite = creature.getComponents(cc.Sprite);
             let node = cc.instantiate(creature);
             node.creature = creature;
+            creature.getComponent('creature').icon = node;
             this.node.addChild(node);
         }
         this.stop = false;
