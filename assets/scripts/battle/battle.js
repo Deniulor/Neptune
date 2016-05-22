@@ -262,13 +262,12 @@ cc.Class({
         var jump = cc.jumpBy(0.5, targetLoc.x - distLoc.x, targetLoc.y - distLoc.y, 20, 1);
         attackAct.push(jump);
         
-        
         var atk = cc.spawn(cc.sequence(cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10),cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10)));
         attackAct.push(atk);
         attackAct.push(cc.moveBy(0.5, cc.p(distLoc.x - targetLoc.x, distLoc.y - targetLoc.y)));
         
         attackAct.push(cc.callFunc(function(){
-            target.getComponent('creature').onDamage(30);
+            target.getComponent('creature').runDamageAction();
         }));
         
         var actor = this.selected.getChildByName('Sprite');
@@ -286,6 +285,7 @@ cc.Class({
         } else {
             this.selected.zIndex ++; 
         }
+        target.getComponent('creature').onDamage(30);
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         this.selected.runAction(cc.sequence(seq));

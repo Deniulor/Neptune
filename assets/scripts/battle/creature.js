@@ -42,6 +42,15 @@ cc.Class({
         if(this.showHpDuration !== undefined && this.showHpDuration > 0.05){
             this.showHP = this.showHP - (this.showHP - this.HP) / this.showHpDuration * dt;
             this.showHpDuration -= dt;
+            if(this.showHP <= 0){
+                this.showHP = 0;
+                this.showHpDuration = 0;
+                var fadeOut = cc.fadeOut(2);
+                var finish = cc.callFunc(this.change, this);
+                var fadeIn = cc.fadeIn(0.1);
+                var checkIfWinner = cc.callFunc(this.battle.checkIfWinner, this.battle);
+                this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,checkIfWinner));
+            }
         }
         if(this.showHP - this.HP < 1){
             this.showHP = this.HP;
@@ -59,17 +68,12 @@ cc.Class({
     
     onDamage: function(damage){
         this.HP -= damage;
+        this.curAtb = this.Atb;
+    },
+    
+    runDamageAction:function(){
         this.showHpDuration = this.showHPDuration | 0.5;
         this.showHpDuration += 0.5;
-        if(this.HP <= 0){
-            this.HP = 0;
-            var fadeOut = cc.fadeOut(2);
-            var finish = cc.callFunc(this.change, this);
-            var fadeIn = cc.fadeIn(0.1);
-            var checkIfWinner = cc.callFunc(this.battle.checkIfWinner, this.battle);
-            this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,checkIfWinner));
-        }
-        this.curAtb = this.Atb;
     },
     
     change: function(){
