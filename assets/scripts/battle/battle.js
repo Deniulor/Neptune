@@ -35,7 +35,7 @@ cc.Class({
         self.initBattle();
         self.node.on("touchend", self.onTouchEnded, self);
         cc.audioEngine.stopAllEffects();
-        this.soundID = cc.audioEngine.playEffect(this.battleMusic, true);
+        //this.soundID = cc.audioEngine.playEffect(this.battleMusic, true);
     },
     
     
