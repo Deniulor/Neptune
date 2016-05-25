@@ -39,7 +39,7 @@ cc.Class({
             return;
         }
         this.node.getChildByName("Label").getComponent(cc.Label).string = str;
-        if(this.showHpDuration !== undefined && this.showHpDuration > 0.05){
+        if(this.showHpDuration !== undefined && this.showHpDuration > 1e-6){
             this.showHP = this.showHP - (this.showHP - this.HP) / this.showHpDuration * dt;
             this.showHpDuration -= dt;
             if(this.showHP <= 0){

@@ -333,6 +333,7 @@
       "__uuid__": "4b467163-3e51-4b5a-91f8-e2e67bdf61be"
     },
     "_type": 1,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -562,6 +563,7 @@
       "__uuid__": "40161b52-e03e-4826-9c72-443efcdb15de"
     },
     "_type": 1,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -690,6 +692,7 @@
       "__uuid__": "3d4d9543-e8cf-4ef6-9cfb-0307ddf19d5b"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
