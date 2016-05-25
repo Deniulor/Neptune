@@ -159,6 +159,8 @@ cc.Class({
         this.selected = creature;
         if(this.selected){
             this.selected.getChildByName('Selected').active = true;
+            var player = this.selected.getComponent('creature').camp;
+            this.node.getChildByName(player).getComponent('player').skillUsed = false;
         }
     },
     

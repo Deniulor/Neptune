@@ -14,10 +14,20 @@ cc.Class({
     },
 
     use:function(){
+        if(!this.battle.selected){
+            return;
+        }
         var selected = this.battle.selected.getComponent('creature');
         if(selected.camp != this.player.camp){
             return;
         }
+        if(this.player.skillUsed){ // 用过技能了
+            return;
+        }
+        this.player.skillUsed = true;
+        
+        // 技能效果计算
+        this.player.incSanity(5);
         for(var i = 0;i < this.creatures.children.length; ++i){
             var creature = this.creatures.children[i].getComponent('creature');
             if(creature.camp != this.player.camp){

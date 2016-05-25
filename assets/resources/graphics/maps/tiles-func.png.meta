@@ -6,7 +6,7 @@
   "filterMode": "bilinear",
   "subMetas": {
     "tiles-func": {
-      "ver": "1.0.3",
+      "ver": "1.0.2",
       "uuid": "3b50c406-ae6a-4b80-ba61-8c1f319a8156",
       "rawTextureUuid": "4016ce73-8b81-4a37-aa6c-e95d89ae8028",
       "trimType": "auto",
@@ -18,8 +18,6 @@
       "trimY": 0,
       "width": 160,
       "height": 80,
-      "rawWidth": 240,
-      "rawHeight": 80,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

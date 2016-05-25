@@ -35,11 +35,8 @@ cc.Class({
         }else {
             str = "Ready";
         }
-        if(!this.node.getChildByName("HpBar")){
-            return;
-        }
         this.node.getChildByName("Label").getComponent(cc.Label).string = str;
-        if(this.showHpDuration !== undefined && this.showHpDuration > 1e-6){
+        if(this.showHP >=0 && this.showHpDuration !== undefined && this.showHpDuration > 1e-6){
             this.showHP = this.showHP - (this.showHP - this.HP) / this.showHpDuration * dt;
             this.showHpDuration -= dt;
             if(this.showHP <= 0){
@@ -79,7 +76,7 @@ cc.Class({
     
     change: function(){
         var tnode = this.node;
-        tnode.getChildByName("HpBar").removeFromParent();
+        tnode.getChildByName("HpBar").active = false;
         cc.loader.loadRes("graphics/creature/skeleton.png/skeleton", function (err, spriteFrame) {
             tnode.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = spriteFrame;
         });
