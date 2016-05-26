@@ -3,7 +3,6 @@
     "__type__": "cc.SceneAsset",
     "_name": "",
     "_objFlags": 0,
-    "_rawFiles": null,
     "scene": {
       "__id__": 1
     }
@@ -101,17 +100,16 @@
     "_active": true,
     "_components": [
       {
+        "__id__": 17
+      },
+      {
         "__id__": 18
       },
       {
         "__id__": 19
-      },
-      {
-        "__id__": 20
       }
     ],
-    "_prefab": null,
-    "groupIndex": 0
+    "_prefab": null
   },
   {
     "__type__": "cc.Node",
@@ -163,8 +161,7 @@
         "__id__": 4
       }
     ],
-    "_prefab": null,
-    "groupIndex": 0
+    "_prefab": null
   },
   {
     "__type__": "cc.Label",
@@ -178,14 +175,14 @@
     "_fontSize": 200,
     "_lineHeight": 200,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
-    },
     "_isSystemFontUsed": false,
     "_N$string": "邪神归来",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$overflow": 0
+    "_N$overflow": 0,
+    "_N$file": {
+      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
+    }
   },
   {
     "__type__": "cc.Node",
@@ -244,8 +241,7 @@
         "__id__": 9
       }
     ],
-    "_prefab": null,
-    "groupIndex": 0
+    "_prefab": null
   },
   {
     "__type__": "cc.Node",
@@ -297,8 +293,7 @@
         "__id__": 7
       }
     ],
-    "_prefab": null,
-    "groupIndex": 0
+    "_prefab": null
   },
   {
     "__type__": "cc.Label",
@@ -312,14 +307,14 @@
     "_fontSize": 45,
     "_lineHeight": 30,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
-    },
     "_isSystemFontUsed": false,
     "_N$string": "兵种信息",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$overflow": 1
+    "_N$overflow": 1,
+    "_N$file": {
+      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
+    }
   },
   {
     "__type__": "cc.Sprite",
@@ -333,7 +328,6 @@
       "__uuid__": "4b467163-3e51-4b5a-91f8-e2e67bdf61be"
     },
     "_type": 1,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -469,13 +463,9 @@
       },
       {
         "__id__": 15
-      },
-      {
-        "__id__": 17
       }
     ],
-    "_prefab": null,
-    "groupIndex": 0
+    "_prefab": null
   },
   {
     "__type__": "cc.Node",
@@ -527,8 +517,7 @@
         "__id__": 13
       }
     ],
-    "_prefab": null,
-    "groupIndex": 0
+    "_prefab": null
   },
   {
     "__type__": "cc.Label",
@@ -542,14 +531,14 @@
     "_fontSize": 40,
     "_lineHeight": 30,
     "_enableWrapText": false,
-    "_N$file": {
-      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
-    },
     "_isSystemFontUsed": false,
     "_N$string": "练习模式",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$overflow": 1
+    "_N$overflow": 1,
+    "_N$file": {
+      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
+    }
   },
   {
     "__type__": "cc.Sprite",
@@ -563,7 +552,6 @@
       "__uuid__": "40161b52-e03e-4826-9c72-443efcdb15de"
     },
     "_type": 1,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -647,24 +635,6 @@
     "handler": "practice"
   },
   {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 11
-    },
-    "_enabled": true,
-    "_defaultClip": {
-      "__uuid__": "f795a5ca-418a-4797-a046-a52262734325"
-    },
-    "_clips": [
-      {
-        "__uuid__": "f795a5ca-418a-4797-a046-a52262734325"
-      }
-    ],
-    "playOnLoad": true
-  },
-  {
     "__type__": "cc.Canvas",
     "_name": "",
     "_objFlags": 3932160,
@@ -692,7 +662,6 @@
       "__uuid__": "3d4d9543-e8cf-4ef6-9cfb-0307ddf19d5b"
     },
     "_type": 0,
-    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {

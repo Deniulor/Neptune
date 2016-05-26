@@ -47,7 +47,7 @@ cc.Class({
         var loc = event.getLocation();
         var temp = this.node.convertToNodeSpace(loc);
         loc = this.tiled.toHexagonLoc(temp);
-        cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
+        //cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
         if(!this.tiled.isLocValid(loc)){ // 在可操作区域内
             return;
         }
