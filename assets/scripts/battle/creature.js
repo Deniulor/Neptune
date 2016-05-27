@@ -9,9 +9,10 @@ cc.Class({
         showHP:100,
         Mov:3,//移动力
         Rng:1,//攻击距离
+        type:"",//类型
     },
     
-    init:function(camp="", atb=5, hp=100, mov=3, rng=1){
+    init:function(camp="", atb=5, hp=100, mov=3, rng=1,type=""){
         this.camp = camp;
         this.Atb = atb;
         this.MaxHP = hp;
@@ -20,6 +21,7 @@ cc.Class({
         this.Rng = rng;
         this.curAtb = atb * Math.random() + 0.1;
         this.showHP = this.HP;
+        this.type = type;
     },
 
     // use this for initialization
