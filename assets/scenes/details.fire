@@ -80,13 +80,13 @@
         "__id__": 9
       },
       {
-        "__id__": 55
+        "__id__": 67
       },
       {
-        "__id__": 59
+        "__id__": 71
       },
       {
-        "__id__": 63
+        "__id__": 75
       }
     ],
     "_rotationX": 0,
@@ -109,10 +109,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 65
+        "__id__": 77
       },
       {
-        "__id__": 66
+        "__id__": 78
       }
     ],
     "_prefab": null
@@ -395,7 +395,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 54
+      "__id__": 66
     }
   },
   {
@@ -421,7 +421,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 940,
+      "width": 1200,
       "height": 430
     },
     "_children": [
@@ -449,14 +449,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 51
+        "__id__": 63
       },
       {
-        "__id__": 52
+        "__id__": 64
       }
     ],
     "_prefab": {
-      "__id__": 53
+      "__id__": 65
     }
   },
   {
@@ -466,9 +466,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 167,
-      "g": 167,
-      "b": 167,
+      "r": 255,
+      "g": 251,
+      "b": 251,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -494,6 +494,9 @@
       },
       {
         "__id__": 36
+      },
+      {
+        "__id__": 48
       }
     ],
     "_rotationX": 0,
@@ -502,8 +505,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 7,
-      "y": -3
+      "x": 0,
+      "y": 15
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -516,19 +519,19 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 48
+        "__id__": 60
       },
       {
-        "__id__": 49
+        "__id__": 61
       }
     ],
     "_prefab": {
-      "__id__": 50
+      "__id__": 62
     }
   },
   {
     "__type__": "cc.Node",
-    "_name": "monster",
+    "_name": "skill",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -569,8 +572,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -944,
-      "y": 0
+      "x": -1410,
+      "y": -26
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -687,7 +690,7 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
+      "r": 0,
       "g": 0,
       "b": 0,
       "a": 255
@@ -747,7 +750,7 @@
     "_lineHeight": 60,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
-    "_N$string": "P199989889",
+    "_N$string": "奈亚拉托提普",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 0,
     "_N$overflow": 3
@@ -769,9 +772,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -786,7 +789,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 536,
-      "height": 160
+      "height": 210
     },
     "_children": [],
     "_rotationX": 0,
@@ -825,11 +828,11 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_fontSize": 30,
+    "_lineHeight": 30,
     "_enableWrapText": true,
     "_isSystemFontUsed": true,
-    "_N$string": "Label312312333333333333333333333333333333333333333333333333333333333333333",
+    "_N$string": "奈亚拉托提普是外神们在地上的信使和代言人，热衷于欺骗、诱惑人类，并以使人类陷入恐怖与绝望为其最高的喜悦。\n欺诈：欺骗诱惑敌人，对敌人造成2点伤害。\n化身：减少敌人对自己造成的1点伤害。",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$overflow": 3
@@ -923,8 +926,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -4,
-      "y": 0
+      "x": -470,
+      "y": -26
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1277,8 +1280,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 936,
-      "y": 0
+      "x": 470,
+      "y": -26
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1589,6 +1592,360 @@
     "fileId": "79f119Fj7BHI4f8rBhiTXnc"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "monster",
+    "_objFlags": 0,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_parent": {
+      "__id__": 11
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 940,
+      "height": 430
+    },
+    "_children": [
+      {
+        "__id__": 49
+      },
+      {
+        "__id__": 52
+      },
+      {
+        "__id__": 55
+      }
+    ],
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 1404,
+      "y": -29
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_tag": -1,
+    "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
+    "_id": "67f82d9KKpAPZ/w3K3gStkO",
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 58
+      }
+    ],
+    "_prefab": {
+      "__id__": 59
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "pic",
+    "_objFlags": 0,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_parent": {
+      "__id__": 48
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 231,
+      "height": 386
+    },
+    "_children": [],
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -306,
+      "y": 12
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_tag": -1,
+    "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
+    "_id": "abff5ktKDhG7oqFSrbYDsla",
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 50
+      }
+    ],
+    "_prefab": {
+      "__id__": 51
+    }
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 49
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "411e75dd-dbda-466d-a903-c8af3516e5a3"
+    },
+    "_type": 0,
+    "_sizeMode": 0,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 9
+    },
+    "asset": {
+      "__uuid__": "5ac6cfea-e7c1-442d-b285-6e1c2a97265c"
+    },
+    "fileId": "aad7aktZSJOHZ1T++bZT347"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "name",
+    "_objFlags": 0,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_parent": {
+      "__id__": 48
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 1
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 498,
+      "height": 60
+    },
+    "_children": [],
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 142,
+      "y": 178
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_tag": -1,
+    "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
+    "_id": "d269eF511VLPZ8H0e3hQSlQ",
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 53
+      }
+    ],
+    "_prefab": {
+      "__id__": 54
+    }
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 52
+    },
+    "_enabled": true,
+    "_useOriginalSize": false,
+    "_fontSize": 60,
+    "_lineHeight": 60,
+    "_enableWrapText": true,
+    "_isSystemFontUsed": true,
+    "_N$string": "奈亚拉托提普",
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 0,
+    "_N$overflow": 3
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 9
+    },
+    "asset": {
+      "__uuid__": "5ac6cfea-e7c1-442d-b285-6e1c2a97265c"
+    },
+    "fileId": "78465wu/0FG2o2L22QsQEbJ"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "details",
+    "_objFlags": 0,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_parent": {
+      "__id__": 48
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 1
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 536,
+      "height": 210
+    },
+    "_children": [],
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 120,
+      "y": 100
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_tag": -1,
+    "_opacityModifyRGB": false,
+    "_reorderChildDirty": false,
+    "_id": "a83e4sZKtlKKJ7zGc0/XCn7",
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 56
+      }
+    ],
+    "_prefab": {
+      "__id__": 57
+    }
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 55
+    },
+    "_enabled": true,
+    "_useOriginalSize": false,
+    "_fontSize": 30,
+    "_lineHeight": 30,
+    "_enableWrapText": true,
+    "_isSystemFontUsed": true,
+    "_N$string": "奈亚拉托提普是外神们在地上的信使和代言人，热衷于欺骗、诱惑人类，并以使人类陷入恐怖与绝望为其最高的喜悦。\n欺诈：欺骗诱惑敌人，对敌人造成2点伤害。\n化身：减少敌人对自己造成的1点伤害。",
+    "_N$horizontalAlign": 0,
+    "_N$verticalAlign": 0,
+    "_N$overflow": 3
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 9
+    },
+    "asset": {
+      "__uuid__": "5ac6cfea-e7c1-442d-b285-6e1c2a97265c"
+    },
+    "fileId": "72fb9R1NNpNVYztzlgW2WZx"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 48
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "78f11499-dee5-49d9-9a10-6b4d1033c88d"
+    },
+    "_type": 0,
+    "_sizeMode": 0,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 9
+    },
+    "asset": {
+      "__uuid__": "5ac6cfea-e7c1-442d-b285-6e1c2a97265c"
+    },
+    "fileId": "013bfxtuRlCIpdhsq1c/LY0"
+  },
+  {
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
@@ -1596,9 +1953,7 @@
       "__id__": 11
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "9bbda31e-ad49-43c9-aaf2-f7d9896bac69"
-    },
+    "_spriteFrame": null,
     "_type": 1,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -1658,7 +2013,9 @@
     "node": {
       "__id__": 10
     },
-    "_enabled": false
+    "_enabled": false,
+    "_type": 0,
+    "_segements": 64
   },
   {
     "__type__": "a7f86JhmB5PFKieHT4gCNHF",
@@ -1668,7 +2025,7 @@
       "__id__": 10
     },
     "_enabled": true,
-    "Item_Count": 3,
+    "Item_Count": 4,
     "Item_Width": 940,
     "Item_Height": 430,
     "Item_MoveDis": 5,
@@ -1743,10 +2100,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 56
+        "__id__": 68
       },
       {
-        "__id__": 57
+        "__id__": 69
       }
     ],
     "_prefab": null
@@ -1756,7 +2113,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 55
+      "__id__": 67
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1782,7 +2139,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 55
+      "__id__": 67
     },
     "_enabled": true,
     "transition": 2,
@@ -1809,7 +2166,7 @@
     },
     "clickEvents": [
       {
-        "__id__": 58
+        "__id__": 70
       }
     ],
     "_N$interactable": true,
@@ -1832,7 +2189,7 @@
     },
     "_N$disabledSprite": null,
     "_N$target": {
-      "__id__": 55
+      "__id__": 67
     }
   },
   {
@@ -1890,10 +2247,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 60
+        "__id__": 72
       },
       {
-        "__id__": 61
+        "__id__": 73
       }
     ],
     "_prefab": null
@@ -1903,7 +2260,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 59
+      "__id__": 71
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1929,7 +2286,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 59
+      "__id__": 71
     },
     "_enabled": true,
     "transition": 2,
@@ -1956,7 +2313,7 @@
     },
     "clickEvents": [
       {
-        "__id__": 62
+        "__id__": 74
       }
     ],
     "_N$interactable": true,
@@ -1981,7 +2338,7 @@
       "__uuid__": "baa351e8-a9bf-4809-adb5-85b3bd5b0ad6"
     },
     "_N$target": {
-      "__id__": 59
+      "__id__": 71
     }
   },
   {
@@ -2039,7 +2396,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 64
+        "__id__": 76
       }
     ],
     "_prefab": null
@@ -2049,7 +2406,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 63
+      "__id__": 75
     },
     "_enabled": true,
     "_spriteFrame": {
