@@ -243,12 +243,16 @@ cc.Class({
         }
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+        var dogMove = [];
+                
         if(this.selected.getComponent('creature').type=="dog"){
-            // var finished = cc.callFunc(function () {
-            //     this.selected.runAction(cc.sequence(path));
-            //     });
-            // this.selected.runAction(cc.sequence(cc.fadeOut(1.0),finished,cc.fadeIn(1.0)));
-            this.selected.runAction(cc.sequence(path));
+            dogMove.push(cc.fadeOut(0.5));
+            for(var i = 0; i < path.length; ++i){
+            dogMove.push(path[i]);
+            }
+            dogMove.push(cc.fadeIn(0.5));
+            this.selected.runAction(cc.sequence(dogMove));
+            // this.selected.runAction(cc.sequence(path));
         }else{
             this.selected.runAction(cc.sequence(path));
         }
@@ -311,7 +315,22 @@ cc.Class({
         target.getComponent('creature').onDamage(30);
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+        var dogMove = [];
+        if(this.selected.getComponent('creature').type=="dog"){
+            dogMove.push(cc.fadeOut(0.5));
+            for(var i = 0; i < seq.length - 1; ++i){
+             dogMove.push(seq[i]);
+            }
+            dogMove.push(cc.fadeIn(0.5));
+            dogMove.push(cc.callFunc(function(){
+            if(actor) {
+                actor.runAction(cc.sequence(attackAct));
+            }
+            }));
+            this.selected.runAction(cc.sequence(dogMove));
+        }else{
         this.selected.runAction(cc.sequence(seq));
+        }
         this.setSelected(null);
     },
     
