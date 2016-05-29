@@ -68,7 +68,7 @@ cc.Class({
     
     onDamage: function(damage){
         this.HP -= damage;
-        this.curAtb = this.Atb;
+        //this.curAtb = this.Atb;
     },
     
     runDamageAction:function(){

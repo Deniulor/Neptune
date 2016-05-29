@@ -111,7 +111,7 @@ cc.Class({
         // this.creatures.addChild(archer1);
         
         var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init("player2", 3.5, 50, 2, 3,"dog");
+        archer2.getComponent('creature').init("player2", 3.5, 500, 2, 3,"dog");
         archer2.getComponent('creature').battle = this;
         archer2.setPosition(this.tiled.toPixelLoc(7, 2));
         archer2.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c2;
@@ -330,7 +330,7 @@ cc.Class({
             }));
             this.selected.runAction(cc.sequence(dogMove));
         }else{
-        this.selected.runAction(cc.sequence(seq));
+            this.selected.runAction(cc.sequence(seq));
         }
         this.setSelected(null);
     },
