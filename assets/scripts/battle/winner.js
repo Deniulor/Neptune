@@ -13,7 +13,8 @@ cc.Class({
         var url = cc.url.raw('resources/graphics/ui/' + this.winner + '.png');
         var frame = new cc.SpriteFrame(url);
         this.node.getChildByName('content').getChildByName('camp').getComponent(cc.Sprite).spriteFrame = frame;
-        cc.repeatForever(cc.audioEngine.playEffect(this.winMusic, false));
+        cc.audioEngine.setEffectsVolume(0.5);
+       cc.audioEngine.playEffect(this.winMusic, false);
         
     },
 

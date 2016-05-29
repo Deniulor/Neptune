@@ -34,8 +34,9 @@ cc.Class({
         // 放置单位
         self.initBattle();
         self.node.on("touchend", self.onTouchEnded, self);
-        cc.audioEngine.stopAllEffects();
-        //this.soundID = cc.audioEngine.playEffect(this.battleMusic, true);
+        cc.audioEngine.stopMusic();
+        this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
+        cc.audioEngine.setMusicVolume(0.5);
     },
     
     
@@ -363,7 +364,7 @@ cc.Class({
             var winner = cc.instantiate(this.winnerPrefab);
             winner.getComponent('winner').setWinner(w);
             this.node.parent.parent.addChild(winner);
-            cc.audioEngine.stopEffect(this.soundID);
+            cc.audioEngine.stopMusic();
         } 
     }
 });

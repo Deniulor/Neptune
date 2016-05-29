@@ -686,6 +686,9 @@
     "_enabled": true,
     "menuMusic": {
       "__uuid__": "0bb4e57a-bcfa-4de8-a167-5505cbfbf31a"
+    },
+    "clickEffect": {
+      "__uuid__": "662d7678-c339-45e3-b574-591edb4eeea1"
     }
   }
 ]

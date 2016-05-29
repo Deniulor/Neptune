@@ -3,7 +3,6 @@
     "__type__": "cc.Prefab",
     "_name": "",
     "_objFlags": 0,
-    "_rawFiles": null,
     "data": {
       "__id__": 1
     }
@@ -71,8 +70,7 @@
     ],
     "_prefab": {
       "__id__": 28
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Node",
@@ -126,8 +124,7 @@
     ],
     "_prefab": {
       "__id__": 4
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Sprite",
@@ -160,10 +157,8 @@
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "afad5SnMHlLK4S1t8ATSaGj"
+    "asset": null,
+    "fileId": "505d0ADx+ZFw7MyuZ8UqfV/"
   },
   {
     "__type__": "cc.Node",
@@ -221,8 +216,7 @@
     ],
     "_prefab": {
       "__id__": 10
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Node",
@@ -276,8 +270,7 @@
     ],
     "_prefab": {
       "__id__": 8
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Sprite",
@@ -308,10 +301,8 @@
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "78e9bSuvQlNNaSmQndzPfAx"
+    "asset": null,
+    "fileId": "86e2ahPdrhDUpE/y63Btj3J"
   },
   {
     "__type__": "cc.Sprite",
@@ -344,10 +335,8 @@
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "b16f9rjifRHxapae1E1jc0s"
+    "asset": null,
+    "fileId": "6b628eIQpNOppMQ+uVcbgqj"
   },
   {
     "__type__": "cc.Node",
@@ -408,8 +397,7 @@
     ],
     "_prefab": {
       "__id__": 18
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Node",
@@ -463,8 +451,7 @@
     ],
     "_prefab": {
       "__id__": 14
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Label",
@@ -478,24 +465,22 @@
     "_fontSize": 35,
     "_lineHeight": 35,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
-    },
     "_isSystemFontUsed": false,
     "_N$string": "返回主菜单",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$overflow": 0
+    "_N$overflow": 0,
+    "_N$file": {
+      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "0c361HNPQhE1Z4Z1w/CTnWZ"
+    "asset": null,
+    "fileId": "dbacdf3dNlHnpgVdLXuyrOD"
   },
   {
     "__type__": "cc.Sprite",
@@ -596,10 +581,8 @@
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "af52cY1hwFK07eZonZWJPYS"
+    "asset": null,
+    "fileId": "72916A5cQBP8KR5T0V7dSwb"
   },
   {
     "__type__": "cc.Node",
@@ -660,8 +643,7 @@
     ],
     "_prefab": {
       "__id__": 26
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Node",
@@ -715,8 +697,7 @@
     ],
     "_prefab": {
       "__id__": 22
-    },
-    "groupIndex": 0
+    }
   },
   {
     "__type__": "cc.Label",
@@ -730,24 +711,22 @@
     "_fontSize": 35,
     "_lineHeight": 35,
     "_enableWrapText": true,
-    "_N$file": {
-      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
-    },
     "_isSystemFontUsed": false,
     "_N$string": "再试一次",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
-    "_N$overflow": 0
+    "_N$overflow": 0,
+    "_N$file": {
+      "__uuid__": "a764247d-19b5-4bcb-8a2b-f32e699d92fc"
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "da5146LdelPn6TnrksOGz8w"
+    "asset": null,
+    "fileId": "c1b6dhpKrhF+ri/9vI8q9ds"
   },
   {
     "__type__": "cc.Sprite",
@@ -848,10 +827,8 @@
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "b417ad2WcpGeqUmp0Ki0GY4"
+    "asset": null,
+    "fileId": "40bbaLd/FhB5IKqbR48OfSb"
   },
   {
     "__type__": "3389bJ+rZpJRbpiFHtRfi6v",
@@ -870,9 +847,7 @@
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
-    },
-    "fileId": "311c4wo5apMFopbDWAPZa6L"
+    "asset": null,
+    "fileId": "7930b+sdktEjqkLCm0R5KhE"
   }
 ]
