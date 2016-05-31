@@ -296,6 +296,7 @@
       "__uuid__": "eec6ab4e-af5a-43f0-9c27-0ab7a9c3456c"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -760,6 +761,7 @@
       "__uuid__": "6c7652bd-a90c-4558-b7d7-8aa44dca3f6a"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -851,6 +853,7 @@
       "__uuid__": "291844f9-3229-439d-bd71-ada777e7ae00"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -942,6 +945,7 @@
       "__uuid__": "f1372c92-1c67-4d8e-ba9c-62619b43b229"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -1033,6 +1037,7 @@
       "__uuid__": "606f9f86-019b-434b-8201-8197b84c68be"
     },
     "_type": 3,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 1,
     "_fillCenter": {
@@ -1075,6 +1080,7 @@
       "__uuid__": "1a440d7d-4ba4-4e39-9926-4acff4ee3a90"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -1134,6 +1140,12 @@
     },
     "battleMusic": {
       "__uuid__": "b5e0b32b-35ee-4d1f-ae6b-9e87a78ef1c1"
+    },
+    "attackEffect": {
+      "__uuid__": "4c298cc0-4ab2-4957-b0c3-9a035245c08a"
+    },
+    "nomalAttack": {
+      "__uuid__": "89930065-06fe-425d-aec7-eca6c20c0143"
     }
   },
   {
@@ -1271,6 +1283,7 @@
       "__uuid__": "6c7652bd-a90c-4558-b7d7-8aa44dca3f6a"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -1362,6 +1375,7 @@
       "__uuid__": "291844f9-3229-439d-bd71-ada777e7ae00"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -1453,6 +1467,7 @@
       "__uuid__": "f1372c92-1c67-4d8e-ba9c-62619b43b229"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -1544,6 +1559,7 @@
       "__uuid__": "606f9f86-019b-434b-8201-8197b84c68be"
     },
     "_type": 3,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 1,
     "_fillCenter": {
@@ -1586,6 +1602,7 @@
       "__uuid__": "1a440d7d-4ba4-4e39-9926-4acff4ee3a90"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -1663,6 +1680,7 @@
       "__uuid__": "174945db-c102-4181-a34b-b0e36b68e59b"
     },
     "_type": 0,
+    "_useOriginalSize": true,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {

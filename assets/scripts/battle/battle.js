@@ -22,6 +22,14 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
+        attackEffect: {
+            default: null,
+            url: cc.AudioClip
+        },
+        nomalAttack: {
+            default: null,
+            url: cc.AudioClip
+        },
     },
     
     // 加载事件
@@ -37,6 +45,7 @@ cc.Class({
         cc.audioEngine.stopMusic();
         this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         cc.audioEngine.setMusicVolume(0.5);
+        cc.audioEngine.setEffectsVolume(0.5);
     },
     
     
@@ -285,11 +294,18 @@ cc.Class({
         
         var distLoc = this.tiled.toPixelLoc(p.x, p.y);
         var targetLoc = this.tiled.toPixelLoc(to.x, to.y);
-        
+        if(this.selected.getComponent('creature').type=="dog"){
+            seq.push(cc.callFunc(function(){
+                        cc.audioEngine.playEffect(this.attackEffect, false);
+                    },this));
+        }else{
+            seq.push(cc.callFunc(function(){
+                        cc.audioEngine.playEffect(this.nomalAttack, false);
+                    },this));
+        }
         var attackAct = [];
         var jump = cc.jumpBy(0.5, targetLoc.x - distLoc.x, targetLoc.y - distLoc.y, 20, 1);
         attackAct.push(jump);
-        
         var atk = cc.spawn(cc.sequence(cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10),cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10)));
         attackAct.push(atk);
         attackAct.push(cc.moveBy(0.5, cc.p(distLoc.x - targetLoc.x, distLoc.y - targetLoc.y)));
