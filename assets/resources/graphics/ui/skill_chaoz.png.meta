@@ -6,7 +6,7 @@
   "filterMode": "bilinear",
   "subMetas": {
     "skill_chaoz": {
-      "ver": "1.0.3",
+      "ver": "1.0.2",
       "uuid": "f1372c92-1c67-4d8e-ba9c-62619b43b229",
       "rawTextureUuid": "119cb4ee-f1a2-4c4f-aa50-d830ebe41da0",
       "trimType": "auto",
@@ -18,8 +18,6 @@
       "trimY": 2,
       "width": 138,
       "height": 212,
-      "rawWidth": 165,
-      "rawHeight": 220,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

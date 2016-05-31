@@ -1,10 +1,5 @@
 {
-  "ver": "1.0.2",
+  "ver": "1.0.0",
   "uuid": "2b1048a4-9908-4745-bcf1-368f2eb657ae",
-  "textures": [
-    "db://assets/resources/graphics/maps/tiles-ground.png",
-    "db://assets/resources/graphics/maps/tiles-func.png"
-  ],
-  "tsxFiles": [],
   "subMetas": {}
 }

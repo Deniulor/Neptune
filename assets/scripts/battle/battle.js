@@ -48,6 +48,12 @@ cc.Class({
         cc.audioEngine.setEffectsVolume(0.5);
     },
     
+    update:function(){
+        this.clearFuncLayer();
+        if(this.selected !== null){
+            this.showMovable();
+        }
+    },
     
     // 点击结束事件
     onTouchEnded:function(event){
@@ -221,15 +227,16 @@ cc.Class({
         for(var i = 0; i < searched.length; ++i){
             var curnode = searched[i];
             
-            var u = this.getCreatureOn(curnode.x, curnode.y);
-            if(u !== null ){
-                if(u.getComponent("creature").camp != fromCreature.camp){
-                    this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
-                }
-            } else if(curnode.distance > fromCreature.Mov){
+            if(curnode.distance > fromCreature.Mov){
                 this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
             } else {
-                this.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
+                var u = this.getCreatureOn(curnode.x, curnode.y);
+                var uc = u == null ? null : u.getComponent("creature");
+                if(uc === null || uc.HP <= 0){
+                    this.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
+                } else if(uc.camp != fromCreature.camp){
+                    this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
+                }
             }
         }
     },

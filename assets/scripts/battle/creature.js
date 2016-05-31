@@ -26,6 +26,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        
     },
 
     // called every frame, uncomment this function to activate update callback
@@ -80,7 +81,10 @@ cc.Class({
         var tnode = this.node;
         tnode.getChildByName("HpBar").active = false;
         cc.loader.loadRes("graphics/creature/skeleton.png/skeleton", function (err, spriteFrame) {
-            tnode.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = spriteFrame;
+            var sprite = tnode.getChildByName('Sprite');
+            sprite.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+            sprite.width *= 0.8;
+            sprite.height *= 0.8;
         });
     }
 });
