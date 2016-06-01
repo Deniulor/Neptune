@@ -55,7 +55,7 @@ cc.Class({
         }
         this.clearFuncLayer();
         if(this.selected !== null){
-            this.showMovable();
+            this.selected.getComponent('creature').showAction();
         }
     },
     
@@ -79,8 +79,6 @@ cc.Class({
         var AreaMove = 4, AreaAttack = 5;
         if(action == AreaMove){
             this.moveto(loc.x, loc.y);
-            this.selected = null;
-            this.clearFuncLayer();
             return;
         }
 
@@ -89,8 +87,6 @@ cc.Class({
             let creature = node ? node.getComponent('creature') : null;
             if(creature !== null && creature.HP > 0 && creature.camp != this.selected.getComponent('creature').camp){
                 this.attack(node);
-                this.selected = null;
-                this.clearFuncLayer();
                 return;
             }
         }
@@ -178,70 +174,11 @@ cc.Class({
         }
         this.selected = creature;
         if(this.selected){
+            this.stopUpdate = false;
             this.selected.getChildByName('Selected').active = true;
+            this.selected.getComponent('creature').action = 'move';
             var player = this.selected.getComponent('creature').camp;
             this.node.getChildByName(player).getComponent('player').skillUsed = false;
-        }
-    },
-    
-    /// 显示选择单位的可移动范围
-    showMovable:function(){
-        if(!this.selected){
-            return;
-        }
-        var self = this;
-        
-        var fromCreature = this.selected.getComponent("creature");
-        var distance = fromCreature.Mov + fromCreature.Rng;
-        var from = this.tiled.toHexagonLoc(this.selected.getPosition());
-        
-        var node = function(loc_x, log_y, distance){
-            this.x = loc_x;
-            this.y = log_y;
-            this.distance = distance;
-        };
-        
-        var searched = [];
-        
-        var idx = 1;
-        var dfs = function(curnode){
-            var d = curnode.distance + 1;
-            if(d > distance){
-                return;
-            }
-            var round = self.tiled.getRound(curnode.x, curnode.y);
-            for(var i = round.length - 1; i >= 0; i -- ){
-                var r = round[i];
-                if(!self.tiled.isLocValid(r)){ //坐标是否有效
-                    continue;
-                }
-                //cc.log('%s:(%s,%s) -> (%s,%s)  d:%s', idx++, curnode.x, curnode.y,  r.x, r.y, d);
-                var nodeInSearched = self.search(searched, r.x, r.y);
-                if(nodeInSearched === null){
-                    searched.push(new node(r.x, r.y, d));
-                } else if(nodeInSearched.distance > d){
-                    nodeInSearched.distance = d;
-                }
-                dfs(new node(r.x, r.y, d));
-            }
-        }
-        
-        dfs(new node(from.x, from.y, 0));
-        
-        for(var i = 0; i < searched.length; ++i){
-            var curnode = searched[i];
-            
-            if(curnode.distance > fromCreature.Mov){
-                this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
-            } else {
-                var u = this.getCreatureOn(curnode.x, curnode.y);
-                var uc = u == null ? null : u.getComponent("creature");
-                if(uc === null || uc.HP <= 0){
-                    this.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
-                } else if(uc.camp != fromCreature.camp){
-                    this.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
-                }
-            }
         }
     },
 
@@ -262,8 +199,6 @@ cc.Class({
         for(var i = 0; i < path.length; ++i){
             path[i] = cc.moveTo(0.05, this.tiled.toPixelLoc(path[i].x, path[i].y)); 
         }
-        this.selected.getComponent('creature').onMoved();
-        this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         var dogMove = [];
                 
         if(this.selected.getComponent('creature').type=="dog"){
@@ -272,12 +207,18 @@ cc.Class({
             dogMove.push(path[i]);
             }
             dogMove.push(cc.fadeIn(0.5));
+            dogMove.push(cc.callFunc(function(){
+                self.selected.getComponent('creature').action = 'attack';
+            }));
             this.selected.runAction(cc.sequence(dogMove));
             // this.selected.runAction(cc.sequence(path));
         }else{
+            path.push(cc.callFunc(function(){ 
+                self.selected.getComponent('creature').action = 'attack';
+            }));
             this.selected.runAction(cc.sequence(path));
         }
-        this.setSelected(null);
+        this.selected.getComponent('creature').action = 'moving';
     },
     
     // 用已选择单位攻击指定的单位
@@ -343,8 +284,7 @@ cc.Class({
         var slctd = this.selected;
         
         target.getComponent('creature').onDamage(30);
-        this.selected.getComponent('creature').onMoved();
-        this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+        
         var dogMove = [];
         if(this.selected.getComponent('creature').type=="dog"){
             dogMove.push(cc.fadeOut(0.5)); 
@@ -361,6 +301,7 @@ cc.Class({
         }else{
             this.selected.runAction(cc.sequence(seq));
         }
+        this.selected.getComponent('creature').turnEnd();
         this.setSelected(null);
     },
     
@@ -388,6 +329,9 @@ cc.Class({
             } else {
                 return;
             }
+            this.node.getChildByName('atbBar').getComponent('atbBar').stop = true;
+            this.stopUpdate = true;
+            this.clearFuncLayer();
             
             // 使用给定的模板创建winner界面
             var winner = cc.instantiate(this.winnerPrefab);

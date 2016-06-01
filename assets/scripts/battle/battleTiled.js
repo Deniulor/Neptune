@@ -64,6 +64,46 @@ cc.Class({
         return null;  
     },
     
+    getArea:function(from, distance, filter){
+        var searched = [];
+        var self = this;
+        
+        var node = function(loc_x, log_y, distance){
+            this.x = loc_x;
+            this.y = log_y;
+            this.distance = distance;
+        };
+        
+        
+        var idx = 1;
+        var dfs = function(curnode){
+            var d = curnode.distance + 1;
+            if(d > distance){
+                return;
+            }
+            var round = self.getRound(curnode.x, curnode.y);
+            for(var i = round.length - 1; i >= 0; i -- ){
+                var r = round[i];
+                if(!self.isLocValid(r)){ //坐标是否有效
+                    continue;
+                }
+                if(filter && filter(r.x, r.y)){
+                    continue;
+                }
+                var nodeInSearched = self.search(searched, r.x, r.y);
+                if(nodeInSearched === null){
+                    searched.push(new node(r.x, r.y, d));
+                } else if(nodeInSearched.distance > d){
+                    nodeInSearched.distance = d;
+                }
+                dfs(new node(r.x, r.y, d));
+            }
+        }
+        
+        dfs(new node(from.x, from.y, 0));
+        return searched;
+    },
+    
     /// 基础函数 - 获取两个点坐标之间的路径
     getPath:function(from, to, filter){
         var node = function(p_parent, loc_x, log_y, g){

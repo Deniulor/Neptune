@@ -43,7 +43,6 @@ cc.Class({
             creature.curAtb -= dt;
             if(creature.curAtb <= 0){
                 this.battle.setSelected(node.creature);
-                this.battle.showMovable();
                 this.stop = true;
             }
             node.setPosition(creature.curAtb / this.maxAtb * this.width, 20);
