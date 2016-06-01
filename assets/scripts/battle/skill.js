@@ -34,6 +34,7 @@ cc.Class({
             return;
         }
         
+        this.battle.stopUpdate = true;
         this.fog = true;
         return true; 
     },
@@ -61,7 +62,7 @@ cc.Class({
         this.battle.clearFuncLayer();
         this.battle.showMovable();
         
-        if(this.fogTaget === null){
+        if(!this.fogTaget){
             return;
         }
         this.player.skillUsed = true;
@@ -72,6 +73,7 @@ cc.Class({
             creature.HP -= 40;
             creature.runDamageAction();
         }
+        this.battle.stopUpdate = false;
     },
 
     dark:function(){

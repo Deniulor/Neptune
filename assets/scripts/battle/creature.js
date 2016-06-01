@@ -48,8 +48,8 @@ cc.Class({
                 var fadeOut = cc.fadeOut(2);
                 var finish = cc.callFunc(this.change, this);
                 var fadeIn = cc.fadeIn(0.1);
-                var checkIfWinner = cc.callFunc(this.battle.checkIfWinner, this.battle);
-                this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,checkIfWinner));
+                this.battle.checkIfWinner();
+                this.node.runAction(cc.sequence(fadeOut,finish,fadeIn));
                 this.icon.runAction(cc.fadeOut(2));
             }
         }
@@ -79,8 +79,8 @@ cc.Class({
     
     change: function(){
         var tnode = this.node;
-        tnode.getChildByName("HpBar").active = false;
-        cc.loader.loadRes("graphics/creature/skeleton.png/skeleton", function (err, spriteFrame) {
+        tnode.getChildByName("HpBar").active = false; 
+        cc.loader.loadRes("graphics/creature/skeleton", cc.SpriteFrame, function (err, spriteFrame) {
             var sprite = tnode.getChildByName('Sprite');
             sprite.getComponent(cc.Sprite).spriteFrame = spriteFrame;
             sprite.width *= 0.8;

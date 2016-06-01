@@ -46,9 +46,13 @@ cc.Class({
         this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         cc.audioEngine.setMusicVolume(0.5);
         cc.audioEngine.setEffectsVolume(0.5);
+        this.stopUpdate = true;
     },
     
     update:function(){
+        if(this.stopUpdate){
+            return;
+        }
         this.clearFuncLayer();
         if(this.selected !== null){
             this.showMovable();
@@ -336,20 +340,22 @@ cc.Class({
         } else {
             this.selected.zIndex ++; 
         }
+        var slctd = this.selected;
+        
         target.getComponent('creature').onDamage(30);
         this.selected.getComponent('creature').onMoved();
         this.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         var dogMove = [];
         if(this.selected.getComponent('creature').type=="dog"){
-            dogMove.push(cc.fadeOut(0.5));
-            for(var i = 0; i < seq.length - 1; ++i){
-             dogMove.push(seq[i]);
-            }
+            dogMove.push(cc.fadeOut(0.5)); 
+            dogMove.push(cc.callFunc(function(){ 
+                slctd.setPosition(cc.p(distLoc.x, distLoc.y));
+            }));
             dogMove.push(cc.fadeIn(0.5));
             dogMove.push(cc.callFunc(function(){
-            if(actor) {
-                actor.runAction(cc.sequence(attackAct));
-            }
+                if(actor) {
+                    actor.runAction(cc.sequence(attackAct));
+                }
             }));
             this.selected.runAction(cc.sequence(dogMove));
         }else{
