@@ -59,21 +59,19 @@ cc.Class({
         }
         
         this.fog = false;
-        this.battle.clearFuncLayer();
-        this.battle.showMovable();
+        this.battle.stopUpdate = false;
         
         if(!this.fogTaget){
             return;
         }
-        this.player.skillUsed = true;
         // 技能效果计算
-        this.player.incSanity(15);
         var creature = this.fogTaget.getComponent('creature');
         if(creature.camp != this.player.camp){
+            this.player.skillUsed = true;
+            this.player.incSanity(15);
             creature.HP -= 40;
             creature.runDamageAction();
         }
-        this.battle.stopUpdate = false;
     },
 
     dark:function(){

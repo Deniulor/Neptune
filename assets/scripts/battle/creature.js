@@ -85,7 +85,7 @@ cc.Class({
         var area = tiled.getArea(tiled.toHexagonLoc(this.node.getPosition()), this.Mov, function(x,y){
             var c = self.battle.getCreatureOn(x,y);
             c = c===null ? null : c.getComponent('creature');
-            return c !== null && c !== self;
+            return c !== null && c !== self && c.HP > 0;
         });
         
         for(var i = 0; i < area.length; ++i){
@@ -118,7 +118,6 @@ cc.Class({
     
     onDamage: function(damage){
         this.HP -= damage;
-        //this.curAtb = this.Atb;
     },
     
     runDamageAction:function(){
