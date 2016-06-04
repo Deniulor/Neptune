@@ -66,11 +66,20 @@ cc.Class({
         }
         // 技能效果计算
         var creature = this.fogTaget.getComponent('creature');
+        var animate = this.fogTaget.getChildByName('animate').getComponent(cc.Animation);
         if(creature.camp != this.player.camp){
             this.player.skillUsed = true;
             this.player.incSanity(15);
             creature.HP -= 40;
             creature.runDamageAction();
+            cc.loader.loadRes("animate/dark2", function (err, clip) {
+                if(err){
+                    cc.log(err);
+                    return;
+                }
+                animate.addClip(clip, "dark2");
+                animate.play('dark2');
+            });
         }
     },
 
