@@ -72,13 +72,13 @@ cc.Class({
             this.player.incSanity(15);
             creature.HP -= 40;
             creature.runDamageAction();
-            cc.loader.loadRes("animate/dark2", function (err, clip) {
+            cc.loader.loadRes("animate/disappear", function (err, clip) {
                 if(err){
                     cc.log(err);
                     return;
                 }
-                animate.addClip(clip, "dark2");
-                animate.play('dark2');
+                animate.addClip(clip);
+                animate.play(clip.name);
             });
         }
     },
