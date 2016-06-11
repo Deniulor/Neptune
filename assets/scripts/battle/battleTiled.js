@@ -38,6 +38,15 @@ cc.Class({
         return cc.p(x * this.XSpacing + this.TiledOffset, y * this.TiledSize + (x + 1) % 2 * this.TiledOffset);
     },
 
+    randHexagonLoc:function(){
+        return cc.p(Math.floor(Math.random() * this.MapWidth), Math.floor(Math.random() * this.MapHeight));
+    },
+
+    randPixelLoc:function(){
+        var loc = this.randHexagonLoc();
+        return this.toPixelLoc(loc.x, loc.y);
+    },
+
     /// 基础函数 - 获取一个点周围的点坐标
     isLocValid:function (r){
         return r.x >= 0 && r.x < this.MapWidth && r.y >= 0 && r.y < this.MapHeight;

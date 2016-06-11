@@ -12,16 +12,23 @@ cc.Class({
         type:"",//类型
     },
     
-    init:function(camp="", atb=5, hp=100, mov=3, rng=1,type=""){
+    init:function(battle, camp = 'player1', data, loc){  
+        this.battle = battle;
         this.camp = camp;
-        this.Atb = atb;
-        this.MaxHP = hp;
-        this.HP = hp;
-        this.Mov = mov;
-        this.Rng = rng;
-        this.curAtb = atb * Math.random() + 0.1;
+
+        this.MaxHP = data.hp;
+        this.HP = data.hp;
         this.showHP = this.HP;
-        this.type = type;
+        this.Mov = data.mov;
+        this.Rng = data.rng;
+        this.Atb = data.atb;
+        this.curAtb = data.atb * Math.random() + 0.1;
+        this.type = data.type;
+
+        this.node.setPosition(loc);
+
+        var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
+        this.node.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
     },
 
     // use this for initialization

@@ -18,7 +18,11 @@ var Data = function(head, lines) {
 		var values = line.split('\t');
 		var item = {};
 		for (var k in fields) {
-			item[k] = values[fields[k]];
+			var v = values[fields[k]];
+			if(!isNaN(v)){
+				v = Number(v);
+			}
+			item[k] = v;
 		}
 		result[item.id] = item;
 		ids.push(item.id);
@@ -76,6 +80,8 @@ Data.prototype.all = function() {
 };
 
 var exp = {};
+exp.inited = false;
+
 var datacount = 0;
 var addData = function(dataname){
 	datacount ++;
@@ -94,7 +100,10 @@ var addData = function(dataname){
 		}
 		var head = datas.splice(0, 2)[1]; // 提取出头部，并将datas变为纯数据
 		exp[dataname] = new Data(head, datas);
-		datacount <= 0 && cc.log('-----配表加载完毕-----');
+		if(datacount <= 0){
+			exp.inited = true;
+			cc.log('-----配表加载完毕-----');
+		}
 	});
 };
 

@@ -96,43 +96,20 @@ cc.Class({
         // 初始化单位列表
         this.creatures.removeAllChildren();
         
-        var url1 = cc.url.raw('resources/graphics/creature/creature1.png');
-        var c1 = new cc.SpriteFrame(url1);
+        var dataApi = require('dataApi');
         
         // 使用给定的模板在场景中生成一个新节点
         var knight1 = cc.instantiate(this.creaturePrefab);
-        knight1.getComponent('creature').init("player1", 3, 50, 3, 1,"nomal");
-        knight1.getComponent('creature').battle = this;
-        knight1.setPosition(this.tiled.toPixelLoc(0, 0));
-        knight1.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c1;
+        knight1.getComponent('creature').init(this, 'player1', dataApi.creatures.random(), this.tiled.randPixelLoc());
         this.creatures.addChild(knight1);
         
         var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init("player1", 2, 50, 3, 1,"nomal");
-        knight2.getComponent('creature').battle = this;
-        knight2.setPosition(this.tiled.toPixelLoc(4, 2));
-        knight2.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c1;
+        knight2.getComponent('creature').init(this, 'player1', dataApi.creatures.random(), this.tiled.randPixelLoc());
         this.creatures.addChild(knight2);
-        
-        
-        var url2 = cc.url.raw('resources/graphics/creature/creature4.png');
-        var c2 = new cc.SpriteFrame(url2);
-        
-        // var archer1 = cc.instantiate(this.creaturePrefab);
-        // archer1.getComponent('creature').init("player2", 3.5, 10, 2, 3);
-        // archer1.getComponent('creature').battle = this;
-        // archer1.setPosition(this.tiled.toPixelLoc(12, 3));
-        // archer1.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c2;
-        // this.creatures.addChild(archer1);
-        
+
         var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init("player2", 3.5, 500, 2, 3,"dog");
-        archer2.getComponent('creature').battle = this;
-        archer2.setPosition(this.tiled.toPixelLoc(7, 2));
-        archer2.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = c2;
+        archer2.getComponent('creature').init(this, 'player2', dataApi.creatures.random(), this.tiled.randPixelLoc());
         this.creatures.addChild(archer2);
-        
-        
     },
     
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空

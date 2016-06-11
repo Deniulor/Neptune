@@ -1,4 +1,4 @@
-id	名字	生命值	攻击力	移动范围	攻击范围	atb
-id	name	hp	atk	mov	rng	atb
-1	Nyarlathotep	20	5	6	2	3
-2	Hounds of Tindalos	10	3	9	1	1
+id	名字	图标	生命值	攻击力	移动范围	攻击范围	atb	生物种类
+id	name	icon	hp	atk	mov	rng	atb	type
+1	Nyarlathotep	creature1	20	5	6	2	3	normal
+2	Hounds of Tindalos	creature2	10	3	5	1	1	dog
