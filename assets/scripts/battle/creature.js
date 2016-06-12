@@ -10,6 +10,7 @@ cc.Class({
         Mov:3,//移动力
         Rng:1,//攻击距离
         type:"",//类型
+        movmode:"",
     },
     
     init:function(battle, camp = 'player1', data, loc){  
@@ -24,6 +25,8 @@ cc.Class({
         this.Atb = data.atb;
         this.curAtb = data.atb * Math.random() + 0.1;
         this.type = data.type;
+
+        this.movmode = require(data.movmode);
 
         this.node.setPosition(loc);
 
