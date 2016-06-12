@@ -6,7 +6,7 @@
   "filterMode": "bilinear",
   "subMetas": {
     "tentacle_dec": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "dfb84293-d4be-4c13-bc69-e82d39d8a91b",
       "rawTextureUuid": "9884ba56-4361-4ec1-851f-68fa2e1e8069",
       "trimType": "auto",
@@ -18,6 +18,8 @@
       "trimY": 12,
       "width": 149,
       "height": 211,
+      "rawWidth": 154,
+      "rawHeight": 227,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

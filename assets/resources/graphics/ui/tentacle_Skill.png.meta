@@ -6,7 +6,7 @@
   "filterMode": "bilinear",
   "subMetas": {
     "tentacle_Skill": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "uuid": "eac5fd2e-623f-427e-93c2-9a2e8994fd3a",
       "rawTextureUuid": "d8db5f4f-46d4-47cd-8fcb-076e9e9559d4",
       "trimType": "auto",
@@ -18,6 +18,8 @@
       "trimY": 3,
       "width": 1029,
       "height": 132,
+      "rawWidth": 1043,
+      "rawHeight": 135,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

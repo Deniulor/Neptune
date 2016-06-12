@@ -3,6 +3,7 @@
     "__type__": "cc.SceneAsset",
     "_name": "",
     "_objFlags": 0,
+    "_rawFiles": null,
     "scene": {
       "__id__": 1
     }
@@ -115,7 +116,8 @@
         "__id__": 78
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -167,7 +169,8 @@
         "__id__": 4
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -248,7 +251,8 @@
         "__id__": 7
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -396,7 +400,8 @@
     "_components": [],
     "_prefab": {
       "__id__": 66
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -457,7 +462,8 @@
     ],
     "_prefab": {
       "__id__": 65
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -527,7 +533,8 @@
     ],
     "_prefab": {
       "__id__": 62
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -591,7 +598,8 @@
     ],
     "_prefab": {
       "__id__": 23
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -645,7 +653,8 @@
     ],
     "_prefab": {
       "__id__": 15
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -735,7 +744,8 @@
     ],
     "_prefab": {
       "__id__": 18
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -749,6 +759,7 @@
     "_fontSize": 60,
     "_lineHeight": 60,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "奈亚拉托提普",
     "_N$horizontalAlign": 1,
@@ -817,7 +828,8 @@
     ],
     "_prefab": {
       "__id__": 21
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -831,6 +843,7 @@
     "_fontSize": 30,
     "_lineHeight": 30,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "奈亚拉托提普是外神们在地上的信使和代言人，热衷于欺骗、诱惑人类，并以使人类陷入恐怖与绝望为其最高的喜悦。\n欺诈：欺骗诱惑敌人，对敌人造成2点伤害。\n化身：减少敌人对自己造成的1点伤害。",
     "_N$horizontalAlign": 0,
@@ -945,7 +958,8 @@
     ],
     "_prefab": {
       "__id__": 35
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -999,7 +1013,8 @@
     ],
     "_prefab": {
       "__id__": 27
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -1089,7 +1104,8 @@
     ],
     "_prefab": {
       "__id__": 30
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -1103,6 +1119,7 @@
     "_fontSize": 60,
     "_lineHeight": 60,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "P2",
     "_N$horizontalAlign": 1,
@@ -1171,7 +1188,8 @@
     ],
     "_prefab": {
       "__id__": 33
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -1185,6 +1203,7 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "Label312312333333333333333333333333333333333333333333333333333333333333333",
     "_N$horizontalAlign": 0,
@@ -1299,7 +1318,8 @@
     ],
     "_prefab": {
       "__id__": 47
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -1353,7 +1373,8 @@
     ],
     "_prefab": {
       "__id__": 39
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -1367,6 +1388,7 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "Label312312333333333333333333333333333333333333333333333333333333333333333",
     "_N$horizontalAlign": 0,
@@ -1435,7 +1457,8 @@
     ],
     "_prefab": {
       "__id__": 42
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -1449,6 +1472,7 @@
     "_fontSize": 60,
     "_lineHeight": 60,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "P3",
     "_N$horizontalAlign": 1,
@@ -1517,7 +1541,8 @@
     ],
     "_prefab": {
       "__id__": 45
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -1653,7 +1678,8 @@
     ],
     "_prefab": {
       "__id__": 59
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Node",
@@ -1707,7 +1733,8 @@
     ],
     "_prefab": {
       "__id__": 51
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -1797,7 +1824,8 @@
     ],
     "_prefab": {
       "__id__": 54
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -1811,6 +1839,7 @@
     "_fontSize": 60,
     "_lineHeight": 60,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "奈亚拉托提普",
     "_N$horizontalAlign": 1,
@@ -1879,7 +1908,8 @@
     ],
     "_prefab": {
       "__id__": 57
-    }
+    },
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Label",
@@ -1893,6 +1923,7 @@
     "_fontSize": 30,
     "_lineHeight": 30,
     "_enableWrapText": true,
+    "_N$file": null,
     "_isSystemFontUsed": true,
     "_N$string": "奈亚拉托提普是外神们在地上的信使和代言人，热衷于欺骗、诱惑人类，并以使人类陷入恐怖与绝望为其最高的喜悦。\n欺诈：欺骗诱惑敌人，对敌人造成2点伤害。\n化身：减少敌人对自己造成的1点伤害。",
     "_N$horizontalAlign": 0,
@@ -2106,7 +2137,8 @@
         "__id__": 69
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -2197,7 +2229,7 @@
     "target": {
       "__id__": 10
     },
-    "component": "PvJs",
+    "component": "pageview",
     "handler": "doAction1"
   },
   {
@@ -2253,7 +2285,8 @@
         "__id__": 73
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -2346,7 +2379,7 @@
     "target": {
       "__id__": 10
     },
-    "component": "PvJs",
+    "component": "pageview",
     "handler": "doAction2"
   },
   {
@@ -2399,7 +2432,8 @@
         "__id__": 76
       }
     ],
-    "_prefab": null
+    "_prefab": null,
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -2430,7 +2464,7 @@
   {
     "__type__": "cc.Canvas",
     "_name": "",
-    "_objFlags": 1835008,
+    "_objFlags": 3932160,
     "node": {
       "__id__": 2
     },
