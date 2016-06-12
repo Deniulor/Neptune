@@ -6,7 +6,7 @@
   "filterMode": "bilinear",
   "subMetas": {
     "enligsh-chinese": {
-      "ver": "1.0.3",
+      "ver": "1.0.2",
       "uuid": "4bdf22d2-a6ed-4ba5-98f0-d270afc37c67",
       "rawTextureUuid": "6ab03c74-9978-444f-9e94-776ee78bbbed",
       "trimType": "auto",
@@ -18,8 +18,6 @@
       "trimY": 2,
       "width": 501,
       "height": 171,
-      "rawWidth": 512,
-      "rawHeight": 256,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
