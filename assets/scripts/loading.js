@@ -14,11 +14,12 @@ cc.Class({
     },
 
     toMain:function(){
+        // cc.director.loadScene('menu', onSceneLaunched);
         this.node.runAction(cc.sequence(
             cc.fadeOut(2),
             cc.callFunc(function(){
                 cc.director.loadScene('menu');
-            })),
+            }))
         );
     }
 });

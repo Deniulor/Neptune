@@ -1,0 +1,13 @@
+{
+  "excludeScenes": [],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.Neptune",
+  "startScene": "084fa8ee-087f-4372-87a8-5a9d30c094e4",
+  "title": "Neptune",
+  "webOrientation": "auto"
+}

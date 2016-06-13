@@ -16,6 +16,12 @@ cc.Class({
     onLoad: function () {
         this.node.runAction(cc.fadeIn(1));
         cc.audioEngine.playMusic(this.menuMusic, true);
+        cc.director.preloadScene('details', function () {
+            cc.log('details scene preloaded');
+        });
+        cc.director.preloadScene('battle', function () {
+            cc.log('battle scene preloaded');
+        });
     },
     details:function() {
         cc.audioEngine.playEffect(this.clickEffect, false);
