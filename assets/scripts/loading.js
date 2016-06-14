@@ -6,6 +6,10 @@ cc.Class({
 
     onLoad: function () {
         var self = this;
+        // 预加载
+        cc.director.preloadScene('menu', function () {
+            cc.log('menu scene preloaded');
+        });
         // 加载 test assets 目录下所有资源
         cc.loader.loadResAll("data", function (err, assets) {
             cc.log(assets);
