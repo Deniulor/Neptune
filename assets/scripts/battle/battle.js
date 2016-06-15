@@ -147,12 +147,12 @@ cc.Class({
     /// 基础函数 设置当前单位
     setSelected:function(creature){
         if(this.selected){
-            this.selected.getChildByName('Selected').active = false;
+            this.selected.getChildByName('Sprite').getChildByName('Selected').active = false;
         }
         this.selected = creature;
         if(this.selected){
             this.stopUpdate = false;
-            this.selected.getChildByName('Selected').active = true;
+            this.selected.getChildByName('Sprite').getChildByName('Selected').active = true;
             this.selected.getComponent('creature').action = 'move';
             var player = this.selected.getComponent('creature').camp;
             this.node.getChildByName(player).getComponent('player').skillUsed = false;
