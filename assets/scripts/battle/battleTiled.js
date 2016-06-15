@@ -1,29 +1,14 @@
-cc.Class({
-    extends: cc.Component,
+var MapTiled = cc.Class({
 
-    properties: {
-        // 常量定义
-        TiledSize:{
-            default:90,
-            type: cc.Integer,
-            tooltip: "单个地格大小"
-        },
-        MapWidth:{
-            default:12,
-            type: cc.Integer,
-            tooltip: "地图宽度"
-        },
-        MapHeight:{
-            default:4,
-            type: cc.Integer,
-            tooltip: "地图高度"
-        }
-    },
-
-    onLoad: function () {
+    ctor:function(){
+        this.TiledSize = 100; //单个地格大小
+        this.MapWidth = 13; //地图宽度
+        this.MapHeight = 4; //地图高度
         this.TiledOffset = this.TiledSize / 2;
         this.XSpacing = this.TiledSize * 3 / 4;
+
     },
+
 
     /// 基础函数 - 将一个像素坐标点转为六边形地图坐标
     toHexagonLoc:function(loc){
@@ -178,3 +163,6 @@ cc.Class({
         return path;
     },
 });
+
+
+module.exports = new MapTiled();

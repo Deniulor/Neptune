@@ -1,3 +1,4 @@
+var battleTiled = require('battleTiled');
 cc.Class({
     extends: cc.Component,
     
@@ -35,7 +36,6 @@ cc.Class({
     // 加载事件
     onLoad: function () {
         var self = this;
-        self.tiled = self.getComponent('battleTiled');
         self.creatures = self.node.getChildByName('creatures');
         self.clearFuncLayer();
         
@@ -43,8 +43,8 @@ cc.Class({
         self.initBattle();
         self.node.on("touchend", self.onTouchEnded, self);
         cc.audioEngine.stopMusic();
-        this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         cc.audioEngine.setMusicVolume(0.5);
+        //this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         cc.audioEngine.setEffectsVolume(0.5);
         this.stopUpdate = true;
     },
@@ -66,9 +66,9 @@ cc.Class({
         }
         var loc = event.getLocation();
         var temp = this.node.convertToNodeSpace(loc);
-        loc = this.tiled.toHexagonLoc(temp);
+        loc = battleTiled.toHexagonLoc(temp);
         //cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
-        if(!this.tiled.isLocValid(loc)){ // 在可操作区域内
+        if(!battleTiled.isLocValid(loc)){ // 在可操作区域内
             return;
         }
         var action = this.funcLayer.getTileGIDAt(loc.x, 3 - loc.y);
@@ -100,15 +100,15 @@ cc.Class({
         
         // 使用给定的模板在场景中生成一个新节点
         var knight1 = cc.instantiate(this.creaturePrefab);
-        knight1.getComponent('creature').init(this, 'player1', dataApi.creatures.random(), this.tiled.randPixelLoc());
+        knight1.getComponent('creature').init(this, 'player1', dataApi.creatures.random(), battleTiled.randPixelLoc());
         this.creatures.addChild(knight1);
         
         var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init(this, 'player1', dataApi.creatures.random(), this.tiled.randPixelLoc());
+        knight2.getComponent('creature').init(this, 'player1', dataApi.creatures.random(), battleTiled.randPixelLoc());
         this.creatures.addChild(knight2);
 
         var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init(this, 'player2', dataApi.creatures.random(), this.tiled.randPixelLoc());
+        archer2.getComponent('creature').init(this, 'player2', dataApi.creatures.random(), battleTiled.randPixelLoc());
         this.creatures.addChild(archer2);
     },
     
@@ -116,7 +116,7 @@ cc.Class({
     getCreatureOn:function(x, y){
         for(var i = this.creatures.children.length - 1; i >= 0; --i){
             var child = this.creatures.children[i];
-            var loc = this.tiled.toHexagonLoc(child.getPosition());
+            var loc = battleTiled.toHexagonLoc(child.getPosition());
             if(loc.x == x && loc.y == y){
                 return child;
             }
@@ -137,8 +137,8 @@ cc.Class({
     
     /// 辅助函数 清除功能层上的所有信息
     clearFuncLayer:function(){
-        for(var i = this.tiled.MapHeight - 1; i >=0 ; --i){
-            for(var j = this.tiled.MapWidth - 1; j >=0; --j){
+        for(var i = battleTiled.MapHeight - 1; i >=0 ; --i){
+            for(var j = battleTiled.MapWidth - 1; j >=0; --j){
                 this.funcLayer.setTileGID(0, cc.p(j, i));
             }
         }
@@ -161,9 +161,9 @@ cc.Class({
 
     // 将已选择的单位移动到相应点
     moveto:function(to_x, to_y){
-        var from = this.tiled.toHexagonLoc(this.selected.getPosition());
+        var from = battleTiled.toHexagonLoc(this.selected.getPosition());
         var self = this;
-        var path = this.tiled.getPath(from, cc.p(to_x,to_y), function(x, y){
+        var path = battleTiled.getPath(from, cc.p(to_x,to_y), function(x, y){
             var creature = self.getCreatureOn(x, y);
             if(creature !== null && creature != self.selected){
                 true; // 不允许穿人
@@ -174,7 +174,7 @@ cc.Class({
             return;
         }
         for(var i = 0; i < path.length; ++i){
-            path[i] = cc.moveTo(0.05, this.tiled.toPixelLoc(path[i].x, path[i].y)); 
+            path[i] = cc.moveTo(0.05, battleTiled.toPixelLoc(path[i].x, path[i].y)); 
         }
         var dogMove = [];
                 
@@ -200,11 +200,11 @@ cc.Class({
     
     // 用已选择单位攻击指定的单位
     attack:function(target){
-        var from = this.tiled.toHexagonLoc(this.selected.getPosition());
-        var to = this.tiled.toHexagonLoc(target.getPosition());
+        var from = battleTiled.toHexagonLoc(this.selected.getPosition());
+        var to = battleTiled.toHexagonLoc(target.getPosition());
         
         var self = this;
-        var path = this.tiled.getPath(from, to, function(x, y){
+        var path = battleTiled.getPath(from, to, function(x, y){
             var creature = self.getCreatureOn(x, y);
             if(creature !== null && creature != self.selected){
                 true; // 不允许穿人
@@ -217,12 +217,12 @@ cc.Class({
         
         var seq = [];
         for(var i = 0; i < path.length; ++i){
-            seq[i] = cc.moveTo(0.05, this.tiled.toPixelLoc(path[i].x, path[i].y)); 
+            seq[i] = cc.moveTo(0.05, battleTiled.toPixelLoc(path[i].x, path[i].y)); 
         }
-        seq.push(cc.moveTo(0.05, this.tiled.toPixelLoc(p.x, p.y)));
+        seq.push(cc.moveTo(0.05, battleTiled.toPixelLoc(p.x, p.y)));
         
-        var distLoc = this.tiled.toPixelLoc(p.x, p.y);
-        var targetLoc = this.tiled.toPixelLoc(to.x, to.y);
+        var distLoc = battleTiled.toPixelLoc(p.x, p.y);
+        var targetLoc = battleTiled.toPixelLoc(to.x, to.y);
         if(this.selected.getComponent('creature').type=="dog"){
             seq.push(cc.callFunc(function(){
                         cc.audioEngine.playEffect(this.attackEffect, false);

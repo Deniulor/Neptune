@@ -1,3 +1,5 @@
+var battleTiled = require('battleTiled');
+
 cc.Class({
     extends: cc.Component,
 
@@ -36,7 +38,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-         
+
     },
 
     // called every frame, uncomment this function to activate update callback
@@ -91,8 +93,7 @@ cc.Class({
     
     showMove:function(){
         var self = this;
-        var tiled = self.battle.tiled;
-        var area = tiled.getArea(tiled.toHexagonLoc(this.node.getPosition()), this.Mov, function(x,y){
+        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.node.getPosition()), this.Mov, function(x,y){
             var c = self.battle.getCreatureOn(x,y);
             c = c===null ? null : c.getComponent('creature');
             return c !== null && c !== self && c.HP > 0;
@@ -100,16 +101,15 @@ cc.Class({
         
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
-            tiled = self.battle.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
+            self.battle.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
         }
     },
     
     showAttack:function(){
         var self = this;
-        var tiled = self.battle.tiled;
         var hastaget = false;
         
-        var area = tiled.getArea(tiled.toHexagonLoc(this.node.getPosition()), this.Rng, function(x,y){
+        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.node.getPosition()), this.Rng, function(x,y){
             var c = self.battle.getCreatureOn(x,y);
             c = c===null ? null : c.getComponent('creature');
             hastaget = hastaget ||( c!==null && c.camp != self.camp && c.HP > 0 );
@@ -122,7 +122,7 @@ cc.Class({
         }
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
-            tiled = self.battle.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
+            self.battle.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
         }
     },
     
