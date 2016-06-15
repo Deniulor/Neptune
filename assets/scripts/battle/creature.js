@@ -108,6 +108,11 @@ cc.Class({
         }
     },
     
+
+    moveto:function(to_x, to_y){
+        this.movmode.moveto(to_x, to_y);
+        this.action = 'moving';
+    },
     onDamage: function(damage){
         this.HP -= damage;
     },

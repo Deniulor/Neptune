@@ -78,7 +78,7 @@ cc.Class({
         
         var AreaMove = 4, AreaAttack = 5;
         if(action == AreaMove){
-            this.moveto(loc.x, loc.y);
+            this.selected.getComponent('creature').moveto(loc.x, loc.y);
             return;
         }
 
@@ -157,45 +157,6 @@ cc.Class({
             var player = this.selected.getComponent('creature').camp;
             this.node.getChildByName(player).getComponent('player').skillUsed = false;
         }
-    },
-
-    // 将已选择的单位移动到相应点
-    moveto:function(to_x, to_y){
-        var from = battleTiled.toHexagonLoc(this.selected.getPosition());
-        var self = this;
-        var path = battleTiled.getPath(from, cc.p(to_x,to_y), function(x, y){
-            var creature = self.getCreatureOn(x, y);
-            if(creature !== null && creature != self.selected){
-                true; // 不允许穿人
-            }
-        });
-        if(!path || path.length <= 0){
-            cc.log("没有找到出路");
-            return;
-        }
-        for(var i = 0; i < path.length; ++i){
-            path[i] = cc.moveTo(0.05, battleTiled.toPixelLoc(path[i].x, path[i].y)); 
-        }
-        var dogMove = [];
-                
-        if(this.selected.getComponent('creature').type=="dog"){
-            dogMove.push(cc.fadeOut(0.5));
-            for(var i = 0; i < path.length; ++i){
-            dogMove.push(path[i]);
-            }
-            dogMove.push(cc.fadeIn(0.5));
-            dogMove.push(cc.callFunc(function(){
-                self.selected.getComponent('creature').action = 'attack';
-            }));
-            this.selected.runAction(cc.sequence(dogMove));
-            // this.selected.runAction(cc.sequence(path));
-        }else{
-            path.push(cc.callFunc(function(){ 
-                self.selected.getComponent('creature').action = 'attack';
-            }));
-            this.selected.runAction(cc.sequence(path));
-        }
-        this.selected.getComponent('creature').action = 'moving';
     },
     
     // 用已选择单位攻击指定的单位
