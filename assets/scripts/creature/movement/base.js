@@ -1,22 +1,17 @@
+var battleTiled = require('battleTiled');
+
+
 var Move = cc.Class({
     ctor: function () {
         this.name = "move";
+    	this.creature = null;
+    	this.battle = null;
+    	this.Mov = 0;
     },
-    properties:{
-    	name:"",
-    	creature:{
-    		default: null,
-			type: require('creature')
-    	},
-    	battle:{
-    		default: null,
-			type: require('battle')
-    	}
-    },
+
     showMovable:function(){
-        var self = this;
-        var tiled = self.battle.tiled;
-        var area = tiled.getArea(tiled.toHexagonLoc(this.node.getPosition()), this.Mov, function(x,y){
+    	var self = this;
+    	var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.Mov, function(x,y){
             var c = self.battle.getCreatureOn(x,y);
             c = c===null ? null : c.getComponent('creature');
             return c !== null && c !== self && c.HP > 0;
@@ -24,7 +19,7 @@ var Move = cc.Class({
         
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
-            tiled = self.battle.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
+            self.battle.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
         }
     }
 });

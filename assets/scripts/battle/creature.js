@@ -3,18 +3,6 @@ var battleTiled = require('battleTiled');
 cc.Class({
     extends: cc.Component,
 
-    properties: {
-        camp:"",
-        Atb:5,
-        MaxHP:100,
-        HP:100,
-        showHP:100,
-        Mov:3,//移动力
-        Rng:1,//攻击距离
-        type:"",//类型
-        movmode:"",
-    },
-    
     init:function(battle, camp = 'player1', data, loc){  
         this.battle = battle;
         this.camp = camp;
@@ -28,7 +16,11 @@ cc.Class({
         this.curAtb = data.atb * Math.random() + 0.1;
         this.type = data.type;
 
-        this.movmode = require(data.movmode);
+        var movmode = require(data.movmode);// 返回的是一个类
+        this.movmode = new movmode();
+        this.movmode.creature = this;
+        this.movmode.battle = battle;
+        this.movmode.Mov = this.Mov;
 
         this.node.setPosition(loc);
 
@@ -85,24 +77,14 @@ cc.Class({
             return;
         }
         if(this.action == 'move'){
-            this.showMove();
+            this.showMovable();
         } else if(this.action == 'attack'){
             this.showAttack();
         }
     },
     
-    showMove:function(){
-        var self = this;
-        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.node.getPosition()), this.Mov, function(x,y){
-            var c = self.battle.getCreatureOn(x,y);
-            c = c===null ? null : c.getComponent('creature');
-            return c !== null && c !== self && c.HP > 0;
-        });
-        
-        for(var i = 0; i < area.length; ++i){
-            var curnode = area[i];
-            self.battle.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
-        }
+    showMovable:function(){
+        this.movmode.showMovable();
     },
     
     showAttack:function(){
