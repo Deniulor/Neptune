@@ -13,6 +13,7 @@ cc.Class({
         this.Mov = data.mov;
         this.Rng = data.rng;
         this.Atb = data.atb;
+        this.Atk = data.atk;
         this.curAtb = data.atb * Math.random() + 0.1;
         this.type = data.type;
 
@@ -20,7 +21,12 @@ cc.Class({
         this.movmode = new movmode();
         this.movmode.creature = this;
         this.movmode.battle = battle;
-        this.movmode.Mov = this.Mov;
+
+        var atkmode = require(data.atkmode);
+        this.atkmode = new atkmode();
+        this.atkmode.creature = this;
+        this.atkmode.battle = battle;
+
 
         this.node.setPosition(loc);
 
@@ -88,31 +94,20 @@ cc.Class({
     },
     
     showAttack:function(){
-        var self = this;
-        var hastaget = false;
-        
-        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.node.getPosition()), this.Rng, function(x,y){
-            var c = self.battle.getCreatureOn(x,y);
-            c = c===null ? null : c.getComponent('creature');
-            hastaget = hastaget ||( c!==null && c.camp != self.camp && c.HP > 0 );
-            return c !== null && c.camp == self.camp;
-        });
-        if(!hastaget){
-            this.turnEnd();
-            this.battle.setSelected(null);
-            return;
-        }
-        for(var i = 0; i < area.length; ++i){
-            var curnode = area[i];
-            self.battle.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
-        }
+        this.atkmode.showAttack();
     },
     
-
     moveto:function(to_x, to_y){
         this.movmode.moveto(to_x, to_y);
         this.action = 'moving';
     },
+
+    // 用已选择单位攻击指定的单位
+    attack:function(target){
+        this.atkmode.attack(target);
+        this.turnEnd();
+    },
+
     onDamage: function(damage){
         this.HP -= damage;
     },

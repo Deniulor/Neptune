@@ -54,7 +54,7 @@ cc.Class({
             return;
         }
         this.clearFuncLayer();
-        if(this.selected !== null){
+        if(!!this.selected){
             this.selected.getComponent('creature').showAction();
         }
     },
@@ -86,7 +86,7 @@ cc.Class({
             let node = this.getCreatureOn(loc.x, loc.y);
             let creature = node ? node.getComponent('creature') : null;
             if(creature !== null && creature.HP > 0 && creature.camp != this.selected.getComponent('creature').camp){
-                this.attack(node);
+                this.selected.getComponent('creature').attack(creature);
                 return;
             }
         }
@@ -157,90 +157,6 @@ cc.Class({
             var player = this.selected.getComponent('creature').camp;
             this.node.getChildByName(player).getComponent('player').skillUsed = false;
         }
-    },
-    
-    // 用已选择单位攻击指定的单位
-    attack:function(target){
-        var from = battleTiled.toHexagonLoc(this.selected.getPosition());
-        var to = battleTiled.toHexagonLoc(target.getPosition());
-        
-        var self = this;
-        var path = battleTiled.getPath(from, to, function(x, y){
-            var creature = self.getCreatureOn(x, y);
-            if(creature !== null && creature != self.selected){
-                true; // 不允许穿人
-            }
-        });
-        
-        do{
-            var p = path.pop();
-        } while(this.funcLayer.getTileGIDAt(p.x, 3 - p.y) == 5);
-        
-        var seq = [];
-        for(var i = 0; i < path.length; ++i){
-            seq[i] = cc.moveTo(0.05, battleTiled.toPixelLoc(path[i].x, path[i].y)); 
-        }
-        seq.push(cc.moveTo(0.05, battleTiled.toPixelLoc(p.x, p.y)));
-        
-        var distLoc = battleTiled.toPixelLoc(p.x, p.y);
-        var targetLoc = battleTiled.toPixelLoc(to.x, to.y);
-        if(this.selected.getComponent('creature').type=="dog"){
-            seq.push(cc.callFunc(function(){
-                        cc.audioEngine.playEffect(this.attackEffect, false);
-                    },this));
-        }else{
-            seq.push(cc.callFunc(function(){
-                        cc.audioEngine.playEffect(this.nomalAttack, false);
-                    },this));
-        }
-        var attackAct = [];
-        var jump = cc.jumpBy(0.5, targetLoc.x - distLoc.x, targetLoc.y - distLoc.y, 20, 1);
-        attackAct.push(jump);
-        var atk = cc.spawn(cc.sequence(cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10),cc.rotateBy(0.1, 10, 10),cc.rotateBy(0.1, -10, -10)));
-        attackAct.push(atk);
-        attackAct.push(cc.moveBy(0.5, cc.p(distLoc.x - targetLoc.x, distLoc.y - targetLoc.y)));
-        
-        attackAct.push(cc.callFunc(function(){
-            target.getComponent('creature').runDamageAction();
-        }));
-        
-        var actor = this.selected.getChildByName('Sprite');
-        seq.push(cc.callFunc(function(){
-            if(actor) {
-                actor.runAction(cc.sequence(attackAct));
-            }
-        }));
-        
-        if(this.selected.zIndex != target.zIndex){
-            let max = Math.max(this.selected.zIndex, target.zIndex);
-            let min = Math.min(this.selected.zIndex, target.zIndex);
-            this.selected.zIndex = max;
-            target.zIndex = min;
-        } else {
-            this.selected.zIndex ++; 
-        }
-        var slctd = this.selected;
-        
-        target.getComponent('creature').onDamage(30);
-        
-        var dogMove = [];
-        if(this.selected.getComponent('creature').type=="dog"){
-            dogMove.push(cc.fadeOut(0.5)); 
-            dogMove.push(cc.callFunc(function(){ 
-                slctd.setPosition(cc.p(distLoc.x, distLoc.y));
-            }));
-            dogMove.push(cc.fadeIn(0.5));
-            dogMove.push(cc.callFunc(function(){
-                if(actor) {
-                    actor.runAction(cc.sequence(attackAct));
-                }
-            }));
-            this.selected.runAction(cc.sequence(dogMove));
-        }else{
-            this.selected.runAction(cc.sequence(seq));
-        }
-        this.selected.getComponent('creature').turnEnd();
-        this.setSelected(null);
     },
     
     checkIfWinner:function(){

@@ -1,6 +1,6 @@
 var battleTiled = require('battleTiled');
 var exp = cc.Class({
-	extends: require('base'),
+	extends: require('basemove'),
     ctor:function(){
     	this.name = "teleport";
     },

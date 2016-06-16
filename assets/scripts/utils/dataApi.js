@@ -5,9 +5,12 @@
  */
 var Data = function(head, lines) {
 	var fields = {};
+	head = head.replace(/(^\s*)|(\s*$)/g, ''); // trim
 	head.split('\t').forEach(function(i, k) {
-		fields[i] = k;
+		// i = i.replace("\"","");
+		fields[i + ''] = k;
 	});
+	cc.log(fields);
 
 	var result = {}, ids = [];
 	for( var i = 0; i < lines.length; ++i){
