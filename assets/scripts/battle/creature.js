@@ -3,7 +3,7 @@ var battleTiled = require('battleTiled');
 cc.Class({
     extends: cc.Component,
 
-    init:function(battle, camp = 'player1', data, loc){  
+    init:function(battle, camp = 'red', data, loc){  
         this.battle = battle;
         this.camp = camp;
 
@@ -32,6 +32,11 @@ cc.Class({
 
         var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
         this.node.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
+        if(camp === 'red'){
+            this.node.getChildByName('Sprite').getChildByName('camp').color = cc.color(255,0,0);
+        } else { // camp === 'player2'
+            this.node.getChildByName('Sprite').getChildByName('camp').color = cc.color(0,0,255);
+        }
     },
 
     // use this for initialization
