@@ -21,6 +21,10 @@ cc.Class({
         //     this.node.on('touchcancel',this.useFog,this);
         // }
     },
+
+    loadCreature:function(creature){
+    	
+    },
     
     beginFog:function(){
         if(!this.battle.selected){

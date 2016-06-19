@@ -47,6 +47,8 @@ cc.Class({
         //this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         cc.audioEngine.setEffectsVolume(0.5);
         this.stopUpdate = true;
+
+        this.setSelected(null);
     },
     
     update:function(){
@@ -153,32 +155,38 @@ cc.Class({
         if(this.selected){
             this.stopUpdate = false;
             this.selected.getChildByName('Sprite').getChildByName('Selected').active = true;
-            this.selected.getComponent('creature').action = 'move';
-            //var player = this.selected.getComponent('creature').camp;
-            //this.node.getChildByName(player).getComponent('player').skillUsed = false;
+            var c = this.selected.getComponent('creature');
+            c.action = 'move';
+            
+            var skillPanel = this.node.getChildByName('skill');
+            skillPanel.getChildByName('camp').color = this.selected.getChildByName('Sprite').getChildByName('camp').color;
+
+            skillPanel.active = true;
+        } else {
+            this.node.getChildByName('skill').active = false;
         }
     },
     
     checkIfWinner:function(){
-        var player1 = 0;
-        var player2 = 0;
+        var red = 0;
+        var blue = 0;
         for(var i = 0; i < this.creatures.children.length; ++i){
             var creature = this.creatures.children[i].getComponent('creature');
             if(creature.HP <= 0){
                 continue;
             }
-            if(creature.camp == 'player1' ){
-                player1 ++;
-            } else if(creature.camp == 'player2'){
-                player2 ++;
+            if(creature.camp == 'red' ){
+                red ++;
+            } else if(creature.camp == 'blue'){
+                blue ++;
             }
         }
-        if(player1 <= 0 && player2 <= 0){
+        if(red <= 0 && blue <= 0){
             cc.log('draw!');
         } else{
-            if(player1 <= 0){
+            if(red <= 0){
                 var w = 'blue';
-            } else if(player2 <= 0){
+            } else if(blue <= 0){
                 var w = 'red';
             } else {
                 return;
