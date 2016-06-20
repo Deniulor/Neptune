@@ -158,12 +158,11 @@ cc.Class({
             var c = this.selected.getComponent('creature');
             c.action = 'move';
             
-            var skillPanel = this.node.getChildByName('skill');
-            skillPanel.getChildByName('camp').color = this.selected.getChildByName('Sprite').getChildByName('camp').color;
-
-            skillPanel.active = true;
+            var creaturePanel = this.node.getChildByName('creature');
+            c.showCreature(creaturePanel);
+            creaturePanel.active = true;
         } else {
-            this.node.getChildByName('skill').active = false;
+            this.node.getChildByName('creature').active = false;
         }
     },
     

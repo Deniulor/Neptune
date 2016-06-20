@@ -10,7 +10,6 @@ var Data = function(head, lines) {
 		// i = i.replace("\"","");
 		fields[i + ''] = k;
 	});
-	cc.log(fields);
 
 	var result = {}, ids = [];
 	for( var i = 0; i < lines.length; ++i){
@@ -113,5 +112,6 @@ var addData = function(dataname){
 setTimeout(function(){
 	cc.log('-----开始加载配表-----');
 	addData('creatures');
+	addData('skills');
 }, 50);
 module.exports = exp;

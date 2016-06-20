@@ -1,0 +1,4 @@
+id	名字	图标	生命值	攻击力	攻击范围	攻击方式	移动范围	移动方式	atb
+id	name	icon	hp	atk	rng	atkmode	mov	movmode	atb
+1	Nyarlathotep	creature1	20	5	2	baseattack	6	basemove	3
+2	Hounds of Tindalos	creature2	10	3	1	baseattack	5	teleport	1

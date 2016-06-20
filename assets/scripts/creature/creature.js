@@ -1,4 +1,5 @@
 var battleTiled = require('battleTiled');
+var dataApi = require('dataApi');
 
 cc.Class({
     extends: cc.Component,
@@ -27,6 +28,16 @@ cc.Class({
         this.atkmode.creature = this;
         this.atkmode.battle = battle;
 
+        this.skill = [];
+        for(var i = 0; i<3 ; ++i){
+            var skl = data['skill_' + i];
+            skl = dataApi.skills.findById(skl);
+            if(!skl){
+                continue;
+            }
+            // skl = require();
+            this.skill.push(skill);
+        }
 
         this.node.setPosition(loc);
 
@@ -81,6 +92,14 @@ cc.Class({
     turnEnd: function(){
         this.curAtb = this.Atb;
         this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+    },
+
+    showCreature:function(panel){
+        panel.getChildByName('camp').color = this.node.getChildByName('Sprite').getChildByName('camp').color;
+        for (var i = 1; i <= 3; i++) {
+            panel.getChildByName('skill' + i).active = false;
+        }
+
     },
     
     showAction:function(){

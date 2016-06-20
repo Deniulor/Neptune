@@ -1747,7 +1747,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "skill",
+    "_name": "creature",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -1892,7 +1892,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "skill_dark",
+    "_name": "skill1",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -1984,7 +1984,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "skill_fog",
+    "_name": "skill2",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -2076,7 +2076,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "skill_chaoz",
+    "_name": "skill3",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {

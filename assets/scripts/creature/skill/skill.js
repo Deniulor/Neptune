@@ -4,27 +4,6 @@ cc.Class({
     properties: {
         skillName:"",
     },
-
-    // use this for initialization
-    onLoad: function () {
-        // this.player = this.node.parent.getComponent('player');
-        // this.creatures = this.node.parent.parent.getChildByName('creatures');
-        // this.battle  = this.node.parent.parent.getComponent('battle');
-        // this.tiled = this.node.parent.parent.getComponent('battleTiled');
-        
-        // if(this.skillName === 'Dark'){
-        //     this.node.on('touchend',this.dark,this);
-        // }else if (this.skillName === 'Fog'){
-        //     this.node.on('touchstart',this.beginFog,this);
-        //     this.node.on('touchmove',this.moveFog,this);
-        //     this.node.on('touchend',this.useFog,this);
-        //     this.node.on('touchcancel',this.useFog,this);
-        // }
-    },
-
-    loadCreature:function(creature){
-    	
-    },
     
     beginFog:function(){
         if(!this.battle.selected){
