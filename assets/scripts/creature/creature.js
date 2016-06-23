@@ -16,7 +16,7 @@ cc.Class({
         this.Atb = data.atb;
         this.Atk = data.atk;
         this.curAtb = data.atb * Math.random() + 0.1;
-
+        this.status = "null";
         var movclass = require(data.movclass);// 返回的是一个类
         this.movclass = new movclass();
         this.movclass.creature = this;
@@ -42,7 +42,7 @@ cc.Class({
         }
 
         this.node.setPosition(loc);
-
+        this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.HP + "/" +this.MaxHP;
         var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
         this.node.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
         if(camp === 'red'){
@@ -76,14 +76,15 @@ cc.Class({
                 var fadeOut = cc.fadeOut(2);
                 var finish = cc.callFunc(this.change, this);
                 var fadeIn = cc.fadeIn(0.1);
-                this.battle.checkIfWinner();
                 this.node.runAction(cc.sequence(fadeOut,finish,fadeIn));
                 this.icon.runAction(cc.fadeOut(2));
+                this.battle.checkIfWinner();
             }
         }
         if(this.showHP - this.HP < 1){
             this.showHP = this.HP;
         }
+        
         this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / this.MaxHP;
     },
     
@@ -133,11 +134,16 @@ cc.Class({
         this.atkclass.attack(target);
         this.turnEnd();
     },
-
     onDamage: function(damage){
         this.HP -= damage;
+        if(this.HP<0){
+            this.HP = 0;
+        }
+        this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.HP + "/" +this.MaxHP;
     },
-    
+    setStatus: function(status){
+        this.status = status;
+    },
     runDamageAction:function(){
         this.showHpDuration = this.showHPDuration | 0.5;
         this.showHpDuration += 0.5;

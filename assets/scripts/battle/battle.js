@@ -157,7 +157,10 @@ cc.Class({
             this.selected.getChildByName('Sprite').getChildByName('Selected').active = true;
             var c = this.selected.getComponent('creature');
             c.action = 'move';
-            
+            if(c.status=="bleeding"){
+                c.onDamage(2);
+                c.setStatus("null");
+            }
             var creaturePanel = this.node.getChildByName('creature');
             c.showCreature(creaturePanel);
             creaturePanel.active = true;
