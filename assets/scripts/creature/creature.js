@@ -16,27 +16,29 @@ cc.Class({
         this.Atb = data.atb;
         this.Atk = data.atk;
         this.curAtb = data.atb * Math.random() + 0.1;
-        this.type = data.type;
 
-        var movmode = require(data.movmode);// 返回的是一个类
-        this.movmode = new movmode();
-        this.movmode.creature = this;
-        this.movmode.battle = battle;
+        var movclass = require(data.movclass);// 返回的是一个类
+        this.movclass = new movclass();
+        this.movclass.creature = this;
+        this.movclass.battle = battle;
 
-        var atkmode = require(data.atkmode);
-        this.atkmode = new atkmode();
-        this.atkmode.creature = this;
-        this.atkmode.battle = battle;
+        var atkclass = require(data.atkclass);
+        this.atkclass = new atkclass();
+        this.atkclass.creature = this;
+        this.atkclass.battle = battle;
 
         this.skill = [];
         for(var i = 0; i<3 ; ++i){
             var skl = data['skill_' + i];
+            if(!skl){
+                continue;
+            }
             skl = dataApi.skills.findById(skl);
             if(!skl){
                 continue;
             }
-            // skl = require();
-            this.skill.push(skill);
+            skl = new (require(skl.sklclass))(skl);
+            this.skill.push(skl);
         }
 
         this.node.setPosition(loc);
@@ -114,21 +116,21 @@ cc.Class({
     },
     
     showMovable:function(){
-        this.movmode.showMovable();
+        this.movclass.showMovable();
     },
     
     showAttack:function(){
-        this.atkmode.showAttack();
+        this.atkclass.showAttack();
     },
     
     moveto:function(to_x, to_y){
-        this.movmode.moveto(to_x, to_y);
+        this.movclass.moveto(to_x, to_y);
         this.action = 'moving';
     },
 
     // 用已选择单位攻击指定的单位
     attack:function(target){
-        this.atkmode.attack(target);
+        this.atkclass.attack(target);
         this.turnEnd();
     },
 

@@ -62,7 +62,11 @@ Data.prototype.findBy = function(attr, value) {
  * @api public
  */
 Data.prototype.findById = function(id) {
-	return this.data[id];
+	let d = this.data[id];
+	if(!d){
+		cc.log(this.name + "缺少配置:" + id);
+	}
+	return d;
 };
 
 Data.prototype.random = function() {
@@ -102,6 +106,7 @@ var addData = function(dataname){
 		}
 		var head = datas.splice(0, 2)[1]; // 提取出头部，并将datas变为纯数据
 		exp[dataname] = new Data(head, datas);
+		exp[dataname].name = dataname;
 		if(datacount <= 0){
 			exp.inited = true;
 			cc.log('-----配表加载完毕-----');

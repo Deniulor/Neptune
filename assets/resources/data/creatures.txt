@@ -1,4 +1,4 @@
-id	名字	图标	生命值	攻击力	攻击范围	攻击方式	移动范围	移动方式	atb
-id	name	icon	hp	atk	rng	atkmode	mov	movmode	atb
-1	Nyarlathotep	creature1	20	5	2	baseattack	6	basemove	3
-2	Hounds of Tindalos	creature2	10	3	1	baseattack	5	teleport	1
+兵种ID	兵种名称	图标	血量	攻击力	速度	单位死亡增加SAN值	移动范围	移动方式	攻击范围	攻击方式	技能01	技能02	技能02
+id	name	icon	hp	atk	atb	SAN	mov	movclass	rng	atkclass	skill_1	skill_2	skill_3
+1	Nyarlathotep	creature1	20	5	3		6	basemove	2	baseattack	10002	10001	
+2	Hounds of Tindalos	creature2	10	3	1		5	teleport	1	baseattack	10001	10002	
