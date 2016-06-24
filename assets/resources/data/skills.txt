@@ -1,4 +1,4 @@
-技能ID	分类	技能ICON	技能伤害值
-id	sklclass	icon	damage
-10001	dirskill	fog	
-10002	dirskill	dark	
+技能ID	分类	技能ICON	技能伤害值	技能名称
+id	sklclass	icon	damage	name
+10001	directiveskill	fog	6	fog
+10002	effectskill	dark	8	dark

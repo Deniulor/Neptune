@@ -1,4 +1,6 @@
 var battleTiled = require('battleTiled');
+var dataApi = require('dataApi');
+
 cc.Class({
     extends: cc.Component,
     
@@ -98,8 +100,6 @@ cc.Class({
         // 初始化单位列表
         this.creatures.removeAllChildren();
         
-        var dataApi = require('dataApi');
-        
         // 使用给定的模板在场景中生成一个新节点
         var knight1 = cc.instantiate(this.creaturePrefab);
         knight1.getComponent('creature').init(this, 'red', dataApi.creatures.random(), battleTiled.randPixelLoc());
@@ -156,11 +156,7 @@ cc.Class({
             this.stopUpdate = false;
             this.selected.getChildByName('Sprite').getChildByName('Selected').active = true;
             var c = this.selected.getComponent('creature');
-            c.action = 'move';
-            if(c.status=="bleeding"){
-                c.onDamage(2);
-                c.setStatus("null");
-            }
+            c.onTurnBegin();
             var creaturePanel = this.node.getChildByName('creature');
             c.showCreature(creaturePanel);
             creaturePanel.active = true;

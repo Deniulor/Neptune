@@ -37,12 +37,14 @@ cc.Class({
             if(!skl){
                 continue;
             }
-            skl = new (require(skl.sklclass))(skl);
-            this.skill.push(skl);
+            var skill = new (require(skl.sklclass))();
+            skill.init(skl,this);
+            this.skill.push(skill);
         }
 
         this.node.setPosition(loc);
         this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.HP + "/" +this.MaxHP;
+
         var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
         this.node.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
         if(camp === 'red'){
@@ -56,6 +58,8 @@ cc.Class({
     onLoad: function () {
 
     },
+
+
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
@@ -84,8 +88,20 @@ cc.Class({
         if(this.showHP - this.HP < 1){
             this.showHP = this.HP;
         }
-        
-        this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / this.MaxHP;
+        if(this.showHP !== null && this.showHP !== undefined){
+            this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.showHP.toFixed(1) + "/" +this.MaxHP;
+        }
+        //this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / this.MaxHP;
+    },
+
+    onTurnBegin:function(){
+        this.action = 'move';
+        this.skillUsed = false;
+        if(this.status=="bleeding"){
+            this.onDamage(2);
+            this.setStatus("null");
+            this.runDamageAction();
+        }
     },
     
     getATB: function(){
@@ -99,10 +115,17 @@ cc.Class({
 
     showCreature:function(panel){
         panel.getChildByName('camp').color = this.node.getChildByName('Sprite').getChildByName('camp').color;
-        for (var i = 1; i <= 3; i++) {
+        for (var i = 0; i < 3; i++) {
             panel.getChildByName('skill' + i).active = false;
         }
 
+        for(var i = 0; i < this.skill.length; ++i){
+            let skill = this.skill[i];
+            let show = panel.getChildByName('skill' + i);
+            show.removeAllChildren(false);
+            show.addChild(skill.node);
+            show.active = true;
+        }
     },
     
     showAction:function(){
@@ -139,7 +162,6 @@ cc.Class({
         if(this.HP<0){
             this.HP = 0;
         }
-        this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.HP + "/" +this.MaxHP;
     },
     setStatus: function(status){
         this.status = status;
