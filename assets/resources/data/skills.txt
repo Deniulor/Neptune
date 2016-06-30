@@ -2,3 +2,5 @@
 id	sklclass	icon	damage	name
 10001	directiveskill	fog	6	fog
 10002	effectskill	dark	8	dark
+10003	splitskill	dark	0	dark
+10004	passiveskill	fog	0	fog
