@@ -14,7 +14,7 @@ cc.Class({
         var frame = new cc.SpriteFrame(url);
         this.node.getChildByName('content').getChildByName('camp').getComponent(cc.Sprite).spriteFrame = frame;
         cc.audioEngine.setEffectsVolume(0.5);
-       cc.audioEngine.playEffect(this.winMusic, false);
+        cc.audioEngine.playEffect(this.winMusic, false);
         
     },
 

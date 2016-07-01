@@ -101,17 +101,26 @@ cc.Class({
         this.creatures.removeAllChildren();
         
         // 使用给定的模板在场景中生成一个新节点
-        var knight1 = cc.instantiate(this.creaturePrefab);
-        knight1.getComponent('creature').init(this, 'red', dataApi.creatures.random(), battleTiled.randPixelLoc());
-        this.creatures.addChild(knight1);
-        
-        var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init(this, 'red', dataApi.creatures.random(), battleTiled.randPixelLoc());
-        this.creatures.addChild(knight2);
+        var red1 = cc.instantiate(this.creaturePrefab);
+        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(2), battleTiled.randPixelLoc());
+        this.creatures.addChild(red1);
 
-        var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init(this, 'blue', dataApi.creatures.random(), battleTiled.randPixelLoc());
-        this.creatures.addChild(archer2);
+        var red2 = cc.instantiate(this.creaturePrefab);
+        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc());
+        this.creatures.addChild(red2);
+        
+        var blue1 = cc.instantiate(this.creaturePrefab);
+        blue1.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc());
+        this.creatures.addChild(blue1);
+
+        var blue2 = cc.instantiate(this.creaturePrefab);
+        blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc());
+        this.creatures.addChild(blue2);
+    },
+
+    addCreature:function(creature){
+        this.creatures.addChild(creature);
+        this.node.getChildByName('atbBar').getComponent('atbBar').addCreature(creature);
     },
     
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空

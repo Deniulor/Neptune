@@ -12,7 +12,6 @@ var MapTiled = cc.Class({
 
     /// 基础函数 - 将一个像素坐标点转为六边形地图坐标
     toHexagonLoc:function(loc){
-        loc = loc || this.selected.getPosition();
         var x = parseInt((loc.x + 3 - this.TiledSize / 4) / this.XSpacing);
         var y = parseInt((loc.y + 3 - (x + 1) % 2 * this.TiledOffset) / this.TiledSize);
         return cc.p(x, y);

@@ -1,6 +1,7 @@
-技能ID	分类	技能ICON	技能伤害值	技能名称
-id	sklclass	icon	damage	name
-10001	directiveskill	fog	6	fog
-10002	effectskill	dark	8	dark
-10003	splitskill	dark	0	dark
-10004	passiveskill	fog	0	fog
+技能ID	分类	技能ICON	技能名称	技能伤害值
+id	sklclass	icon	name	damage
+10001	directiveskill	fog	fog	6
+10002	effectskill	dark	dark	8
+10003	splitskill	dark	dark	0
+10004	passiveskill	fog	fog	0
+10005	reproduction	skill_10005	reproduction	

@@ -7,6 +7,7 @@ cc.Class({
     init:function(battle, camp = 'red', data, loc){  
         this.battle = battle;
         this.camp = camp;
+        this.data = data;
 
         this.MaxHP = data.hp;
         this.HP = data.hp;
@@ -66,7 +67,7 @@ cc.Class({
         var atb = this.getATB();
         var str;
         if(atb > 0){
-            str = cc.js.formatStr("ATB:%s", atb.toFixed(1));
+            str = cc.js.formatStr("ATB:%s", atb.toFixed(0));
         }else {
             str = "Ready";
         }
@@ -89,7 +90,7 @@ cc.Class({
             this.showHP = this.HP;
         }
         if(this.showHP !== null && this.showHP !== undefined){
-            this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.showHP.toFixed(1) + "/" +this.MaxHP;
+            this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.showHP.toFixed(0) + "/" +this.MaxHP;
         }
         //this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / this.MaxHP;
     },
@@ -102,12 +103,30 @@ cc.Class({
             this.setStatus("null");
             this.runDamageAction();
         }
+        if(this.reproduce == true){
+            var newborn = cc.instantiate(this.battle.creaturePrefab);
+            newborn.getComponent('creature').init(this.battle, this.camp, this.data, battleTiled.randPixelLoc());
+            this.battle.addCreature(newborn);
+
+            var animate = newborn.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation);
+            cc.loader.loadRes("animate/dark", function (err, clip) {
+                if(err){
+                    cc.log(err);
+                    return;
+                }
+                animate.addClip(clip);
+                animate.play(clip.name);
+            });
+
+            this.reproduce = false;
+            this.turnEnd();
+        }
     },
     
     getATB: function(){
         return this.curAtb;
     },
-    
+
     turnEnd: function(){
         this.curAtb = this.Atb;
         this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;

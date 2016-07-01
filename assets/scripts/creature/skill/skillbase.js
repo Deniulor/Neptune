@@ -16,7 +16,6 @@ var SKill = cc.Class({
     bindEvent:function(node){
 
     },
-
 });
 
 module.exports = SKill;

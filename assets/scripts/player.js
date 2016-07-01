@@ -1,10 +1,6 @@
 cc.Class({
     extends: cc.Component,
 
-    ctor: function () {
-        this.sanity = 0;
-    },
-    
     properties: {
         // foo: {
         //    default: null,
@@ -37,7 +33,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-
+        this.sanity = 0;
     },
     
     // 增加san值

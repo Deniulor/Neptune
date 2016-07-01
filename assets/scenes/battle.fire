@@ -2013,9 +2013,7 @@
       "__id__": 49
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "1a440d7d-4ba4-4e39-9926-4acff4ee3a90"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -2487,9 +2485,7 @@
       "__id__": 62
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "1a440d7d-4ba4-4e39-9926-4acff4ee3a90"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
