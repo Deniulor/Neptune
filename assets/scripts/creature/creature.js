@@ -21,7 +21,7 @@ cc.Class({
         this.movclass = new movclass();
         this.movclass.creature = this;
         this.movclass.battle = battle;
-
+        this.id = data.id;
         var atkclass = require(data.atkclass);
         this.atkclass = new atkclass();
         this.atkclass.creature = this;

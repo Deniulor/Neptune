@@ -28,7 +28,22 @@ cc.Class({
         
         this.battle = this.node.parent.getComponent('battle');
     },
-
+    addChild:function () {
+        this.stop = true;
+        for(var i = 0; i < this.creatures.children.length; ++i){
+            var creature = this.creatures.children[i];
+            this.maxAtb = Math.max(creature.getComponent('creature').Atb, this.maxAtb);
+            var uSprite = creature.getComponents(cc.Sprite);
+            creature.getChildByName('HpLab').active = false;
+            let node = cc.instantiate(creature);
+            node.creature = creature;
+            creature.getComponent('creature').icon = node;
+            
+            this.node.addChild(node);
+            creature.getChildByName('HpLab').active = true;
+        }
+        this.stop = false;
+    },
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         if(this.stop){

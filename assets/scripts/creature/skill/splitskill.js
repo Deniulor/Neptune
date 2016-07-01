@@ -15,18 +15,14 @@ var splitskill = cc.Class({
         
         // 使用给定的模板在场景中生成一个新节点
         var knight1 = cc.instantiate(this.battle.creaturePrefab);
-        knight1.getComponent('creature').init(this.battle, this.creature.camp, dataApi.creatures.random(), battleTiled.randPixelLoc());
+        knight1.getComponent('creature').init(this.battle, this.creature.camp, dataApi.creatures.findById(this.creature.id), battleTiled.randPixelLoc());
+        this.damage = Math.ceil(this.creature.HP/2);
+        knight1.getComponent('creature').HP -= this.damage;
+        knight1.getComponent('creature').runDamageAction();
         this.battle.creatures.addChild(knight1);
-        
-        
-        // 技能效果计算
-        // for(var i = 0;i < this.battle.creatures.children.length; ++i){
-        //     var creature = this.battle.creatures.children[i].getComponent('creature');
-        //     if(creature.camp != this.creature.camp){
-        //         creature.HP -= this.data.damage;
-        //         creature.runDamageAction();
-        //     }
-        // }
+        this.battle.node.getChildByName('atbBar').getComponent('atbBar').addChild();
+        this.creature.onDamage(this.damage);
+        this.creature.runDamageAction();
     },
 });
 
