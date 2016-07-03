@@ -2,5 +2,6 @@
 id	name	icon	hp	atk	atb	SAN	mov	movclass	rng	atkclass	skill_1	skill_2	skill_3
 1	Nyarlathotep	creature1	20	5	3		6	basemove	2	baseattack	10002	10001	
 2	Hounds of Tindalos	creature2	10	3	2		5	teleport	1	teleportattack	10004		
-3	Shoggoth	creature3	20	5	3		6	basemove	2	baseattack	10003		
+3	Shoggoth	shoggoth	20	5	3		6	basemove	2	baseattack	10003		
 4	Deep Ones	deepones	5	3	3		3	basemove	1	baseattack	10005		
+5	Dark Young of Shub-Niggurath	darkyoung	20	6	3		3	basemove	2	baseattack	10006	10007	

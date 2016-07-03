@@ -50,7 +50,7 @@ var Attack = cc.Class({
         } else {
             this.creature.zIndex ++; 
         }        
-        target.onDamage(30);
+        target.onDamage(this.creature.Atk);
         
         this.creature.node.getChildByName('Sprite').runAction(cc.sequence(attackAct));
         this.battle.setSelected(null);

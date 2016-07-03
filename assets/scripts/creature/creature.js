@@ -53,6 +53,8 @@ cc.Class({
         } else { // camp === 'player2'
             this.node.getChildByName('Sprite').getChildByName('camp').color = cc.color(0,0,255);
         }
+
+        this.animator = this.node.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation);
     },
 
     // use this for initialization
@@ -105,18 +107,10 @@ cc.Class({
         }
         if(this.reproduce == true){
             var newborn = cc.instantiate(this.battle.creaturePrefab);
-            newborn.getComponent('creature').init(this.battle, this.camp, this.data, battleTiled.randPixelLoc());
-            this.battle.addCreature(newborn);
-
-            var animate = newborn.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation);
-            cc.loader.loadRes("animate/dark", function (err, clip) {
-                if(err){
-                    cc.log(err);
-                    return;
-                }
-                animate.addClip(clip);
-                animate.play(clip.name);
-            });
+            newborn = newborn.getComponent('creature');
+            newborn.init(this.battle, this.camp, this.data, battleTiled.randPixelLoc());
+            newborn.play('dark');
+            this.battle.addCreature(newborn.node);
 
             this.reproduce = false;
             this.turnEnd();
@@ -144,6 +138,8 @@ cc.Class({
             show.removeAllChildren(false);
             show.addChild(skill.node);
             show.active = true;
+            skill.node.width = 100;
+            skill.node.height = 100;
         }
     },
     
@@ -188,6 +184,22 @@ cc.Class({
     runDamageAction:function(){
         this.showHpDuration = this.showHPDuration | 0.5;
         this.showHpDuration += 0.5;
+    },
+
+    getHexLoc:function(){
+        return battleTiled.toHexagonLoc(this.node.getPosition());
+    },
+
+    play:function(animation){
+        var animator = this.animator;
+        cc.loader.loadRes("animate/" + animation, function (err, clip) {
+            if(err){
+                cc.log(err);
+                return;
+            }
+            animator.addClip(clip);
+            animator.play(clip.name);
+        });
     },
     
     change: function(){

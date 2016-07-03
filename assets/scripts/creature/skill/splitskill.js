@@ -13,6 +13,7 @@ var splitskill = cc.Class({
         this.battle.addCreature(clone.node);
 
         clone.HP = hp;
+        clone.showHP = hp;
         clone.runDamageAction();
 
         this.creature.onDamage(hp);

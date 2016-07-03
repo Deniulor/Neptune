@@ -1,4 +1,3 @@
-
 var reproduction = cc.Class({
     extends: require('directiveskill'),
     
