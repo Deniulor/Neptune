@@ -42,14 +42,14 @@ var Attack = cc.Class({
             target.runDamageAction();
         }));
 
-        if(this.creature.zIndex != target.zIndex){
-            let max = Math.max(this.creature.zIndex, target.zIndex);
-            let min = Math.min(this.creature.zIndex, target.zIndex);
-            this.creature.zIndex = max;
-            target.zIndex = min;
+        if(this.creature.node.zIndex != target.node.zIndex){
+            let max = Math.max(this.creature.node.zIndex, target.node.zIndex);
+            let min = Math.min(this.creature.node.zIndex, target.node.zIndex);
+            this.creature.node.zIndex = max;
+            target.node.zIndex = min;
         } else {
-            this.creature.zIndex ++; 
-        }        
+            this.creature.node.zIndex ++; 
+        }
         target.onDamage(this.creature.Atk);
         
         this.creature.node.getChildByName('creature').runAction(cc.sequence(attackAct));

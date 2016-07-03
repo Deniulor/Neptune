@@ -63,8 +63,6 @@ cc.Class({
 
     },
 
-
-
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         var atb = this.getATB();
@@ -74,6 +72,7 @@ cc.Class({
             if(this.showHP <= 0){
                 this.showHP = 0;
                 this.showHpDuration = 0;
+                this.node.zIndex = 0;
                 var fadeOut = cc.fadeOut(2);
                 var finish = cc.callFunc(this.change, this);
                 var fadeIn = cc.fadeIn(0.1);
