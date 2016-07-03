@@ -167,6 +167,7 @@ cc.Class({
     moveto:function(to_x, to_y){
         this.movclass.moveto(to_x, to_y);
         this.action = 'moving';
+        this.node.getChildByName('creature').getChildByName('selected').active = false;
     },
 
     // 用已选择单位攻击指定的单位
