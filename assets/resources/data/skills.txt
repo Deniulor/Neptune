@@ -1,9 +1,11 @@
-技能ID	分类	技能ICON	技能名称	技能伤害值	特效	技能攻击范围	技能使用次数	技能触发概率	技能BUFF效果	技能说明	技能增加SAN值：
-id	sklclass	icon	name	damage	animation	rng	times	chance		desc	
-10001	directiveskill	skill_10001	fog	6						指向性机能测试	
-10002	effectskill	skill_10002	dark	8						直接发动技能	
-10003	splitskill	skill_10003	dark							分裂，生成一个子单位	
-10004	passiveskill	skill_10004	fog							被动机能	
-10005	reproduction	skill_10005	reproduction		dark					繁衍，指定一个单位生成一个子单位	
-10006	scream	skill_10006	scream	8	dark	2				咆哮，对周围单位造成伤害	
-10007	scream	skill_10007	stomp	8	dark	3				践踏，对周围单位造成伤害	
+技能ID	分类	技能ICON	技能名称	技能伤害值	特效	技能攻击范围	技能使用次数	技能触发概率	增加属性类型	增加属性值	触发回合	技能BUFF效果	技能说明
+id	sklclass	icon	name	damage	animation	rng	times	chance	attrtype	attrvalue	everytrigger		desc
+10001	directiveskill	skill_10001	fog	6									指向性机能测试
+10002	effectskill	skill_10002	dark	8									直接发动技能
+10003	splitskill	skill_10003	dark										分裂，生成一个子单位
+10004	passiveskill	skill_10004	fog										被动机能
+10005	reproduction	skill_10005	reproduction		dark								繁衍，指定一个单位生成一个子单位
+10006	scream	skill_10006	scream	8	dark	2							咆哮，对周围单位造成伤害
+10007	scream	skill_10007	stomp	8	dark	3							践踏，对周围单位造成伤害
+10008	attrskill	skill_10003	hpup						HP	1	2		增加一点生命
+10009	attrskill	skill_10003	atkup						ATK	1	2		增加一点攻击

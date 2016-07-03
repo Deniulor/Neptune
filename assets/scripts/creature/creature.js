@@ -27,9 +27,10 @@ cc.Class({
         this.atkclass = new atkclass();
         this.atkclass.creature = this;
         this.atkclass.battle = battle;
-
+        this.curRound = 0;
+        // this.everytrigger = data.everytrigger;
         this.skill = [];
-        for(var i = 0; i<3 ; ++i){
+        for(var i = 1; i<=3 ; ++i){
             var skl = data['skill_' + i];
             if(!skl){
                 continue;
@@ -105,6 +106,7 @@ cc.Class({
             this.setStatus("null");
             this.runDamageAction();
         }
+        this.curRound ++;
         if(this.reproduce == true){
             var newborn = cc.instantiate(this.battle.creaturePrefab);
             newborn = newborn.getComponent('creature');
@@ -177,6 +179,16 @@ cc.Class({
         if(this.HP<0){
             this.HP = 0;
         }
+    },
+    addAttrValue:function(type,value){
+        if(type == "HP"){
+            this.HP += value;
+            this.MaxHP += value;
+        }
+        if(type == "ATK"){
+            this.Atk += value;
+        }
+        this.runDamageAction();
     },
     setStatus: function(status){
         this.status = status;
