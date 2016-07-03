@@ -21,7 +21,7 @@ var directiveskill = cc.Class({
             return false;
         }
 
-        var animate = target.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation);
+        var animate = target.getChildByName('creature').getChildByName('animate').getComponent(cc.Animation);
         creature.HP -= this.data.damage;
         creature.runDamageAction();
         cc.loader.loadRes("animate/disappear", function (err, clip) {

@@ -48,14 +48,14 @@ cc.Class({
         this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.HP + "/" +this.MaxHP;
 
         var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
-        this.node.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
+        this.node.getChildByName('creature').getChildByName('portrait').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
         if(camp === 'red'){
-            this.node.getChildByName('Sprite').getChildByName('camp').color = cc.color(255,0,0);
-        } else { // camp === 'player2'
-            this.node.getChildByName('Sprite').getChildByName('camp').color = cc.color(0,0,255);
+            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(255,0,0);
+        } else { // camp === 'blue'
+            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(0,0,255);
         }
 
-        this.animator = this.node.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation);
+        this.animator = this.node.getChildByName('creature').getChildByName('animate').getComponent(cc.Animation);
     },
 
     // use this for initialization
@@ -68,13 +68,6 @@ cc.Class({
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         var atb = this.getATB();
-        var str;
-        if(atb > 0){
-            str = cc.js.formatStr("ATB:%s", atb.toFixed(0));
-        }else {
-            str = "Ready";
-        }
-        this.node.getChildByName("Label").getComponent(cc.Label).string = str;
         if(this.showHP >=0 && this.showHpDuration !== undefined && this.showHpDuration > 1e-6){
             this.showHP = this.showHP - (this.showHP - this.HP) / this.showHpDuration * dt;
             this.showHpDuration -= dt;
@@ -95,7 +88,15 @@ cc.Class({
         if(this.showHP !== null && this.showHP !== undefined){
             this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.showHP.toFixed(0) + "/" +this.MaxHP;
         }
-        //this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / this.MaxHP;
+    },
+    
+    change: function(){
+        var tnode = this.node;
+        this.node.getChildByName('creature').getChildByName('camp').active = false;
+        cc.loader.loadRes("graphics/creature/skeleton", cc.SpriteFrame, function (err, spriteFrame) {
+            var sprite = tnode.getChildByName('creature').getChildByName('portrait');
+            sprite.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
     },
 
     onTurnBegin:function(){
@@ -129,7 +130,7 @@ cc.Class({
     },
 
     showCreature:function(panel){
-        panel.getChildByName('camp').color = this.node.getChildByName('Sprite').getChildByName('camp').color;
+        panel.getChildByName('camp').color = this.node.getChildByName('creature').getChildByName('camp').color;
         for (var i = 0; i < 3; i++) {
             panel.getChildByName('skill' + i).active = false;
         }
@@ -216,15 +217,4 @@ cc.Class({
             animator.play(animation);
         });
     },
-    
-    change: function(){
-        var tnode = this.node;
-        tnode.getChildByName("HpBar").active = false; 
-        cc.loader.loadRes("graphics/creature/skeleton", cc.SpriteFrame, function (err, spriteFrame) {
-            var sprite = tnode.getChildByName('Sprite');
-            sprite.getComponent(cc.Sprite).spriteFrame = spriteFrame;
-            sprite.width *= 0.8;
-            sprite.height *= 0.8;
-        });
-    }
 });

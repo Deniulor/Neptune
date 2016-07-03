@@ -32,7 +32,7 @@ var Teleportattack = cc.Class({
         }        
         target.onDamage(this.creature.Atk);
         target.setStatus("bleeding");
-        this.creature.node.getChildByName('Sprite').runAction(cc.sequence(attackAct));
+        this.creature.node.getChildByName('creature').runAction(cc.sequence(attackAct));
         this.battle.setSelected(null);
     }
 });
