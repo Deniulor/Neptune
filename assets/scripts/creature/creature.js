@@ -191,14 +191,17 @@ cc.Class({
     },
 
     play:function(animation){
+        if(this.animator.play(animation)){
+            return;
+        }
         var animator = this.animator;
         cc.loader.loadRes("animate/" + animation, function (err, clip) {
             if(err){
                 cc.log(err);
                 return;
             }
-            animator.addClip(clip);
-            animator.play(clip.name);
+            animator.addClip(clip, animation);
+            animator.play(animation);
         });
     },
     
