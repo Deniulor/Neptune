@@ -106,7 +106,7 @@ cc.Class({
 
         // 使用给定的模板在场景中生成一个新节点
         var red1 = cc.instantiate(this.creaturePrefab);
-        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
+        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(2), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red1);
 
         var red2 = cc.instantiate(this.creaturePrefab);
