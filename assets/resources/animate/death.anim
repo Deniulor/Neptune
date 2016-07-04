@@ -1,0 +1,109 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "death",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.52,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "326eaeb0-1931-4162-93da-0ea610395b3a"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "4e427f8a-82b0-43a4-959b-496c423a8801"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "b30939cc-dc7d-43d8-a5b7-d6b70ba47f69"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "dd94c268-e2fe-4def-86eb-eb191e4d6e77"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "fa0b0d2b-95bd-4e85-816b-3d6da40c6bbb"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "eca8223a-ba24-4dcd-b238-2caaf0219b7a"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "115cea05-3c69-4925-b36a-467528f77bab"
+            }
+          },
+          {
+            "frame": 0.35,
+            "value": {
+              "__uuid__": "115cea05-3c69-4925-b36a-467528f77bab"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "115cea05-3c69-4925-b36a-467528f77bab"
+            }
+          },
+          {
+            "frame": 0.45,
+            "value": {
+              "__uuid__": "115cea05-3c69-4925-b36a-467528f77bab"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "115cea05-3c69-4925-b36a-467528f77bab"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "opacity": [
+        {
+          "frame": 0.3,
+          "value": 255
+        },
+        {
+          "frame": 0.35,
+          "value": 180
+        },
+        {
+          "frame": 0.4,
+          "value": 100
+        },
+        {
+          "frame": 0.45,
+          "value": 50
+        },
+        {
+          "frame": 0.5,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": []
+}
