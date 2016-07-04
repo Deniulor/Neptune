@@ -1,7 +1,7 @@
 cc.Class({
     extends: cc.Component,
 
-    properties: {
+    properties: { 
     },
 
     // use this for initialization
