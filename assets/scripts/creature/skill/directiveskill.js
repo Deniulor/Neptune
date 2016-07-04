@@ -35,13 +35,14 @@ var directiveskill = cc.Class({
         return true;
     },
 
-    beginSkill:function(){
+    beginSkill:function(event){
         if(this.creature.skillUsed){ // 用过技能了
             return;
         }
         
         this.battle.stopUpdate = true;
         this.skilling = true;
+        event.stopPropagation();
         return true; 
     },
     moveSkill:function(event){
@@ -59,7 +60,7 @@ var directiveskill = cc.Class({
         }
     },
     
-    useSkill:function(){
+    useSkill:function(event){
         if(!this.skilling){
             return;
         }

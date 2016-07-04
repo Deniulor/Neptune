@@ -5,13 +5,14 @@ var effectskill = cc.Class({
         this.node.on('touchend',this.effect0,this);
     },
     
-    effect0:function(){
+    effect0:function(event){
         if(this.creature.skillUsed){ // 用过技能了
             return;
         }
         if(this.effect()){
             this.creature.skillUsed = true;
         }
+        event.stopPropagation();
     },
 
     effect:function(){

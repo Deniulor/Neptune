@@ -39,7 +39,6 @@ cc.Class({
     onLoad: function () {
         var self = this;
         self.creatures = self.node.getChildByName('creatures');
-        self.clearFuncLayer();
         
         // 放置单位
         self.initBattle();
@@ -71,7 +70,7 @@ cc.Class({
         var loc = event.getLocation();
         var temp = this.node.convertToNodeSpace(loc);
         loc = battleTiled.toHexagonLoc(temp);
-        //cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
+        // cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
         if(!battleTiled.isLocValid(loc)){ // 在可操作区域内
             return;
         }
