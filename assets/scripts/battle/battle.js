@@ -98,26 +98,31 @@ cc.Class({
     initBattle:function(){
         // 初始化单位列表
         this.creatures.removeAllChildren();
-        
+        self = this;
+        var invalid = function(x, y){
+            var c = self.getCreatureOn(x,y);
+            return c !== null && c.getComponent('creature').HP > 0;
+        };
+
         // 使用给定的模板在场景中生成一个新节点
         var red1 = cc.instantiate(this.creaturePrefab);
-        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(2), battleTiled.randPixelLoc());
+        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red1);
 
         var red2 = cc.instantiate(this.creaturePrefab);
-        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc());
+        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red2);
         
         // var blue1 = cc.instantiate(this.creaturePrefab);
-        // blue1.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc());
+        // blue1.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         // this.creatures.addChild(blue1);
 
         // var blue2 = cc.instantiate(this.creaturePrefab);
-        // blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc());
+        // blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         // this.creatures.addChild(blue2);
 
         var blue3 = cc.instantiate(this.creaturePrefab);
-        blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(5), battleTiled.randPixelLoc());
+        blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(blue3);
     },
 

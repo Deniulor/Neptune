@@ -23,12 +23,14 @@ var MapTiled = cc.Class({
         return cc.p(x * this.XSpacing + this.TiledOffset, y * this.TiledSize + (x + 1) % 2 * this.TiledOffset);
     },
 
-    randHexagonLoc:function(){
-        return cc.p(Math.floor(Math.random() * this.MapWidth), Math.floor(Math.random() * this.MapHeight));
+    randHexagonLoc:function(invalid){
+        var x = Math.floor(Math.random() * this.MapWidth);
+        var y = Math.floor(Math.random() * this.MapHeight);
+        return this.getNearOne(cc.p(x, y), invalid);
     },
 
-    randPixelLoc:function(){
-        var loc = this.randHexagonLoc();
+    randPixelLoc:function(invalid){
+        var loc = this.randHexagonLoc(invalid);
         return this.toPixelLoc(loc.x, loc.y);
     },
 
@@ -68,8 +70,6 @@ var MapTiled = cc.Class({
             this.distance = distance;
         };
         
-        
-        var idx = 1;
         var dfs = function(curnode){
             var d = curnode.distance + 1;
             if(d > distance){
@@ -96,6 +96,57 @@ var MapTiled = cc.Class({
         
         dfs(new node(from.x, from.y, 0));
         return searched;
+    },
+
+    getNearOne:function(from, invalid){
+        if(!invalid || !invalid(from.x, from.y)){
+            return from;
+        }
+        var node = function(p_parent, loc_x, log_y, g){
+            this.parent = p_parent;
+            this.x = loc_x;
+            this.y = log_y;
+            this.valueG = g;
+            this.valueH = 0;
+        };
+
+        var open = [];
+        open.push(new node(null, from.x, from.y, 0));
+        var closed = [];
+        while(open.length > 0){
+            var n = open.length - 1;
+            for(var o = open.length - 2; o >= 0; o -- ){
+                if(open[n].valueG + open[n].valueH > open[o].valueG + open[o].valueH){
+                    n = o;
+                }
+            }
+            var curnode = open.splice(n, 1)[0];
+            closed.push(curnode);
+            var round = this.getRound(curnode.x, curnode.y);
+            for(var i = round.length - 1; i >= 0; i -- ){
+                var r = round[i];
+                if(!this.isLocValid(r)){ // 越界
+                    continue;
+                }
+                if(!invalid(r.x, r.y)){
+                    return r;
+                }
+                if(this.search(closed, r.x, r.y) !== null){
+                    continue; // 已经遍历过了
+                }
+                var nodeInOpen = this.search(open, r.x, r.y);
+                var tg = curnode.valueG + 1;
+                if(nodeInOpen === null){
+                    open.push(new node(curnode, r.x, r.y, tg));
+                } else {
+                    if(nodeInOpen.valueG > tg){
+                        nodeInOpen.valueG = tg;
+                        nodeInOpen.parent = curnode;
+                    }
+                }
+            }
+        }
+        return null;
     },
     
     /// 基础函数 - 获取两个点坐标之间的路径
