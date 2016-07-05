@@ -50,9 +50,9 @@ cc.Class({
         var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
         this.node.getChildByName('creature').getChildByName('portrait').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
         if(camp === 'red'){
-            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(255,0,0);
+            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(229,113,113);
         } else { // camp === 'blue'
-            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(0,0,255);
+            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(113,163,229);
         }
 
         this.animator = this.node.getChildByName('creature').getChildByName('animate').getComponent(cc.Animation);
