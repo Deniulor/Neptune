@@ -36,7 +36,15 @@ cc.Class({
         creature.getChildByName('HpLab').active = true;
         this.stop = stop;
     },
-
+    removeCreature:function (creature) {
+        for (var i = 0; i < this.node.children.length; ++i) {
+            var node = this.node.children[i];
+            if (node.creature==creature) {
+                this.node.removeChild(node);
+            }
+        }
+        
+    },
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         if(this.stop){

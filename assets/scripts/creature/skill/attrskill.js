@@ -6,7 +6,7 @@ var splitskill = cc.Class({
         
 
         // 播放特效
-        // this.creature.play(this.data.animation);
+        this.creature.play(this.data.animation);
         if(this.creature.curRound == this.data.everytrigger){
             this.creature.addAttrValue(this.data.attrtype,this.data.attrvalue);
             this.creature.curRound = 0;

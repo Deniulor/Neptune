@@ -110,7 +110,7 @@ cc.Class({
         this.creatures.addChild(red1);
 
         var red2 = cc.instantiate(this.creaturePrefab);
-        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
+        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(6), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red2);
         
         // var blue1 = cc.instantiate(this.creaturePrefab);
@@ -129,6 +129,10 @@ cc.Class({
     addCreature:function(creature){
         this.creatures.addChild(creature);
         this.node.getChildByName('atbBar').getComponent('atbBar').addCreature(creature);
+    },
+    removeCreature:function(creature){
+        this.creatures.removeChild(creature);
+        this.node.getChildByName('atbBar').getComponent('atbBar').removeCreature(creature);
     },
     
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空

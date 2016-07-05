@@ -117,6 +117,10 @@ cc.Class({
             this.reproduce = false;
             this.turnEnd();
         }
+        if(this.waitRound >0){
+            this.waitRound--;
+            this.turnEnd();
+        }
     },
     
     getATB: function(){

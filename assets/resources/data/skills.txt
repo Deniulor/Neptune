@@ -7,5 +7,7 @@ id	sklclass	icon	name	damage	animation	rng	times	chance	attrtype	attrvalue	every
 10005	reproduction	skill_10005	reproduction		dark								繁衍，指定一个单位生成一个子单位
 10006	scream	skill_10006	scream	8	dark	2							咆哮，对周围单位造成伤害
 10007	scream	skill_10007	stomp	8	dark	3							践踏，对周围单位造成伤害
-10008	attrskill	skill_10008	hpup						HP	1	2		增加一点生命
-10009	attrskill	skill_10009	atkup						ATK	1	2		增加一点攻击
+10008	attrskill	skill_10009	hpup		death				HP	1	2		增加一点生命
+10009	attrskill	skill_10008	atkup		death				ATK	1	2		增加一点攻击
+10010	swallow	skill_10005	swallow		dark								吞噬指定单位，获得他的部分属性
+10011	hypnosis	skill_10001	hypnosis	2									对一个单位催眠，令他X回合不能行动
