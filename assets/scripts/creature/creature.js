@@ -74,10 +74,10 @@ cc.Class({
                 this.showHpDuration = 0;
                 this.node.zIndex = 0;
                 var fadeOut = cc.fadeOut(2);
-                var finish = cc.callFunc(this.change, this);
+                var finish = cc.callFunc(this.onDie, this);
                 var fadeIn = cc.fadeIn(0.1);
                 this.node.runAction(cc.sequence(fadeOut,finish,fadeIn));
-                this.icon.runAction(cc.fadeOut(2));
+                this.icon.runAction(cc.spawn(cc.moveBy(2, cc.p(0, -40) ), cc.fadeOut(2)));
                 this.battle.checkIfWinner();
             }
         }
@@ -89,9 +89,9 @@ cc.Class({
         }
     },
     
-    change: function(){
+    onDie: function(){
         var tnode = this.node;
-        this.node.getChildByName('creature').getChildByName('camp').active = false;
+        tnode.getChildByName('creature').getChildByName('camp').active = false;
         cc.loader.loadRes("graphics/creature/skeleton", cc.SpriteFrame, function (err, spriteFrame) {
             var sprite = tnode.getChildByName('creature').getChildByName('portrait');
             sprite.getComponent(cc.Sprite).spriteFrame = spriteFrame;
@@ -119,6 +119,9 @@ cc.Class({
         }
         if(this.waitRound >0){
             this.waitRound--;
+            this.turnEnd();
+        }
+        if(this.HP <=0){
             this.turnEnd();
         }
     },

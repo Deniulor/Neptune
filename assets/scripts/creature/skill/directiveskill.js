@@ -64,9 +64,12 @@ var directiveskill = cc.Class({
         if(!this.skilling){
             return;
         }
-        
         this.skilling = false;
         this.battle.stopUpdate = false;
+
+        if(!battleTiled.isLocValid(this.skillTaget)){
+            return;
+        }
         if(this.effect(this.skillTaget)){
             this.creature.skillUsed = true;
         }

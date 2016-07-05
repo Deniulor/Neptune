@@ -36,6 +36,7 @@ var MapTiled = cc.Class({
 
     /// 基础函数 - 获取一个点周围的点坐标
     isLocValid:function (r){
+        if(!r) return false;
         return r.x >= 0 && r.x < this.MapWidth && r.y >= 0 && r.y < this.MapHeight;
     },
 
