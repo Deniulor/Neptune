@@ -14,36 +14,29 @@ cc.Class({
         this.width = this.node.getChildByName('BG').width;
         for(var i = 0; i < this.creatures.children.length; ++i){
             var creature = this.creatures.children[i];
-            this.maxAtb = Math.max(creature.getComponent('creature').Atb, this.maxAtb);
-            var uSprite = creature.getComponents(cc.Sprite);
-            creature.getChildByName('HpLab').active = false;
-            let node = cc.instantiate(creature);
-            node.creature = creature;
-            creature.getComponent('creature').icon = node;
-            
-            this.node.addChild(node);
-            creature.getChildByName('HpLab').active = true;
+            this.addCreature(creature);
         }
         this.stop = false;
         
         this.battle = this.node.parent.getComponent('battle');
     },
-    addChild:function () {
+
+    addCreature:function (creature) {
+        var stop = this.stop;
         this.stop = true;
-        for(var i = 0; i < this.creatures.children.length; ++i){
-            var creature = this.creatures.children[i];
-            this.maxAtb = Math.max(creature.getComponent('creature').Atb, this.maxAtb);
-            var uSprite = creature.getComponents(cc.Sprite);
-            creature.getChildByName('HpLab').active = false;
-            let node = cc.instantiate(creature);
-            node.creature = creature;
-            creature.getComponent('creature').icon = node;
-            
-            this.node.addChild(node);
-            creature.getChildByName('HpLab').active = true;
-        }
-        this.stop = false;
+        this.maxAtb = Math.max(creature.getComponent('creature').Atb, this.maxAtb);
+        var uSprite = creature.getComponents(cc.Sprite);
+        creature.getChildByName('HpLab').active = false;
+        let node = cc.instantiate(creature);
+        node.creature = creature;
+        creature.getComponent('creature').icon = node;
+        node.setPositionY(20);
+
+        this.node.addChild(node);
+        creature.getChildByName('HpLab').active = true;
+        this.stop = stop;
     },
+
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         if(this.stop){
@@ -60,10 +53,10 @@ cc.Class({
             }
             creature.curAtb -= dt;
             if(creature.curAtb <= 0){
-                this.battle.setSelected(node.creature);
                 this.stop = true;
+                this.battle.setSelected(node.creature);
             }
-            node.setPosition(creature.curAtb / this.maxAtb * this.width, 20);
+            node.setPositionX(creature.curAtb / this.maxAtb * this.width);
         }
     },
 });

@@ -39,7 +39,6 @@ cc.Class({
     onLoad: function () {
         var self = this;
         self.creatures = self.node.getChildByName('creatures');
-        self.clearFuncLayer();
         
         // 放置单位
         self.initBattle();
@@ -71,7 +70,7 @@ cc.Class({
         var loc = event.getLocation();
         var temp = this.node.convertToNodeSpace(loc);
         loc = battleTiled.toHexagonLoc(temp);
-        //cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
+        // cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
         if(!battleTiled.isLocValid(loc)){ // 在可操作区域内
             return;
         }
@@ -99,19 +98,37 @@ cc.Class({
     initBattle:function(){
         // 初始化单位列表
         this.creatures.removeAllChildren();
-        
-        // 使用给定的模板在场景中生成一个新节点
-        var knight1 = cc.instantiate(this.creaturePrefab);
-        knight1.getComponent('creature').init(this, 'red', dataApi.creatures.random(), battleTiled.randPixelLoc());
-        this.creatures.addChild(knight1);
-        
-        var knight2 = cc.instantiate(this.creaturePrefab);
-        knight2.getComponent('creature').init(this, 'red', dataApi.creatures.random(), battleTiled.randPixelLoc());
-        this.creatures.addChild(knight2);
+        self = this;
+        var invalid = function(x, y){
+            var c = self.getCreatureOn(x,y);
+            return c !== null && c.getComponent('creature').HP > 0;
+        };
 
-        var archer2 = cc.instantiate(this.creaturePrefab);
-        archer2.getComponent('creature').init(this, 'blue', dataApi.creatures.random(), battleTiled.randPixelLoc());
-        this.creatures.addChild(archer2);
+        // 使用给定的模板在场景中生成一个新节点
+        var red1 = cc.instantiate(this.creaturePrefab);
+        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(2), battleTiled.randPixelLoc(invalid));
+        this.creatures.addChild(red1);
+
+        var red2 = cc.instantiate(this.creaturePrefab);
+        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
+        this.creatures.addChild(red2);
+        
+        // var blue1 = cc.instantiate(this.creaturePrefab);
+        // blue1.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        // this.creatures.addChild(blue1);
+
+        // var blue2 = cc.instantiate(this.creaturePrefab);
+        // blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        // this.creatures.addChild(blue2);
+
+        var blue3 = cc.instantiate(this.creaturePrefab);
+        blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        this.creatures.addChild(blue3);
+    },
+
+    addCreature:function(creature){
+        this.creatures.addChild(creature);
+        this.node.getChildByName('atbBar').getComponent('atbBar').addCreature(creature);
     },
     
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空
@@ -149,17 +166,17 @@ cc.Class({
     /// 基础函数 设置当前单位
     setSelected:function(creature){
         if(this.selected){
-            this.selected.getChildByName('Sprite').getChildByName('Selected').active = false;
+            this.selected.getChildByName('creature').getChildByName('selected').active = false;
         }
         this.selected = creature;
         if(this.selected){
             this.stopUpdate = false;
-            this.selected.getChildByName('Sprite').getChildByName('Selected').active = true;
+            this.selected.getChildByName('creature').getChildByName('selected').active = true;
             var c = this.selected.getComponent('creature');
             c.onTurnBegin();
             var creaturePanel = this.node.getChildByName('creature');
-            c.showCreature(creaturePanel);
             creaturePanel.active = true;
+            c.showCreature(creaturePanel);
         } else {
             this.node.getChildByName('creature').active = false;
         }

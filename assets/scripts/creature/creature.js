@@ -7,6 +7,7 @@ cc.Class({
     init:function(battle, camp = 'red', data, loc){  
         this.battle = battle;
         this.camp = camp;
+        this.data = data;
 
         this.MaxHP = data.hp;
         this.HP = data.hp;
@@ -26,9 +27,10 @@ cc.Class({
         this.atkclass = new atkclass();
         this.atkclass.creature = this;
         this.atkclass.battle = battle;
-
+        this.curRound = 0;
+        // this.everytrigger = data.everytrigger;
         this.skill = [];
-        for(var i = 0; i<3 ; ++i){
+        for(var i = 1; i<=3 ; ++i){
             var skl = data['skill_' + i];
             if(!skl){
                 continue;
@@ -46,12 +48,14 @@ cc.Class({
         this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.HP + "/" +this.MaxHP;
 
         var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
-        this.node.getChildByName('Sprite').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
+        this.node.getChildByName('creature').getChildByName('portrait').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
         if(camp === 'red'){
-            this.node.getChildByName('Sprite').getChildByName('camp').color = cc.color(255,0,0);
-        } else { // camp === 'player2'
-            this.node.getChildByName('Sprite').getChildByName('camp').color = cc.color(0,0,255);
+            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(255,0,0);
+        } else { // camp === 'blue'
+            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(0,0,255);
         }
+
+        this.animator = this.node.getChildByName('creature').getChildByName('animate').getComponent(cc.Animation);
     },
 
     // use this for initialization
@@ -59,24 +63,16 @@ cc.Class({
 
     },
 
-
-
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         var atb = this.getATB();
-        var str;
-        if(atb > 0){
-            str = cc.js.formatStr("ATB:%s", atb.toFixed(1));
-        }else {
-            str = "Ready";
-        }
-        this.node.getChildByName("Label").getComponent(cc.Label).string = str;
         if(this.showHP >=0 && this.showHpDuration !== undefined && this.showHpDuration > 1e-6){
             this.showHP = this.showHP - (this.showHP - this.HP) / this.showHpDuration * dt;
             this.showHpDuration -= dt;
             if(this.showHP <= 0){
                 this.showHP = 0;
                 this.showHpDuration = 0;
+                this.node.zIndex = 0;
                 var fadeOut = cc.fadeOut(2);
                 var finish = cc.callFunc(this.change, this);
                 var fadeIn = cc.fadeIn(0.1);
@@ -89,9 +85,17 @@ cc.Class({
             this.showHP = this.HP;
         }
         if(this.showHP !== null && this.showHP !== undefined){
-            this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.showHP.toFixed(1) + "/" +this.MaxHP;
+            this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.showHP.toFixed(0) + "/" +this.MaxHP;
         }
-        //this.node.getChildByName("HpBar").getComponent(cc.ProgressBar).progress = this.showHP / this.MaxHP;
+    },
+    
+    change: function(){
+        var tnode = this.node;
+        this.node.getChildByName('creature').getChildByName('camp').active = false;
+        cc.loader.loadRes("graphics/creature/skeleton", cc.SpriteFrame, function (err, spriteFrame) {
+            var sprite = tnode.getChildByName('creature').getChildByName('portrait');
+            sprite.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+        });
     },
 
     onTurnBegin:function(){
@@ -102,19 +106,30 @@ cc.Class({
             this.setStatus("null");
             this.runDamageAction();
         }
+        this.curRound ++;
+        if(this.reproduce == true){
+            var newborn = cc.instantiate(this.battle.creaturePrefab);
+            newborn = newborn.getComponent('creature');
+            newborn.init(this.battle, this.camp, this.data, battleTiled.randPixelLoc());
+            newborn.play('dark');
+            this.battle.addCreature(newborn.node);
+
+            this.reproduce = false;
+            this.turnEnd();
+        }
     },
     
     getATB: function(){
         return this.curAtb;
     },
-    
+
     turnEnd: function(){
         this.curAtb = this.Atb;
         this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
     },
 
     showCreature:function(panel){
-        panel.getChildByName('camp').color = this.node.getChildByName('Sprite').getChildByName('camp').color;
+        panel.getChildByName('camp').color = this.node.getChildByName('creature').getChildByName('camp').color;
         for (var i = 0; i < 3; i++) {
             panel.getChildByName('skill' + i).active = false;
         }
@@ -125,6 +140,8 @@ cc.Class({
             show.removeAllChildren(false);
             show.addChild(skill.node);
             show.active = true;
+            skill.node.width = 100;
+            skill.node.height = 100;
         }
     },
     
@@ -150,6 +167,7 @@ cc.Class({
     moveto:function(to_x, to_y){
         this.movclass.moveto(to_x, to_y);
         this.action = 'moving';
+        this.node.getChildByName('creature').getChildByName('selected').active = false;
     },
 
     // 用已选择单位攻击指定的单位
@@ -163,6 +181,16 @@ cc.Class({
             this.HP = 0;
         }
     },
+    addAttrValue:function(type,value){
+        if(type == "HP"){
+            this.HP += value;
+            this.MaxHP += value;
+        }
+        if(type == "ATK"){
+            this.Atk += value;
+        }
+        this.runDamageAction();
+    },
     setStatus: function(status){
         this.status = status;
     },
@@ -170,15 +198,23 @@ cc.Class({
         this.showHpDuration = this.showHPDuration | 0.5;
         this.showHpDuration += 0.5;
     },
-    
-    change: function(){
-        var tnode = this.node;
-        tnode.getChildByName("HpBar").active = false; 
-        cc.loader.loadRes("graphics/creature/skeleton", cc.SpriteFrame, function (err, spriteFrame) {
-            var sprite = tnode.getChildByName('Sprite');
-            sprite.getComponent(cc.Sprite).spriteFrame = spriteFrame;
-            sprite.width *= 0.8;
-            sprite.height *= 0.8;
+
+    getHexLoc:function(){
+        return battleTiled.toHexagonLoc(this.node.getPosition());
+    },
+
+    play:function(animation){
+        if(this.animator.play(animation)){
+            return;
+        }
+        var animator = this.animator;
+        cc.loader.loadRes("animate/" + animation, function (err, clip) {
+            if(err){
+                cc.log(err);
+                return;
+            }
+            animator.addClip(clip, animation);
+            animator.play(animation);
         });
-    }
+    },
 });

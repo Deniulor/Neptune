@@ -9,26 +9,15 @@ var exp = cc.Class({
     	var creature = this.creature;
     	var teleport = [];
     	var self = this;
-    	this.showAnim();
+    	creature.play("disappear");
         teleport.push(cc.fadeOut(0.5));
 		teleport.push(cc.moveTo(0.05, battleTiled.toPixelLoc(to_x, to_y)));
-		var finish = cc.callFunc(function(){
-           self.showAnim();
-        });
         teleport.push(cc.fadeIn(0.5));
         teleport.push(cc.callFunc(function(){
             creature.action = 'attack';
         }));
         this.creature.node.runAction(cc.sequence(teleport));
     },
-    showAnim:function(){
-        var self = this;
-            var clip ;
-            cc.loader.loadRes("animate/disappear", function (err, clip) {
-            self.creature.node.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation).addClip(clip, "disappear");
-            self.creature.node.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation).play("disappear");
-            });
-    }
 });
 
 module.exports = exp;

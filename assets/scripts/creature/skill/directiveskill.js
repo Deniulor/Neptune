@@ -10,13 +10,39 @@ var directiveskill = cc.Class({
         this.node.on('touchcancel',this.useSkill,this);
     },
     
-    beginSkill:function(){
+    effect:function(loc){
+        var target = this.battle.getCreatureOn(loc.x, loc.y);
+        if(!target){
+            return;
+        }
+        // 技能效果计算
+        var creature = target.getComponent('creature');
+        if(creature.camp == this.creature.camp){
+            return false;
+        }
+
+        var animate = target.getChildByName('creature').getChildByName('animate').getComponent(cc.Animation);
+        creature.HP -= this.data.damage;
+        creature.runDamageAction();
+        cc.loader.loadRes("animate/disappear", function (err, clip) {
+            if(err){
+                cc.log(err);
+                return;
+            }
+            animate.addClip(clip);
+            animate.play(clip.name);
+        });
+        return true;
+    },
+
+    beginSkill:function(event){
         if(this.creature.skillUsed){ // 用过技能了
             return;
         }
         
         this.battle.stopUpdate = true;
         this.skilling = true;
+        event.stopPropagation();
         return true; 
     },
     moveSkill:function(event){
@@ -30,36 +56,19 @@ var directiveskill = cc.Class({
         loc = battleTiled.toHexagonLoc(temp);
         if(battleTiled.isLocValid(loc)){
             this.battle.funcLayer.setTileGID(4, cc.p(loc.x, battleTiled.MapHeight - 1 - loc.y));
-            this.skillTaget = this.battle.getCreatureOn(loc.x, loc.y);
+            this.skillTaget = loc;
         }
     },
     
-    useSkill:function(){
+    useSkill:function(event){
         if(!this.skilling){
             return;
         }
         
         this.skilling = false;
         this.battle.stopUpdate = false;
-        
-        if(!this.skillTaget){
-            return;
-        }
-        // 技能效果计算
-        var creature = this.skillTaget.getComponent('creature');
-        var animate = this.skillTaget.getChildByName('Sprite').getChildByName('animate').getComponent(cc.Animation);
-        if(creature.camp != this.creature.camp){
+        if(this.effect(this.skillTaget)){
             this.creature.skillUsed = true;
-            creature.HP -= this.data.damage;
-            creature.runDamageAction();
-            cc.loader.loadRes("animate/disappear", function (err, clip) {
-                if(err){
-                    cc.log(err);
-                    return;
-                }
-                animate.addClip(clip);
-                animate.play(clip.name);
-            });
         }
     }
 });

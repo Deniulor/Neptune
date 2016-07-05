@@ -3,9 +3,9 @@
   "_name": "Selected",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.5666666666666667,
+  "_duration": 0.31666666666666665,
   "sample": 60,
-  "speed": 1,
+  "speed": 0.75,
   "wrapMode": 2,
   "curveData": {
     "comps": {
@@ -18,21 +18,39 @@
             }
           },
           {
-            "frame": 0.18333333333333332,
+            "frame": 0.05,
             "value": {
               "__uuid__": "89aafd40-f45f-4af6-b856-a7d21e671212"
             }
           },
           {
-            "frame": 0.36666666666666664,
+            "frame": 0.1,
             "value": {
               "__uuid__": "2b18f150-19fa-409f-8cc2-591b2bbe9ab0"
             }
           },
           {
-            "frame": 0.55,
+            "frame": 0.15,
             "value": {
               "__uuid__": "0a49ba77-b8f7-4f60-a959-c420ae0a3cb1"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "f485bf73-7deb-4f78-a103-8702df75eefd"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "8a27c21b-7d2e-4024-902f-aed7216dde05"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "82a5f476-3b71-4062-af6f-1c88e4edeed6"
             }
           }
         ]
