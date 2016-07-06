@@ -117,9 +117,9 @@ cc.Class({
         // blue1.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         // this.creatures.addChild(blue1);
 
-        var blue2 = cc.instantiate(this.creaturePrefab);
-        blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
-        this.creatures.addChild(blue2);
+        // var blue2 = cc.instantiate(this.creaturePrefab);
+        // blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        // this.creatures.addChild(blue2);
 
         var blue3 = cc.instantiate(this.creaturePrefab);
         blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));

@@ -1,4 +1,3 @@
-var dataApi = require('dataApi');
 cc.Class({
     extends: cc.Component,
 
@@ -23,16 +22,10 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
-        unitPrefab: {
-            default: null,
-            type: cc.Prefab
-        },
     },
 
     // use this for initialization
     onLoad: function () {
-        // this.Item_Count = dataApi.creatures.ids.length;
-        // cc.log(this.Item_Count);
         this.pLayoutNode = this.node.getChildByName("pLayout");
         this.pLayout= this.pLayoutNode.getComponent(cc.Layout);
         
@@ -95,13 +88,6 @@ cc.Class({
         // };
         // this.node.on(cc.Node.EventType.TOUCH_END,touchEnd,this); 
         
-    },
-    init:function(count) {
-        for(var i = 1; i <= count; ++i){
-             var unit = cc.instantiate(this.unitPrefab);
-             unit.getComponent('unit').init();
-            //  unit.setPosition();
-        }
     },
     playPageSound: function () {
         // 调用声音引擎播放声音

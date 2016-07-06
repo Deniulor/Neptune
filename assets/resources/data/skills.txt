@@ -2,7 +2,7 @@
 id	sklclass	icon	name	damage	animation	rng	times	chance	attrtype	attrvalue	everytrigger		desc
 10001	directiveskill	skill_10001	fog	6									指向性机能测试
 10002	effectskill	skill_10002	dark	8									直接发动技能
-10003	splitskill	skill_10003	dark		split								分裂，生成一个子单位
+10003	splitskill	skill_10003	dark										分裂，生成一个子单位
 10004	passiveskill	skill_10004	fog										被动机能
 10005	reproduction	skill_10005	reproduction		dark								繁衍，指定一个单位生成一个子单位
 10006	scream	skill_10006	scream	8	dark	2							咆哮，对周围单位造成伤害

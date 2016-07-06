@@ -5,4 +5,4 @@ id	name	icon	hp	atk	atb	SAN	mov	movclass	rng	atkclass	skill_1	skill_2	skill_3
 3	Shoggoth	shoggoth	20	5	3		6	basemove	2	baseattack	10003	10008	10009
 4	Deep Ones	deepones	5	3	3		3	basemove	1	baseattack	10005		
 5	Dark Young of Shub-Niggurath	darkyoung	20	6	3		3	basemove	2	baseattack	10006	10007	
-6	Cthulhu	cthulhu	10	3	3		3	basemove	2	baseattack	10010	10011	
+6	Cthulhu	shoggoth	10	3	3		3	basemove	2	baseattack	10010	10011	
