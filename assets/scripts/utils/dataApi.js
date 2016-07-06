@@ -84,9 +84,6 @@ Data.prototype.random = function() {
 Data.prototype.all = function() {
 	return this.data;
 };
-Data.prototype.size = function() {
-	return this.ids.length;
-};
 
 var exp = {};
 exp.inited = false;

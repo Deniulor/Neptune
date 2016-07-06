@@ -4,8 +4,7 @@ var splitskill = cc.Class({
 
     effect:function(){        
         // 使用给定的模板在场景中生成一个新节点
-        // 播放特效
-        this.creature.play(this.data.animation);
+
         if(!this.randInvalidFunc){
             var self = this;
             this.randInvalidFunc = function(x, y){
@@ -13,7 +12,7 @@ var splitskill = cc.Class({
                 return c !== null && c.getComponent('creature').HP > 0;
             }
         }
-        
+
         var hp = Math.ceil(this.creature.HP/2);
 
         var clone = cc.instantiate(this.battle.creaturePrefab);
@@ -25,7 +24,7 @@ var splitskill = cc.Class({
         clone.showHP = hp;
         clone.runDamageAction();
 
-        this.creature.onDamage(hp);
+        // this.creature.onDamage(hp);
         this.creature.runDamageAction();
         return true;
     },
