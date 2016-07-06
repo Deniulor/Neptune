@@ -19,6 +19,9 @@ cc.Class({
         this.stop = false;
         
         this.battle = this.node.parent.getComponent('battle');
+
+        this.preview = this.node.getChildByName('preview');
+        this.preview.zIndex = 500;
     },
 
     addCreature:function (creature) {
@@ -36,6 +39,7 @@ cc.Class({
         creature.getChildByName('HpLab').active = true;
         this.stop = stop;
     },
+
     removeCreature:function (creature) {
         for (var i = 0; i < this.node.children.length; ++i) {
             var node = this.node.children[i];
@@ -43,13 +47,14 @@ cc.Class({
                 this.node.removeChild(node);
             }
         }
-        
     },
+
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         if(this.stop){
             return;
         }
+        this.preview.active = false;
         for(var i = 0; i < this.node.children.length; ++i){
             var node = this.node.children[i];
             if(!node.creature){
@@ -63,8 +68,17 @@ cc.Class({
             if(creature.curAtb <= 0){
                 this.stop = true;
                 this.battle.setSelected(node.creature);
+                this.showPreview(creature);
             }
             node.setPositionX(creature.curAtb / this.maxAtb * this.width);
         }
+    },
+
+    showPreview:function(creature){
+        this.preview.active = true;
+        this.preview.color = creature.node.getChildByName('creature').getChildByName('camp').color;
+        this.preview.getChildByName('portrait').getComponent(cc.Sprite).spriteFrame
+            = creature.node.getChildByName('creature').getChildByName('portrait').getComponent(cc.Sprite).spriteFrame;
+        this.preview.setPositionX(creature.Atb / this.maxAtb * this.width);
     },
 });

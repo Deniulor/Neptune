@@ -101,6 +101,7 @@ cc.Class({
     onTurnBegin:function(){
         this.action = 'move';
         this.skillUsed = false;
+        
         if(this.status=="bleeding"){
             this.onDamage(2);
             this.setStatus("null");
@@ -117,11 +118,11 @@ cc.Class({
             this.reproduce = false;
             this.turnEnd();
         }
-        if(this.waitRound >0){
+        if(this.waitRound > 0){
             this.waitRound--;
             this.turnEnd();
         }
-        if(this.HP <=0){
+        if(this.HP <= 0){
             this.turnEnd();
         }
     },

@@ -133,7 +133,7 @@ cc.Class({
     removeCreature:function(creature){
         this.creatures.removeChild(creature);
         this.node.getChildByName('atbBar').getComponent('atbBar').removeCreature(creature);
-    },
+    },    
     
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空
     getCreatureOn:function(x, y){
