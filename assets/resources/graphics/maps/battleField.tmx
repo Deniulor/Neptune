@@ -19,19 +19,13 @@
   <image source="tiles-func.png" width="240" height="80"/>
  </tileset>
  <layer name="gound" width="13" height="4" opacity="0.2">
-  <data encoding="csv">
-1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1
-</data>
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgYBxGGAAWWAA1
+  </data>
  </layer>
  <layer name="func" width="13" height="4" opacity="0.8">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,3,0
-</data>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgegBlKAwAA6AAE
+  </data>
  </layer>
 </map>
