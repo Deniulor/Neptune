@@ -31,7 +31,8 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        // this.Item_Count = dataApi.creatures.ids.length;
+        this.Item_Count = dataApi.creatures.ids.length;
+        this.init(this.Item_Count);
         // cc.log(this.Item_Count);
         this.pLayoutNode = this.node.getChildByName("pLayout");
         this.pLayout= this.pLayoutNode.getComponent(cc.Layout);
@@ -97,10 +98,12 @@ cc.Class({
         
     },
     init:function(count) {
+        this.pLayoutNode = this.node.getChildByName("pLayout");
         for(var i = 1; i <= count; ++i){
              var unit = cc.instantiate(this.unitPrefab);
-             unit.getComponent('unit').init();
-            //  unit.setPosition();
+             var p = cc.p((i-count/2)*this.Item_Width-0.5*this.Item_Width,0);
+             unit.getComponent('unit').init(dataApi.creatures.findById(i),p);
+             this.pLayoutNode.addChild(unit);
         }
     },
     playPageSound: function () {
