@@ -4,11 +4,11 @@ var swallow = cc.Class({
     effect:function(loc){
         var target = this.battle.getCreatureOn(loc.x, loc.y);
         if(!target){
-            return;
+            return false;
         }
         // 技能效果计算
         var creature = target.getComponent('creature');
-        if(creature.camp != this.creature.camp && creature.data.id != this.creature.data.id){
+        if(creature.camp != this.creature.camp || creature.HP <= 0){
             return false;
         }
         var hp = Math.ceil(creature.HP/2);

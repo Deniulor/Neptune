@@ -9,7 +9,6 @@ var MapTiled = cc.Class({
 
     },
 
-
     /// 基础函数 - 将一个像素坐标点转为六边形地图坐标
     toHexagonLoc:function(loc){
         var x = parseInt((loc.x + 3 - this.TiledSize / 4) / this.XSpacing);
@@ -56,7 +55,7 @@ var MapTiled = cc.Class({
         while (i--) {
             if (arr[i].x == px && arr[i].y == py) {  
                 return arr[i];
-            }  
+            }
         }  
         return null;  
     },
