@@ -17,6 +17,10 @@ cc.Class({
             default: null,
             type: cc.Prefab
         },
+        skillPrefab: {
+            default: null,
+            type: cc.Prefab
+        },
         winnerPrefab:{
             default: null,
             type: cc.Prefab
@@ -179,8 +183,8 @@ cc.Class({
             var c = this.selected.getComponent('creature');
             c.onTurnBegin();
             var creaturePanel = this.node.getChildByName('creature');
-            creaturePanel.active = true;
             c.showCreature(creaturePanel);
+            creaturePanel.active = true;
         } else {
             this.node.getChildByName('creature').active = false;
         }

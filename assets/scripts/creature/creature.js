@@ -100,7 +100,7 @@ cc.Class({
 
     onTurnBegin:function(){
         this.action = 'move';
-        this.skillUsed = false;
+        this.setSkillUsed(false);
         
         if(this.status=="bleeding"){
             this.onDamage(2);
@@ -138,18 +138,12 @@ cc.Class({
 
     showCreature:function(panel){
         panel.getChildByName('camp').color = this.node.getChildByName('creature').getChildByName('camp').color;
-        for (var i = 0; i < 3; i++) {
-            panel.getChildByName('skill' + i).active = false;
-        }
+        var skillPanel = panel.getChildByName('skillLayout');
+        skillPanel.removeAllChildren(false);
 
         for(var i = 0; i < this.skill.length; ++i){
             let skill = this.skill[i];
-            let show = panel.getChildByName('skill' + i);
-            show.removeAllChildren(false);
-            show.addChild(skill.node);
-            show.active = true;
-            skill.node.width = 100;
-            skill.node.height = 100;
+            skillPanel.addChild(skill.node);
         }
     },
     
@@ -199,6 +193,14 @@ cc.Class({
         }
         this.runDamageAction();
     },
+
+    setSkillUsed:function(value){
+        this.skillUsed = value;
+        for(var i = 0; i < this.skill.length ; ++i){
+            this.skill[i].node.getChildByName('lock').active = value;
+        }
+    },
+
     setStatus: function(status){
         this.status = status;
     },

@@ -5,8 +5,8 @@ var SKill = cc.Class({
         this.creature = creature;
         this.battle = creature.battle;
 
-        this.node = new cc.Node();
-        let sprite = this.node.addComponent(cc.Sprite);
+        this.node = cc.instantiate(this.battle.skillPrefab);
+        let sprite = this.node.getComponent(cc.Sprite);
         var url = cc.url.raw('resources/graphics/skill/' + skill.icon + '.png');
         sprite.spriteFrame = new cc.SpriteFrame(url);
 

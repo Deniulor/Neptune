@@ -71,7 +71,7 @@ var directiveskill = cc.Class({
             return;
         }
         if(this.effect(this.skillTaget)){
-            this.creature.skillUsed = true;
+            this.creature.setSkillUsed(true);
         }
     }
 });

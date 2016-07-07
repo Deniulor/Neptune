@@ -10,7 +10,7 @@ var effectskill = cc.Class({
             return;
         }
         if(this.effect()){
-            this.creature.skillUsed = true;
+            this.creature.setSkillUsed(true);
         }
         event.stopPropagation();
     },
