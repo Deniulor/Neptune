@@ -8,7 +8,6 @@ var exp = cc.Class({
     moveto:function(to_x, to_y){
     	var creature = this.creature;
     	var teleport = [];
-    	var self = this;
     	creature.play("disappear");
         teleport.push(cc.fadeOut(0.5));
 		teleport.push(cc.moveTo(0.05, battleTiled.toPixelLoc(to_x, to_y)));

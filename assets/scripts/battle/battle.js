@@ -98,7 +98,7 @@ cc.Class({
     initBattle:function(){
         // 初始化单位列表
         this.creatures.removeAllChildren();
-        self = this;
+        var self = this;
         var invalid = function(x, y){
             var c = self.getCreatureOn(x,y);
             return c !== null && c.getComponent('creature').HP > 0;
