@@ -21,6 +21,10 @@ cc.Class({
             default: null,
             type: cc.Prefab
         },
+        setupPrefab: {
+            default: null,
+            type: cc.Prefab
+        },
         winnerPrefab:{
             default: null,
             type: cc.Prefab
@@ -54,6 +58,7 @@ cc.Class({
         this.stopUpdate = true;
 
         this.setSelected(null);
+        cc.director.preloadScene('menu');
     },
     
     update:function(){
@@ -65,7 +70,7 @@ cc.Class({
             this.selected.getComponent('creature').showAction();
         }
     },
-    
+
     // 点击结束事件
     onTouchEnded:function(event){
         if(!this.selected){
@@ -224,5 +229,14 @@ cc.Class({
             this.node.parent.parent.addChild(winner);
             cc.audioEngine.stopMusic();
         } 
-    }
+    },
+
+    puase:function(){
+        if(this.setupWindow){
+            this.setupWindow.active = true;
+        } else {
+            this.setupWindow = cc.instantiate(this.setupPrefab);
+            this.node.parent.addChild(this.setupWindow);
+        }
+    },
 });
