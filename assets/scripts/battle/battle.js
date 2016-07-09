@@ -45,6 +45,10 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        playerIcon: {
+            default: null,
+            type: cc.Node
+        }
     },
     
     // 加载事件
@@ -195,12 +199,18 @@ cc.Class({
             this.stopUpdate = false;
             this.selected.getChildByName('creature').getChildByName('selected').active = true;
             var c = this.selected.getComponent('creature');
+            if(c.camp == 'red'){
+                this.playerIcon.color = cc.color(230, 140, 140);
+            } else { // 
+                this.playerIcon.color = cc.color(110, 150, 240);
+            } 
             c.onTurnBegin();
             var creaturePanel = this.node.getChildByName('creature');
             c.showCreature(creaturePanel);
             creaturePanel.active = true;
         } else {
             this.node.getChildByName('creature').active = false;
+            this.playerIcon.color = cc.color(255, 255, 255);
         }
     },
     
