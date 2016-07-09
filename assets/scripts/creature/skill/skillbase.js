@@ -9,6 +9,9 @@ var SKill = cc.Class({
         let sprite = this.node.getComponent(cc.Sprite);
         var url = cc.url.raw('resources/graphics/skill/' + skill.icon + '.png');
         sprite.spriteFrame = new cc.SpriteFrame(url);
+        if(sprite.spriteFrame.retain){
+            sprite.spriteFrame.retain();
+        }
 
         this.node.on('touchstart', this.startLongTouch, this);
         this.node.on('touchmove',this.stopLongTouch,this);
