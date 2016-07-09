@@ -53,7 +53,7 @@ cc.Class({
         self.node.on("touchend", self.onTouchEnded, self);
         cc.audioEngine.stopMusic();
         cc.audioEngine.setMusicVolume(0.5);
-        //this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
+        this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         cc.audioEngine.setEffectsVolume(0.5);
         this.stopUpdate = true;
 
@@ -115,11 +115,11 @@ cc.Class({
 
         // 使用给定的模板在场景中生成一个新节点
         var red1 = cc.instantiate(this.creaturePrefab);
-        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(2), battleTiled.randPixelLoc(invalid));
+        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red1);
 
         var red2 = cc.instantiate(this.creaturePrefab);
-        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(6), battleTiled.randPixelLoc(invalid));
+        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red2);
         
         // var blue1 = cc.instantiate(this.creaturePrefab);
@@ -127,11 +127,11 @@ cc.Class({
         // this.creatures.addChild(blue1);
 
         var blue2 = cc.instantiate(this.creaturePrefab);
-        blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
+        blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(5), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(blue2);
 
         var blue3 = cc.instantiate(this.creaturePrefab);
-        blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(5), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(blue3);
     },
 

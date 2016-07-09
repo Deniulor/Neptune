@@ -9228,6 +9228,9 @@
     },
     "winnerPrefab": {
       "__uuid__": "9d807a56-d851-4391-8e05-4799f8bc60ad"
+    },
+    "battleMusic": {
+      "__uuid__": "b5e0b32b-35ee-4d1f-ae6b-9e87a78ef1c1"
     }
   },
   {
@@ -9749,7 +9752,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_fontSize": 40,
+    "_fontSize": 28,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": {

@@ -237,6 +237,14 @@ cc.Class({
             }
             animator.addClip(clip, animation);
             animator.play(animation);
+            cc.loader.loadRes("sound/effects/" + animation, function (err, sound) {
+            if(err){
+                cc.log(err);
+                return;
+            }
+            cc.audioEngine.playEffect(sound, false);
         });
+        });
+        
     },
 });
