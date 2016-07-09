@@ -18,6 +18,7 @@ var directiveskill = cc.Class({
         // 技能效果计算
         var creature = target.getComponent('creature');
         if(creature.camp == this.creature.camp){
+            this.battle.floatMessage("你要谋害队友吗？");
             return false;
         }
 
@@ -37,6 +38,7 @@ var directiveskill = cc.Class({
 
     beginSkill:function(event){
         if(this.creature.skillUsed){ // 用过技能了
+            this.battle.floatMessage("技能使用过了");
             return;
         }
         

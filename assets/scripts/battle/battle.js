@@ -1,6 +1,6 @@
 var battleTiled = require('battleTiled');
 var dataApi = require('dataApi');
-
+var showMessage = require('showMessage');
 cc.Class({
     extends: cc.Component,
     
@@ -56,7 +56,7 @@ cc.Class({
         this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         cc.audioEngine.setEffectsVolume(0.5);
         this.stopUpdate = true;
-
+        // this.floatMessage("32313");
         this.setSelected(null);
         cc.director.preloadScene('menu');
     },
@@ -115,11 +115,11 @@ cc.Class({
 
         // 使用给定的模板在场景中生成一个新节点
         var red1 = cc.instantiate(this.creaturePrefab);
-        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
+        red1.getComponent('creature').init(this, 'red', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red1);
 
         var red2 = cc.instantiate(this.creaturePrefab);
-        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(3), battleTiled.randPixelLoc(invalid));
+        red2.getComponent('creature').init(this, 'red', dataApi.creatures.findById(4), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(red2);
         
         // var blue1 = cc.instantiate(this.creaturePrefab);
@@ -127,11 +127,11 @@ cc.Class({
         // this.creatures.addChild(blue1);
 
         var blue2 = cc.instantiate(this.creaturePrefab);
-        blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(5), battleTiled.randPixelLoc(invalid));
+        blue2.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(6), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(blue2);
 
         var blue3 = cc.instantiate(this.creaturePrefab);
-        blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(5), battleTiled.randPixelLoc(invalid));
+        blue3.getComponent('creature').init(this, 'blue', dataApi.creatures.findById(2), battleTiled.randPixelLoc(invalid));
         this.creatures.addChild(blue3);
     },
 
@@ -142,8 +142,11 @@ cc.Class({
     removeCreature:function(creature){
         this.creatures.removeChild(creature);
         this.node.getChildByName('atbBar').getComponent('atbBar').removeCreature(creature);
-    },    
-    
+    },
+    // 浮动弹窗    
+    floatMessage:function (message) {
+        showMessage.init(this,message);
+    },
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空
     getCreatureOn:function(x, y){
         for(var i = this.creatures.children.length - 1; i >= 0; --i){

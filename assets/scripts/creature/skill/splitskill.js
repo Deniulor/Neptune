@@ -4,6 +4,7 @@ var splitskill = cc.Class({
 
     effect:function(){
         if(this.creature.HP <= 2){
+            this.battle.floatMessage("血量必须大于2才能使用");
             return false;
         }
         // 使用给定的模板在场景中生成一个新节点
