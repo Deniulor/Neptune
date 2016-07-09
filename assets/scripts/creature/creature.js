@@ -168,7 +168,7 @@ cc.Class({
     
     moveto:function(to_x, to_y){
         var from = battleTiled.toHexagonLoc(this.node.getPosition());
-        if(from.x = to_x && from.y == to_y){
+        if(from.x == to_x && from.y == to_y){
             this.action = 'attack';
             return;
         }
