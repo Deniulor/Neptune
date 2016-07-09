@@ -27,11 +27,6 @@ var Attack = cc.Class({
         };
 
         var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Rng, invalid);
-        // if(!hastaget){
-        //     this.creature.turnEnd();
-        //     this.battle.setSelected(null);
-        //     return;
-        // }
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
             self.battle.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
@@ -63,7 +58,6 @@ var Attack = cc.Class({
         target.onDamage(this.creature.Atk);
         
         this.creature.node.getChildByName('creature').runAction(cc.sequence(attackAct));
-        this.battle.setSelected(null);
     }
 });
 

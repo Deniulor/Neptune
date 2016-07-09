@@ -34,7 +34,6 @@ var Teleportattack = cc.Class({
         
         target.setStatus("bleeding");
         this.creature.node.getChildByName('creature').runAction(cc.sequence(attackAct));
-        this.battle.setSelected(null);
     }
 });
 module.exports = Teleportattack;

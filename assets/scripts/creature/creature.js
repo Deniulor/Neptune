@@ -134,6 +134,7 @@ cc.Class({
     turnEnd: function(){
         this.curAtb = this.Atb;
         this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+        this.battle.setSelected(null);
     },
 
     showCreature:function(panel){
@@ -181,7 +182,6 @@ cc.Class({
     // 用已选择单位攻击指定的单位
     attack:function(target){
         if(target == this){
-            this.battle.setSelected(null);
             this.turnEnd();
             return;
         }
