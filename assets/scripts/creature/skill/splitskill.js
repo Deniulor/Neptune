@@ -2,7 +2,10 @@ var battleTiled = require('battleTiled');
 var splitskill = cc.Class({
     extends: require('effectskill'),
 
-    effect:function(){        
+    effect:function(){
+        if(this.creature.HP <= 2){
+            return false;
+        }
         // 使用给定的模板在场景中生成一个新节点
         // 播放特效
         this.creature.play(this.data.animation);
