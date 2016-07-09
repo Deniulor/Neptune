@@ -21,8 +21,8 @@ var Attack = cc.Class({
                 return false;
             if(c.camp == self.camp)
                 return true;
-            if(c.HP <= 0)
-                return true;
+            if(c.HP > 0)
+                return false;
             return true;
         };
 
