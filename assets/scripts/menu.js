@@ -17,10 +17,10 @@ cc.Class({
         this.node.runAction(cc.fadeIn(1));
         cc.audioEngine.playMusic(this.menuMusic, true);
         cc.director.preloadScene('details', function () {
-            cc.log('details scene preloaded');
+            // cc.log('details scene preloaded');
         });
         cc.director.preloadScene('battle', function () {
-            cc.log('battle scene preloaded');
+            // cc.log('battle scene preloaded');
         });
     },
     details:function() {
@@ -29,10 +29,13 @@ cc.Class({
     },
     practice:function() {
         cc.audioEngine.playEffect(this.clickEffect, false);
-        cc.director.loadScene('battle');
+        if(cc.sys.localStorage.getItem('guided') == "true"){
+            cc.director.loadScene('battle');
+        } else {
+            cc.director.loadScene('guide');
+        }
     },
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
+    resetGuide:function(){
+        cc.sys.localStorage.setItem('guided', false);
+    }
 });
