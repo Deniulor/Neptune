@@ -19,6 +19,7 @@ var Teleportattack = cc.Class({
         attackAct.push(atk);
         attackAct.push(cc.moveBy(0.5, cc.p(distLoc.x - targetLoc.x, distLoc.y - targetLoc.y)));
         attackAct.push(cc.callFunc(function(){
+            target.play("attack");
             target.runDamageAction();
         }));
 

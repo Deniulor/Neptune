@@ -135,7 +135,7 @@ cc.Class({
         this.curAtb = this.Atb;
         this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         this.battle.setSelected(null);
-        this.battle.checkIfWinner();
+        // this.battle.checkIfWinner();
     },
 
     showCreature:function(panel){
