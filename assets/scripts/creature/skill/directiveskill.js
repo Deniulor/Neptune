@@ -40,17 +40,23 @@ var directiveskill = cc.Class({
             return;
         }
         
-        this.battle.stopUpdate = true;
-        this.skilling = true;
-        event.stopPropagation();
+        this.pressed = true;
         return true; 
     },
+    
     moveSkill:function(event){
-        if(!this.skilling){
+        if(!this.pressed){
             return;
         }
+        if(this.popDetail){ // 在长按已经生效
+            this.skilling = false;
+            this.battle.stopUpdate = false;
+            return;
+        }
+        this.skilling = true; 
+        this.battle.stopUpdate = true;
         this.battle.clearFuncLayer();
-        
+
         var loc = event.getLocation();
         var temp = this.battle.node.convertToNodeSpace(loc);
         loc = battleTiled.toHexagonLoc(temp);
@@ -64,6 +70,10 @@ var directiveskill = cc.Class({
         if(!this.skilling){
             return;
         }
+        if(!this.pressed){
+            return;
+        }
+        this.pressed = true;
         this.skilling = false;
         this.battle.stopUpdate = false;
 

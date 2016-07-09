@@ -10,17 +10,28 @@ var SKill = cc.Class({
         var url = cc.url.raw('resources/graphics/skill/' + skill.icon + '.png');
         sprite.spriteFrame = new cc.SpriteFrame(url);
 
-        this.node.on('touchstart', this.counting, this);
+        this.node.on('touchstart', this.startLongTouch, this);
+        this.node.on('touchmove',this.stopLongTouch,this);
+        this.node.on('touchend',this.stopLongTouch, this);
+        this.node.on('touchcancel',this.stopLongTouch, this);
 
         this.bindEvent(this.node);
     },
 
-    counting:function(){
-        cc.log('cocos');
+    startLongTouch:function(){
+        var self = this;
+        this.popDetail = false;
+        this.touching = setTimeout(function (){
+            self.popDetail = true;
+            self.battle.showSkillDetail(self);
+        }, 2000);
+    },
+
+    stopLongTouch:function(){
+        clearTimeout(this.touching);
     },
 
     bindEvent:function(node){
-
     },
 });
 

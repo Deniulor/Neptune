@@ -19,9 +19,9 @@ var Attack = cc.Class({
             c = c.getComponent('creature');
             if(c == self)
                 return false;
-            if(c.camp == self.camp)
-                return true;
-            if(c.HP > 0)
+            if(c.camp != self.camp) // 敌方单位
+                return false;
+            if(c.HP <= 0) // 己方单位
                 return false;
             return true;
         };

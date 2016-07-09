@@ -239,4 +239,8 @@ cc.Class({
             this.node.parent.addChild(this.setupWindow);
         }
     },
+
+    showSkillDetail:function(skill){
+        cc.log("detail:",skill);
+    },
 });

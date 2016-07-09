@@ -9,10 +9,12 @@ var effectskill = cc.Class({
         if(this.creature.skillUsed){ // 用过技能了
             return;
         }
+        if(this.popDetail){ // 在长按已经生效
+            return;
+        }
         if(this.effect()){
             this.creature.setSkillUsed(true);
         }
-        event.stopPropagation();
     },
 
     effect:function(){
