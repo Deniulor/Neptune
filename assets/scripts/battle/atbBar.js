@@ -5,6 +5,10 @@ cc.Class({
         creatures:{
             default: null,
             type: cc.Node
+        },
+        atbIcon:{
+            default: null,
+            type: cc.Prefab
         }
     },
 
@@ -28,11 +32,13 @@ cc.Class({
         var stop = this.stop;
         this.stop = true;
         this.maxAtb = Math.max(creature.getComponent('creature').Atb, this.maxAtb);
-        var uSprite = creature.getComponents(cc.Sprite);
+        var uSprite = creature.getChildByName('creature').getChildByName('portrait').getComponent(cc.Sprite);
         creature.getChildByName('HpLab').active = false;
-        let node = cc.instantiate(creature);
+        let node = cc.instantiate(this.atbIcon);
         node.creature = creature;
         creature.getComponent('creature').icon = node;
+        node.getChildByName('portrait').getComponent(cc.Sprite).spriteFrame = uSprite.spriteFrame;
+        node.color = creature.getChildByName('creature').getChildByName('camp').color;
         node.setPositionY(20);
 
         this.node.addChild(node);
