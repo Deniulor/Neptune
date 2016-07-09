@@ -34,7 +34,6 @@ cc.Class({
             cc.log(assets);
             self.progress = self.curProgress/total;
             self.curProgress ++;
-            
         });
     },
 

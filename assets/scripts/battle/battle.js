@@ -56,9 +56,7 @@ cc.Class({
         self.initBattle();
         self.node.on("touchend", self.onTouchEnded, self);
         cc.audioEngine.stopMusic();
-        cc.audioEngine.setMusicVolume(0.5);
         this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
-        cc.audioEngine.setEffectsVolume(0.5);
         this.stopUpdate = true;
         // this.floatMessage("32313");
         this.setSelected(null);
