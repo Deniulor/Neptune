@@ -11,14 +11,14 @@ cc.Class({
         this.Atk = data.atk;
         this.name = data.name;
         var url = cc.url.raw('resources/graphics/dic/' + data.icon + '.png');
-        this.node.getChildByName('pic').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url); 
+        this.node.getChildByName('nd_monster').getChildByName('pic').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url); 
         this.node.getChildByName('name').getComponent(cc.Label).string = this.name;
-        this.node.getChildByName('hp').getComponent(cc.Label).string = "血量" + this.MaxHP;
-        this.node.getChildByName('atk').getComponent(cc.Label).string = "攻击" + this.Atk;
-        this.node.getChildByName('move').getComponent(cc.Label).string = "移动范围" + this.Mov;
-        this.node.getChildByName('rng').getComponent(cc.Label).string = "攻击范围" + this.Rng;
-        this.node.getChildByName('atb').getComponent(cc.Label).string = "速度" + this.Atb;
-        this.node.getChildByName('instruction').getComponent(cc.Label).string = data.instruction;
+        this.node.getChildByName('nd_attribute').getChildByName('lb_hp').getChildByName('lb_number').getComponent(cc.Label).string = this.MaxHP;
+        this.node.getChildByName('nd_attribute').getChildByName('lb_hurt').getChildByName('lb_number').getComponent(cc.Label).string = this.Atk;
+        this.node.getChildByName('nd_attribute').getChildByName('lb_move').getChildByName('lb_number').getComponent(cc.Label).string =this.Mov;
+        this.node.getChildByName('nd_attribute').getChildByName('lb_rng').getChildByName('lb_number').getComponent(cc.Label).string =this.Rng;
+        this.node.getChildByName('nd_attribute').getChildByName('lb_speed').getChildByName('lb_number').getComponent(cc.Label).string =this.Atb;
+        this.node.getChildByName('nd_monster').getChildByName('details').getComponent(cc.Label).string = data.instruction;
         this.node.setPosition(loc);
         for(var i = 1; i<=3 ; ++i){
             var skl = data['skill_' + i];
@@ -34,9 +34,10 @@ cc.Class({
     },
     initSkill:function (childName,skill) {
         var url = cc.url.raw('resources/graphics/skill/' + skill.icon + '.png');
-        this.node.getChildByName(childName).active = true;
-        this.node.getChildByName(childName).getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url); 
-        this.node.getChildByName(childName).getChildByName('description').getComponent(cc.Label).string = skill.desc;
+        this.node.getChildByName('nd_skill').getChildByName(childName).active = true;
+        this.node.getChildByName('nd_skill').getChildByName(childName).getChildByName('spt_icon').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url); 
+        this.node.getChildByName('nd_skill').getChildByName(childName).getChildByName('lb_describe').getComponent(cc.Label).string = skill.desc;
+        this.node.getChildByName('nd_skill').getChildByName(childName).getChildByName('lb_skillname').getComponent(cc.Label).string = skill.name;
 },
     // use this for initialization
     onLoad: function () {

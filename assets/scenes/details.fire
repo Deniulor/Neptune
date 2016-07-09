@@ -79,8 +79,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1200,
-      "height": 640
+      "width": 1920,
+      "height": 1080
     },
     "_children": [
       {
@@ -108,8 +108,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 600,
-      "y": 320
+      "x": 960,
+      "y": 540
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -154,8 +154,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1200,
-      "height": 640
+      "width": 1920,
+      "height": 1080
     },
     "_children": [],
     "_rotationX": 0,
@@ -439,7 +439,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1200,
-      "height": 430
+      "height": 710
     },
     "_children": [
       {
@@ -616,14 +616,14 @@
     },
     "_enabled": true,
     "Item_Count": 4,
-    "Item_Width": 940,
-    "Item_Height": 430,
+    "Item_Width": 1000,
+    "Item_Height": 710,
     "Item_MoveDis": 5,
     "pageSound": {
       "__uuid__": "030cf5a5-2359-4584-a5dc-f193e5f38fba"
     },
     "unitPrefab": {
-      "__uuid__": "281fe29b-91bd-4cfb-8a0b-00009f0da9e2"
+      "__uuid__": "7156fdb2-12ee-4bc6-84e4-43f459e70116"
     }
   },
   {
@@ -1033,8 +1033,8 @@
     "_enabled": true,
     "_designResolution": {
       "__type__": "cc.Size",
-      "width": 1200,
-      "height": 640
+      "width": 1920,
+      "height": 1080
     },
     "_fitWidth": true,
     "_fitHeight": true
