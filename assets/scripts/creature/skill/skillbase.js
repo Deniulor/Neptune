@@ -24,7 +24,7 @@ var SKill = cc.Class({
         this.touching = setTimeout(function (){
             self.popDetail = true;
             self.battle.showSkillDetail(self);
-        }, 2000);
+        }, 1500);
     },
 
     stopLongTouch:function(){

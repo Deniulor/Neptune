@@ -8,7 +8,7 @@ var splitskill = cc.Class({
         }
         // 使用给定的模板在场景中生成一个新节点
         // 播放特效
-        this.creature.play(this.data.animation);
+        // this.creature.play(this.data.animation);
         if(!this.randInvalidFunc){
             var self = this;
             this.randInvalidFunc = function(x, y){
@@ -23,7 +23,7 @@ var splitskill = cc.Class({
         clone = clone.getComponent('creature'); 
         clone.init(this.battle, this.creature.camp, this.creature.data, battleTiled.randPixelLoc(this.randInvalidFunc));
         this.battle.addCreature(clone.node);
-
+        clone.play(this.data.animation);
         clone.HP = hp;
         clone.showHP = hp;
         clone.runDamageAction();
