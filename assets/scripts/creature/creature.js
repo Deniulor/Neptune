@@ -112,7 +112,7 @@ cc.Class({
             var newborn = cc.instantiate(this.battle.creaturePrefab);
             newborn = newborn.getComponent('creature');
             newborn.init(this.battle, this.camp, this.data, battleTiled.randPixelLoc());
-            newborn.play('dark');
+            newborn.play('Reproduction');
             this.battle.addCreature(newborn.node);
 
             this.reproduce = false;
