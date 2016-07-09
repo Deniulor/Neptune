@@ -8,7 +8,7 @@ var swallow = cc.Class({
         }
         // 技能效果计算
         var creature = target.getComponent('creature');
-        if(creature.camp != this.creature.camp || creature.HP <= 0){
+        if(creature.camp != this.creature.camp || creature.HP <= 0||creature.__instanceId ==this.creature.__instanceId){
             return false;
         }
         var hp = Math.ceil(creature.HP/2);
