@@ -9,6 +9,7 @@ var reproduction = cc.Class({
         // 技能效果计算
         var creature = target.getComponent('creature');
         if((creature.camp == this.creature.camp && creature.data.id == this.creature.data.id&&creature.HP>0)){
+            creature.play(this.data.animation);
             this.creature.reproduce = true;
             this.creature.turnEnd();
         }else{
