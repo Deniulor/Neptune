@@ -10,7 +10,13 @@ var SKill = cc.Class({
         var url = cc.url.raw('resources/graphics/skill/' + skill.icon + '.png');
         sprite.spriteFrame = new cc.SpriteFrame(url);
 
+        this.node.on('touchstart', this.counting, this);
+
         this.bindEvent(this.node);
+    },
+
+    counting:function(){
+        cc.log('cocos');
     },
 
     bindEvent:function(node){
