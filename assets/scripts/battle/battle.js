@@ -97,7 +97,7 @@ cc.Class({
         if(action == AreaAttack){
             let node = this.getCreatureOn(loc.x, loc.y);
             let creature = node ? node.getComponent('creature') : null;
-            if(creature !== null && creature.HP > 0 && creature.camp != this.selected.getComponent('creature').camp){
+            if(creature !== null && creature.HP > 0){
                 this.selected.getComponent('creature').attack(creature);
                 return;
             }

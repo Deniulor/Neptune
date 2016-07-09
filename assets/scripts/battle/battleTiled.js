@@ -60,7 +60,7 @@ var MapTiled = cc.Class({
         return null;  
     },
     
-    getArea:function(from, distance, filter){
+    getArea:function(from, distance, invalid){
         var searched = [];
         var self = this;
         
@@ -69,7 +69,10 @@ var MapTiled = cc.Class({
             this.y = log_y;
             this.distance = distance;
         };
-        
+
+        if(!invalid || !invalid(from.x, from.y)){
+            searched.push(from);
+        }
         var dfs = function(curnode){
             var d = curnode.distance + 1;
             if(d > distance){
@@ -81,7 +84,7 @@ var MapTiled = cc.Class({
                 if(!self.isLocValid(r)){ //坐标是否有效
                     continue;
                 }
-                if(filter && filter(r.x, r.y)){
+                if(invalid && invalid(r.x, r.y)){
                     continue;
                 }
                 var nodeInSearched = self.search(searched, r.x, r.y);

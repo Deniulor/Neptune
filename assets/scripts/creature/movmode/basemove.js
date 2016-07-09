@@ -9,11 +9,21 @@ var Move = cc.Class({
 
     showMovable:function(){
     	var self = this;
-    	var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Mov, function(x,y){
+
+        // 返回false表示该区域可以移动
+        var invalid = function(x,y){
             var c = self.battle.getCreatureOn(x,y);
-            c = c===null ? null : c.getComponent('creature');
-            return c !== null && c !== self && c.HP > 0;
-        });
+            if(c == null)
+                return false;
+            c = c.getComponent('creature');
+            if(c == self.creature)
+                return false;
+            if(c.HP <= 0)
+                return false;
+            return true;
+        };
+
+    	var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Mov, invalid);
         
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
@@ -25,8 +35,8 @@ var Move = cc.Class({
         var self = this;
         var battle = self.battle;
         var creature = self.creature;
-        var from = battleTiled.toHexagonLoc(this.creature.node.getPosition());
 
+        var from = battleTiled.toHexagonLoc(this.creature.node.getPosition());
         var path = battleTiled.getPath(from, cc.p(to_x,to_y), function(x, y){
             var c = battle.getCreatureOn(x, y);
             if(c !== null && c != creature){

@@ -9,19 +9,29 @@ var Attack = cc.Class({
 
     showAttack:function(){
         var self = this.creature;
-        var hastaget = false;
+        // var hastaget = false;
         
-        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Rng, function(x,y){
+        // 返回false表示该区域可以攻击
+        var invalid = function(x,y){
             var c = self.battle.getCreatureOn(x,y);
-            c = c===null ? null : c.getComponent('creature');
-            hastaget = hastaget ||( c!==null && c.camp != self.camp && c.HP > 0 );
-            return c !== null && c.camp == self.camp;
-        });
-        if(!hastaget){
-            this.creature.turnEnd();
-            this.battle.setSelected(null);
-            return;
-        }
+            if(c == null)
+                return false;
+            c = c.getComponent('creature');
+            if(c == self)
+                return false;
+            if(c.camp == self.camp)
+                return true;
+            if(c.HP <= 0)
+                return true;
+            return true;
+        };
+
+        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Rng, invalid);
+        // if(!hastaget){
+        //     this.creature.turnEnd();
+        //     this.battle.setSelected(null);
+        //     return;
+        // }
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
             self.battle.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));

@@ -167,6 +167,12 @@ cc.Class({
     },
     
     moveto:function(to_x, to_y){
+        var from = battleTiled.toHexagonLoc(this.node.getPosition());
+        if(from.x = to_x && from.y == to_y){
+            this.action = 'attack';
+            return;
+        }
+
         this.movclass.moveto(to_x, to_y);
         this.action = 'moving';
         this.node.getChildByName('creature').getChildByName('selected').active = false;
@@ -174,6 +180,10 @@ cc.Class({
 
     // 用已选择单位攻击指定的单位
     attack:function(target){
+        if(target == this){
+            this.turnEnd();
+            return;
+        }
         this.atkclass.attack(target);
         this.turnEnd();
     },
