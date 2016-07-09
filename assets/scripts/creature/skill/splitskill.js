@@ -27,6 +27,7 @@ var splitskill = cc.Class({
 
         this.creature.onDamage(hp);
         this.creature.runDamageAction();
+        this.creature.turnEnd();
         return true;
     },
 });
