@@ -9317,6 +9317,9 @@
     },
     "playerIcon": {
       "__id__": 308
+    },
+    "playerName": {
+      "__id__": 312
     }
   },
   {
@@ -9794,7 +9797,7 @@
     "_opacityModifyRGB": false,
     "_reorderChildDirty": false,
     "_id": "d9612YyyC9FfZjl0Wp/f0KM",
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 319

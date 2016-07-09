@@ -48,7 +48,11 @@ cc.Class({
         playerIcon: {
             default: null,
             type: cc.Node
-        }
+        },
+        playerName: {
+            default: null,
+            type: cc.Label
+        },
     },
     
     // 加载事件
@@ -201,8 +205,10 @@ cc.Class({
             var c = this.selected.getComponent('creature');
             if(c.camp == 'red'){
                 this.playerIcon.color = cc.color(230, 140, 140);
+                this.playerName = "红方玩家";
             } else { // 
                 this.playerIcon.color = cc.color(110, 150, 240);
+                this.playerName = "蓝方玩家";
             } 
             c.onTurnBegin();
             var creaturePanel = this.node.getChildByName('creature');
