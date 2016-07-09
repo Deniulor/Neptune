@@ -181,6 +181,7 @@ cc.Class({
     // 用已选择单位攻击指定的单位
     attack:function(target){
         if(target == this){
+            this.battle.setSelected(null);
             this.turnEnd();
             return;
         }
@@ -189,7 +190,7 @@ cc.Class({
     },
     onDamage: function(damage){
         this.HP -= damage;
-        if(this.HP<0){
+        if(this.HP < 0){
             this.HP = 0;
         }
     },
