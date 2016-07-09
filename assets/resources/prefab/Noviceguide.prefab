@@ -538,7 +538,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_fontSize": 14,
+    "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": {
@@ -719,7 +719,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_fontSize": 14,
+    "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": {
@@ -992,7 +992,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 257
+      "y": 259
     },
     "_skewX": 0,
     "_skewY": 0,
