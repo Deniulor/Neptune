@@ -41,6 +41,10 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
+        skillTip: {
+            default: null,
+            type: cc.Label
+        },
     },
     
     // 加载事件
@@ -73,6 +77,10 @@ cc.Class({
 
     // 点击结束事件
     onTouchEnded:function(event){
+        if(this.skillTip.node.active){
+           this.skillTip.node.active = false; 
+        }
+        
         if(!this.selected){
             return;
         }
@@ -244,6 +252,10 @@ cc.Class({
     },
 
     showSkillDetail:function(skill){
+        this.skillTip.node.active = true;
+        this.skillTip.node.setPositionX(skill.node.getPositionX() + 20);
+        this.skillTip.node.setPositionY(20);
+        this.skillTip.string = skill.data.desc;
         cc.log("detail:",skill);
     },
 });
