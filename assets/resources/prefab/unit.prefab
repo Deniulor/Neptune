@@ -161,9 +161,7 @@
       "__id__": 2
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "411e75dd-dbda-466d-a903-c8af3516e5a3"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 0,
     "_fillType": 0,
@@ -275,7 +273,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "details",
+    "_name": "instruction",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -306,8 +304,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 118,
-      "y": 136
+      "x": 139,
+      "y": 134
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1169,7 +1167,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 91,
-      "y": -132
+      "y": -142
     },
     "_skewX": 0,
     "_skewY": 0,

@@ -1,8 +1,8 @@
-兵种ID	兵种名称	图标	血量	攻击力	速度	单位死亡增加SAN值	移动范围	移动方式	攻击范围	攻击方式	技能01	技能02	技能02
-id	name	icon	hp	atk	atb	SAN	mov	movclass	rng	atkclass	skill_1	skill_2	skill_3
-1	Nyarlathotep	creature1	20	5	3		6	basemove	2	baseattack	10002	10001	
-2	Hounds of Tindalos	creature2	10	3	2		5	teleport	1	teleportattack	10004		
-3	Shoggoth	shoggoth	20	5	3		6	basemove	2	baseattack	10003	10008	10009
-4	Deep Ones	deepones	5	3	3		3	basemove	1	baseattack	10005		
-5	Dark Young of Shub-Niggurath	darkyoung	20	6	3		3	basemove	2	baseattack	10006	10007	
-6	Cthulhu	cthulhu	10	3	3		3	basemove	2	baseattack	10010	10011	
+兵种ID	兵种名称	图标	血量	攻击力	速度	单位死亡增加SAN值	移动范围	移动方式	攻击范围	攻击方式	技能01	技能02	技能02	描述
+id	name	icon	hp	atk	atb	SAN	mov	movclass	rng	atkclass	skill_1	skill_2	skill_3	instruction
+1	Nyarlathotep	creature1	20	5	3		6	basemove	2	baseattack	10002	10001		奈亚拉托提普，也可以是萌萌的奈亚子
+2	Hounds of Tindalos	tindalos	10	3	2		5	teleport	1	teleportattack	10004			我要追你到天涯海角——汪
+3	Shoggoth	shoggoth	20	5	3		6	basemove	2	baseattack	10003	10008	10009	噩梦般的黑亮形体
+4	Deep Ones	deepones	5	3	3		3	basemove	1	baseattack	10005			繁殖能力特强的鱼人
+5	Dark Young of Shub-Niggurath	darkyoung	20	6	3		3	basemove	2	baseattack	10006	10007		黑山羊幼崽——咩
+6	Cthulhu	cthulhu	10	3	3		3	basemove	2	baseattack	10010	10011		克苏鲁神话的形象代表
