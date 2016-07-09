@@ -8,12 +8,14 @@ var reproduction = cc.Class({
         }
         // 技能效果计算
         var creature = target.getComponent('creature');
-        if(((creature.camp != this.creature.camp && creature.data.id != this.creature.data.id)||creature.HP<=0)){
+        if((creature.camp == this.creature.camp && creature.data.id == this.creature.data.id&&creature.HP>0)){
+            this.creature.reproduce = true;
+            this.creature.turnEnd();
+        }else{
             return false;
         }
 
-        this.creature.reproduce = true;
-        this.creature.turnEnd();
+        
         return true;
     },
 });
