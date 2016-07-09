@@ -8,7 +8,7 @@ var reproduction = cc.Class({
         }
         // 技能效果计算
         var creature = target.getComponent('creature');
-        if(creature.camp != this.creature.camp && creature.data.id != this.creature.data.id){
+        if(((creature.camp != this.creature.camp && creature.data.id != this.creature.data.id)||creature.HP<=0)){
             return false;
         }
 
