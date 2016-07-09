@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "2237f540-9b01-447c-a6c4-e4793cca29fa",
+  "uuid": "c038d905-94ee-4e84-95cb-b9da5a601e3c",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "pic2": {
+    "deepones": {
       "ver": "1.0.3",
-      "uuid": "dd129dc8-c352-4d73-9f5b-bc970bdd0d40",
-      "rawTextureUuid": "2237f540-9b01-447c-a6c4-e4793cca29fa",
+      "uuid": "f6d52765-c584-42ae-811a-0d14e219a9db",
+      "rawTextureUuid": "c038d905-94ee-4e84-95cb-b9da5a601e3c",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

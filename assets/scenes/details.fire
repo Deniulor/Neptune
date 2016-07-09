@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Scene",
-    "_name": "",
+    "_name": "details",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
