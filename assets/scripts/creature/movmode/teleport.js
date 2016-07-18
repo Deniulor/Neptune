@@ -5,7 +5,7 @@ var exp = cc.Class({
     	this.name = "teleport";
     },
 
-    moveto:function(to_x, to_y){
+    moveto:function(to_x, to_y, cb){
     	var creature = this.creature;
     	var teleport = [];
     	creature.play("disappear");
@@ -14,6 +14,7 @@ var exp = cc.Class({
         teleport.push(cc.fadeIn(0.5));
         teleport.push(cc.callFunc(function(){
             creature.action = 'attack';
+            if(cb) cb();
         }));
         this.creature.node.runAction(cc.sequence(teleport));
     },

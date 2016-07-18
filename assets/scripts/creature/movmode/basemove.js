@@ -31,7 +31,7 @@ var Move = cc.Class({
         }
     },
 
-    moveto:function(to_x, to_y){
+    moveto:function(to_x, to_y, cb){
         var self = this;
         var battle = self.battle;
         var creature = self.creature;
@@ -53,6 +53,7 @@ var Move = cc.Class({
         
         path.push(cc.callFunc(function(){ 
             creature.action = 'attack';
+            if(cb) cb();
         }));
         this.creature.node.runAction(cc.sequence(path));
     }

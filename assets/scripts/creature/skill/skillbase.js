@@ -7,11 +7,11 @@ var SKill = cc.Class({
 
         this.node = cc.instantiate(this.battle.skillPrefab);
         let sprite = this.node.getComponent(cc.Sprite);
-        var url = cc.url.raw('resources/graphics/skill/' + skill.icon + '.png');
-        sprite.spriteFrame = new cc.SpriteFrame(url);
-        if(sprite.spriteFrame.retain){
-            sprite.spriteFrame.retain();
-        }
+        // 加载 SpriteFrame
+        cc.loader.loadRes('graphics/skill/' + skill.icon, cc.SpriteFrame, function (err, spriteFrame) {
+            sprite.spriteFrame = spriteFrame;
+        });
+
 
         this.node.on('touchstart', this.startLongTouch, this);
         this.node.on('touchmove',this.stopLongTouch,this);

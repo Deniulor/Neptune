@@ -13,16 +13,12 @@ var Attack = cc.Class({
         
         // 返回false表示该区域可以攻击
         var invalid = function(x,y){
-            var c = self.battle.getCreatureOn(x,y);
-            if(c == null)
-                return false;
+            var c = self.battle.getCreatureOn(x,4-y);
+            if(c == null) return false; // 无单位显示攻击区域
             c = c.getComponent('creature');
-            if(c == self)
-                return false;
-            if(c.camp != self.camp) // 敌方单位
-                return false;
-            if(c.HP <= 0) // 己方单位
-                return false;
+            if(c == self) return false; // 可以选择自己
+            if(c.camp != self.camp) return false; // 敌方单位 可以被攻击
+            if(c.HP <= 0)  return false; // 己方单位
             return true;
         };
 

@@ -47,8 +47,12 @@ cc.Class({
         this.node.setPosition(loc);
         this.node.getChildByName("HpLab").getComponent(cc.Label).string = this.HP + "/" +this.MaxHP;
 
-        var url = cc.url.raw('resources/graphics/creature/' + data.icon + '.png');
-        this.node.getChildByName('creature').getChildByName('portrait').getComponent(cc.Sprite).spriteFrame = new cc.SpriteFrame(url);
+        var sprite = this.node.getChildByName('creature').getChildByName('portrait').getComponent(cc.Sprite);
+        // 加载 SpriteFrame
+        cc.loader.loadRes('graphics/creature/' + data.icon, cc.SpriteFrame, function (err, spriteFrame) {
+            sprite.spriteFrame = spriteFrame;
+        });
+
         if(camp === 'red'){
             this.node.getChildByName('creature').getChildByName('camp').color = cc.color(229,113,113);
         } else { // camp === 'blue'
@@ -135,7 +139,7 @@ cc.Class({
         this.curAtb = this.Atb;
         this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         this.battle.setSelected(null);
-        // this.battle.checkIfWinner();
+        this.battle.checkIfWinner();
     },
 
     showCreature:function(panel){
@@ -175,13 +179,51 @@ cc.Class({
             return;
         }
 
-        this.movclass.moveto(to_x, to_y);
+        var self = this;
+        var visit = function(x,y){
+        	cc.log('visit (%s, %s)', x, y);
+            var c = self.battle.getCreatureOn(x,y);
+            if(c == null) return false; // 无单位显示攻击区域
+            c = c.getComponent('creature');
+            if(c == self) return false; // 可以选择自己
+            if(c.camp != self.camp) {
+            	if(c.HP > 0) c.shining();
+            	cc.log('shining at (%s, %s)', x,y);
+            	return false; // 敌方单位 可以被攻击
+            }
+            if(c.HP <= 0)  return false; // 己方单位
+            return true;
+        };
+
+        this.movclass.moveto(to_x, to_y, function(){
+        	// 可以被攻击的单位进行高亮
+        	var from2 = battleTiled.toHexagonLoc(self.node.getPosition());
+        	battleTiled.getArea(from2, self.Rng, visit)
+        });
         this.action = 'moving';
         this.node.getChildByName('creature').getChildByName('selected').active = false;
     },
 
     // 用已选择单位攻击指定的单位
     attack:function(target){
+        //隐藏单位攻击效果
+        var self = this;
+        var visit = function(x,y){
+            var c = self.battle.getCreatureOn(x,y);
+            if(c == null) return false; // 无单位显示攻击区域
+            c = c.getComponent('creature');
+            if(c == self) return false; // 可以选择自己
+            if(c.camp != self.camp) {
+            	c.stopShining();
+            	cc.log('stop shining at (%s, %s)', x,y);
+            	return false; // 敌方单位 可以被攻击
+            }
+            if(c.HP <= 0)  return false; // 己方单位
+            return true;
+        };
+        var from = battleTiled.toHexagonLoc(this.node.getPosition());
+        battleTiled.getArea(from, this.Rng, visit)
+
         if(target == this){
             this.turnEnd();
             return;
@@ -245,6 +287,15 @@ cc.Class({
             cc.audioEngine.playEffect(sound, false);
         });
         });
-        
     },
+    stop:function(animation){
+    	this.animator.stop(animation);
+    },
+    shining:function(){
+    	this.node.getChildByName('creature').getComponent(cc.Animation).play('shining');
+    },
+    stopShining:function(){
+    	this.node.getChildByName('creature').getComponent(cc.Animation).stop('shining');
+    	this.node.getChildByName('creature').opacity = 255;
+    }
 });
