@@ -181,14 +181,14 @@ cc.Class({
 
         var self = this;
         var visit = function(x,y){
-        	cc.log('visit (%s, %s)', x, y);
+        	// cc.log('visit (%s, %s)', x, y);
             var c = self.battle.getCreatureOn(x,y);
             if(c == null) return false; // 无单位显示攻击区域
             c = c.getComponent('creature');
             if(c == self) return false; // 可以选择自己
             if(c.camp != self.camp) {
             	if(c.HP > 0) c.shining();
-            	cc.log('shining at (%s, %s)', x,y);
+            	// cc.log('shining at (%s, %s)', x,y);
             	return false; // 敌方单位 可以被攻击
             }
             if(c.HP <= 0)  return false; // 己方单位
@@ -215,7 +215,7 @@ cc.Class({
             if(c == self) return false; // 可以选择自己
             if(c.camp != self.camp) {
             	c.stopShining();
-            	cc.log('stop shining at (%s, %s)', x,y);
+            	// cc.log('stop shining at (%s, %s)', x,y);
             	return false; // 敌方单位 可以被攻击
             }
             if(c.HP <= 0)  return false; // 己方单位

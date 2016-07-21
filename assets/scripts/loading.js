@@ -31,7 +31,7 @@ cc.Class({
         });
         // 加载 test assets 目录下所有资源
         cc.loader.loadResAll("data", function (err, assets) {
-            cc.log(assets);
+            // cc.log(assets);
             self.progress = self.curProgress/total;
             self.curProgress ++;
         });
