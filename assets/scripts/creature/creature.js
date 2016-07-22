@@ -3,7 +3,6 @@ var dataApi = require('dataApi');
 
 cc.Class({
     extends: cc.Component,
-
     init:function(battle, camp = 'red', data, loc){  
         this.battle = battle;
         this.camp = camp;
@@ -103,6 +102,7 @@ cc.Class({
     },
 
     onTurnBegin:function(){
+        
         this.action = 'move';
         this.setSkillUsed(false);
         
@@ -113,14 +113,7 @@ cc.Class({
         }
         this.curRound ++;
         if(this.reproduce == true){
-            var newborn = cc.instantiate(this.battle.creaturePrefab);
-            newborn = newborn.getComponent('creature');
-            newborn.init(this.battle, this.camp, this.data, battleTiled.randPixelLoc());
-            newborn.play('Reproduction');
-            this.battle.addCreature(newborn.node);
-
-            this.reproduce = false;
-            this.turnEnd();
+            this.reproduceSkill();
         }
         if(this.waitRound > 0){
             this.waitRound--;
@@ -130,7 +123,35 @@ cc.Class({
             this.turnEnd();
         }
     },
-    
+    reproduceSkill :function(params) {
+        var actions = [];
+        var self = this;
+        var newborn_node = cc.instantiate(this.battle.creaturePrefab);
+        var newborn = newborn_node.getComponent('creature');
+        var randomLoc = battleTiled.randPixelLoc();
+        newborn_node.getChildByName('HpLab').active = false;
+        newborn_node.getChildByName('creature').getChildByName('camp').active = false;
+        newborn_node.getChildByName('creature').getChildByName('selected').active = false;
+        newborn_node.getChildByName('creature').getChildByName('portrait').active = false;
+        newborn.init(this.battle, this.camp, this.data, randomLoc);
+        this.battle.addCreature(newborn.node);
+
+        var delay = 1.5;
+        actions.push(cc.sequence(cc.callFunc(function () {
+            delay = newborn.play('Reproduction');
+        }), cc.delayTime(delay)));
+        actions.push(cc.callFunc(function () {
+            newborn_node.getChildByName('HpLab').active = true;
+            newborn_node.getChildByName('creature').getChildByName('camp').active = true;
+            newborn_node.getChildByName('creature').getChildByName('selected').active = true;
+            newborn_node.getChildByName('creature').getChildByName('portrait').active = true;
+            self.reproduce = false;
+            self.turnEnd();
+        }));
+        var seq = cc.sequence(actions);
+        this.node.runAction(seq);
+
+    },
     getATB: function(){
         return this.curAtb;
     },
@@ -269,23 +290,28 @@ cc.Class({
 
     play:function(animation){
         if(this.animator.play(animation)){
-            return;
+            return 0;
         }
         var animator = this.animator;
-        cc.loader.loadRes("animate/" + animation, function (err, clip) {
+        var delay =0;
+        cc.loader.loadRes("sound/effects/" + animation, function (err, sound) {
             if(err){
                 cc.log(err);
-                return;
-            }
-            animator.addClip(clip, animation);
-            animator.play(animation);
-            cc.loader.loadRes("sound/effects/" + animation, function (err, sound) {
-            if(err){
-                cc.log(err);
-                return;
+                return 0;
             }
             cc.audioEngine.playEffect(sound, false);
         });
+        cc.loader.loadRes("animate/" + animation, function (err, clip) {
+            if(err){
+                cc.log(err);
+                return 0;
+            }
+            
+            animator.addClip(clip, animation);
+            var itemAnimState = animator.getAnimationState(animation);
+            delay = itemAnimState.duration;
+            animator.play(animation);
+            return delay;
         });
     },
     stop:function(animation){
