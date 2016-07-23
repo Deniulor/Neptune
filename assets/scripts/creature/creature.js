@@ -113,7 +113,7 @@ cc.Class({
         }
         this.curRound ++;
         if(this.reproduce == true){
-            this.reproduceSkill();
+            this.cloneCreature('Reproduction');
         }
         if(this.waitRound > 0){
             this.waitRound--;
@@ -123,7 +123,7 @@ cc.Class({
             this.turnEnd();
         }
     },
-    reproduceSkill :function(params) {
+    cloneCreature :function(animation) {
         var actions = [];
         var self = this;
         var newborn_node = cc.instantiate(this.battle.creaturePrefab);
@@ -138,19 +138,19 @@ cc.Class({
 
         var delay = 1.5;
         actions.push(cc.sequence(cc.callFunc(function () {
-            delay = newborn.play('Reproduction');
+            delay = newborn.play(animation);
         }), cc.delayTime(delay)));
         actions.push(cc.callFunc(function () {
             newborn_node.getChildByName('HpLab').active = true;
             newborn_node.getChildByName('creature').getChildByName('camp').active = true;
-            newborn_node.getChildByName('creature').getChildByName('selected').active = true;
+            // newborn_node.getChildByName('creature').getChildByName('selected').active = true;
             newborn_node.getChildByName('creature').getChildByName('portrait').active = true;
             self.reproduce = false;
             self.turnEnd();
         }));
         var seq = cc.sequence(actions);
         this.node.runAction(seq);
-
+        return newborn;
     },
     getATB: function(){
         return this.curAtb;

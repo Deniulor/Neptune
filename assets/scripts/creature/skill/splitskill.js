@@ -20,11 +20,12 @@ var splitskill = cc.Class({
         
         var hp = Math.ceil(this.creature.HP/2);
 
-        var clone = cc.instantiate(this.battle.creaturePrefab);
-        clone = clone.getComponent('creature'); 
-        clone.init(this.battle, this.creature.camp, this.creature.data, battleTiled.randPixelLoc(this.randInvalidFunc));
-        this.battle.addCreature(clone.node);
-        clone.play(this.data.animation);
+        // var clone = cc.instantiate(this.battle.creaturePrefab);
+        // clone = clone.getComponent('creature'); 
+        // clone.init(this.battle, this.creature.camp, this.creature.data, battleTiled.randPixelLoc(this.randInvalidFunc));
+        // this.battle.addCreature(clone.node);
+        // clone.play(this.data.animation);
+        var clone = this.creature.cloneCreature(this.data.animation);
         clone.HP = hp;
         clone.showHP = hp;
         clone.runDamageAction();
