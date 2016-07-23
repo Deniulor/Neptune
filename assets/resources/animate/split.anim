@@ -75,7 +75,7 @@
       }
     },
     "paths": {
-      "New Node": {
+      "subAnimate0": {
         "comps": {
           "cc.Sprite": {
             "spriteFrame": [

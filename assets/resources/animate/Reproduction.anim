@@ -10,7 +10,7 @@
     "wrapMode": 1,
     "curveData": {
       "paths": {
-        "wind_right": {
+        "subAnimate0": {
           "comps": {
             "cc.Sprite": {
               "spriteFrame": [
@@ -109,7 +109,7 @@
             ]
           }
         },
-        "wind_left": {
+        "subAnimate1": {
           "comps": {
             "cc.Sprite": {
               "spriteFrame": [
