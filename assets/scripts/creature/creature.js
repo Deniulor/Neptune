@@ -69,6 +69,7 @@ cc.Class({
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         var atb = this.getATB();
+        var self = this;
         if(this.showHP >=0 && this.showHpDuration !== undefined && this.showHpDuration > 1e-6){
             this.showHP = this.showHP - (this.showHP - this.HP) / this.showHpDuration * dt;
             this.showHpDuration -= dt;
@@ -79,9 +80,11 @@ cc.Class({
                 var fadeOut = cc.fadeOut(2);
                 var finish = cc.callFunc(this.onDie, this);
                 var fadeIn = cc.fadeIn(0.1);
-                this.node.runAction(cc.sequence(fadeOut,finish,fadeIn));
+                
+                this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,cc.callFunc(function () {
+                self.battle.checkIfWinner();
+                })));
                 this.icon.runAction(cc.spawn(cc.moveBy(2, cc.p(0, -40) ), cc.fadeOut(2)));
-                this.battle.checkIfWinner();
             }
         }
         if(this.showHP - this.HP < 1){
@@ -160,7 +163,7 @@ cc.Class({
         this.curAtb = this.Atb;
         this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
         this.battle.setSelected(null);
-        this.battle.checkIfWinner();
+        // this.battle.checkIfWinner();
     },
 
     showCreature:function(panel){
