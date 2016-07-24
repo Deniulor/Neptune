@@ -1,5 +1,4 @@
 var battleTiled = require('battleTiled');
-var dataApi = require('dataApi');
 
 cc.Class({
     extends: cc.Component,
@@ -34,7 +33,7 @@ cc.Class({
             if(!skl){
                 continue;
             }
-            skl = dataApi.skills.findById(skl);
+            skl = npt.data.skills.findById(skl);
             if(!skl){
                 continue;
             }
@@ -205,24 +204,24 @@ cc.Class({
 
         var self = this;
         var visit = function(x,y){
-        	// cc.log('visit (%s, %s)', x, y);
+            // cc.log('visit (%s, %s)', x, y);
             var c = self.battle.getCreatureOn(x,y);
             if(c == null) return false; // 无单位显示攻击区域
             c = c.getComponent('creature');
             if(c == self) return false; // 可以选择自己
             if(c.camp != self.camp) {
-            	if(c.HP > 0) c.shining();
-            	// cc.log('shining at (%s, %s)', x,y);
-            	return false; // 敌方单位 可以被攻击
+                if(c.HP > 0) c.shining();
+                // cc.log('shining at (%s, %s)', x,y);
+                return false; // 敌方单位 可以被攻击
             }
             if(c.HP <= 0)  return false; // 己方单位
             return true;
         };
 
         this.movclass.moveto(to_x, to_y, function(){
-        	// 可以被攻击的单位进行高亮
-        	var from2 = battleTiled.toHexagonLoc(self.node.getPosition());
-        	battleTiled.getArea(from2, self.Rng, visit)
+            // 可以被攻击的单位进行高亮
+            var from2 = battleTiled.toHexagonLoc(self.node.getPosition());
+            battleTiled.getArea(from2, self.Rng, visit)
         });
         this.action = 'moving';
         this.node.getChildByName('creature').getChildByName('selected').active = false;
@@ -238,9 +237,9 @@ cc.Class({
             c = c.getComponent('creature');
             if(c == self) return false; // 可以选择自己
             if(c.camp != self.camp) {
-            	c.stopShining();
-            	// cc.log('stop shining at (%s, %s)', x,y);
-            	return false; // 敌方单位 可以被攻击
+                c.stopShining();
+                // cc.log('stop shining at (%s, %s)', x,y);
+                return false; // 敌方单位 可以被攻击
             }
             if(c.HP <= 0)  return false; // 己方单位
             return true;
@@ -318,13 +317,13 @@ cc.Class({
         });
     },
     stop:function(animation){
-    	this.animator.stop(animation);
+        this.animator.stop(animation);
     },
     shining:function(){
-    	this.node.getChildByName('creature').getComponent(cc.Animation).play('shining');
+        this.node.getChildByName('creature').getComponent(cc.Animation).play('shining');
     },
     stopShining:function(){
-    	this.node.getChildByName('creature').getComponent(cc.Animation).stop('shining');
-    	this.node.getChildByName('creature').opacity = 255;
+        this.node.getChildByName('creature').getComponent(cc.Animation).stop('shining');
+        this.node.getChildByName('creature').opacity = 255;
     }
 });

@@ -3,12 +3,12 @@ var battleTiled = require('battleTiled');
 var Move = cc.Class({
     ctor: function () {
         this.name = "move";
-    	this.creature = null;
-    	this.battle = null;
+        this.creature = null;
+        this.battle = null;
     },
 
     showMovable:function(){
-    	var self = this;
+        var self = this;
 
         // 返回false表示该区域可以移动
         var invalid = function(x,y){
@@ -23,7 +23,7 @@ var Move = cc.Class({
             return true;
         };
 
-    	var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Mov, invalid);
+        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Mov, invalid);
         
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];

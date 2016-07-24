@@ -1,4 +1,3 @@
-var dataApi = require('dataApi');
 cc.Class({
     extends: cc.Component,
 
@@ -31,7 +30,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.Item_Count = dataApi.creatures.ids.length;
+        this.Item_Count = npt.data.creatures.ids.length;
         this.init(this.Item_Count);
         // cc.log(this.Item_Count);
         this.pLayoutNode = this.node.getChildByName("pLayout");

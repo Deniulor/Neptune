@@ -1,4 +1,3 @@
-var dataApi = require('dataApi');
 cc.Class({
     extends: cc.Component,
 
@@ -25,7 +24,7 @@ cc.Class({
             if(!skl){
                 continue;
             }
-            skl = dataApi.skills.findById(skl);
+            skl = npt.data.skills.findById(skl);
             if(!skl){
                 continue;
             }
