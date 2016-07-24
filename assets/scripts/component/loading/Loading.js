@@ -13,7 +13,7 @@ cc.Class({
     },
 
     preLoadAllScene:function(){
-        var allScene = ['menu','details','battle','guide'];
+        var allScene = ['menu','details','battle','guide','formation'];
         var self = this;
         // 预加载
         self.progress = 0.0;

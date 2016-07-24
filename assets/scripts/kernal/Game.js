@@ -14,5 +14,7 @@ cc.Class({
         npt.storage = require('Storage')();
         npt.audio = require('Audio')();
         npt.tiled = require('Tiled')();
+        npt.battle = require('Battle')();
+        npt.config = require('Config')();
     },
 });

@@ -25,7 +25,7 @@ cc.Class({
     },
     details:function() {
         cc.audioEngine.playEffect(this.clickEffect, false);
-       cc.director.loadScene('details');
+        cc.director.loadScene('details');
     },
     practice:function() {
         cc.audioEngine.playEffect(this.clickEffect, false);

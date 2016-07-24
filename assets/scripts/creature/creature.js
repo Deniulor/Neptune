@@ -50,9 +50,9 @@ cc.Class({
         });
 
         if(camp === 'red'){
-            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(229,113,113);
+            this.node.getChildByName('creature').getChildByName('camp').color = npt.config.red;
         } else { // camp === 'blue'
-            this.node.getChildByName('creature').getChildByName('camp').color = cc.color(113,163,229);
+            this.node.getChildByName('creature').getChildByName('camp').color = npt.config.blue;
         }
 
         this.animator = this.node.getChildByName('creature').getChildByName('animate').getComponent(cc.Animation);
