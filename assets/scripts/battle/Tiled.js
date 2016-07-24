@@ -6,7 +6,6 @@ var MapTiled = cc.Class({
         this.MapHeight = 4; //地图高度
         this.TiledOffset = this.TiledSize / 2;
         this.XSpacing = this.TiledSize * 3 / 4;
-
     },
 
     /// 基础函数 - 将一个像素坐标点转为六边形地图坐标
@@ -218,5 +217,6 @@ var MapTiled = cc.Class({
     },
 });
 
-
-module.exports = new MapTiled();
+module.exports = function(){
+    return new MapTiled();
+}

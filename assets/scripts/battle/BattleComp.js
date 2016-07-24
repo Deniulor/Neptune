@@ -1,4 +1,3 @@
-var battleTiled = require('battleTiled');
 var showMessage = require('showMessage');
 cc.Class({
     extends: cc.Component,
@@ -91,9 +90,9 @@ cc.Class({
         }
         var loc = event.getLocation();
         var temp = this.node.convertToNodeSpace(loc);
-        loc = battleTiled.toHexagonLoc(temp);
+        loc = npt.tiled.toHexagonLoc(temp);
         // cc.log('touch hexagonLoc(%s,%s) at (%s,%s)',loc.x, loc.y, temp.x, temp.y);
-        if(!battleTiled.isLocValid(loc)){ // 在可操作区域内
+        if(!npt.tiled.isLocValid(loc)){ // 在可操作区域内
             return;
         }
         var action = this.funcLayer.getTileGIDAt(loc.x, 3 - loc.y);
@@ -128,23 +127,23 @@ cc.Class({
 
         // 使用给定的模板在场景中生成一个新节点
         var red1 = cc.instantiate(this.creaturePrefab);
-        red1.getComponent('creature').init(this, 'red', npt.data.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        red1.getComponent('creature').init(this, 'red', npt.data.creatures.findById(4), npt.tiled.randPixelLoc(invalid));
         this.creatures.addChild(red1);
 
         var red2 = cc.instantiate(this.creaturePrefab);
-        red2.getComponent('creature').init(this, 'red', npt.data.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        red2.getComponent('creature').init(this, 'red', npt.data.creatures.findById(4), npt.tiled.randPixelLoc(invalid));
         this.creatures.addChild(red2);
         
         // var blue1 = cc.instantiate(this.creaturePrefab);
-        // blue1.getComponent('creature').init(this, 'blue', npt.data.creatures.findById(4), battleTiled.randPixelLoc(invalid));
+        // blue1.getComponent('creature').init(this, 'blue', npt.data.creatures.findById(4), npt.tiled.randPixelLoc(invalid));
         // this.creatures.addChild(blue1);
 
         var blue2 = cc.instantiate(this.creaturePrefab);
-        blue2.getComponent('creature').init(this, 'blue', npt.data.creatures.findById(6), battleTiled.randPixelLoc(invalid));
+        blue2.getComponent('creature').init(this, 'blue', npt.data.creatures.findById(6), npt.tiled.randPixelLoc(invalid));
         this.creatures.addChild(blue2);
 
         var blue3 = cc.instantiate(this.creaturePrefab);
-        blue3.getComponent('creature').init(this, 'blue', npt.data.creatures.findById(2), battleTiled.randPixelLoc(invalid));
+        blue3.getComponent('creature').init(this, 'blue', npt.data.creatures.findById(2), npt.tiled.randPixelLoc(invalid));
         this.creatures.addChild(blue3);
     },
 
@@ -164,7 +163,7 @@ cc.Class({
     getCreatureOn:function(x, y){
         for(var i = this.creatures.children.length - 1; i >= 0; --i){
             var child = this.creatures.children[i];
-            var loc = battleTiled.toHexagonLoc(child.getPosition());
+            var loc = npt.tiled.toHexagonLoc(child.getPosition());
             if(loc.x == x && loc.y == y){
                 return child;
             }
@@ -185,8 +184,8 @@ cc.Class({
     
     /// 辅助函数 清除功能层上的所有信息
     clearFuncLayer:function(){
-        for(var i = battleTiled.MapHeight - 1; i >=0 ; --i){
-            for(var j = battleTiled.MapWidth - 1; j >=0; --j){
+        for(var i = npt.tiled.MapHeight - 1; i >=0 ; --i){
+            for(var j = npt.tiled.MapWidth - 1; j >=0; --j){
                 this.funcLayer.setTileGID(0, cc.p(j, i));
             }
         }

@@ -13,6 +13,6 @@ cc.Class({
         npt.data = require('Data')();
         npt.storage = require('Storage')();
         npt.audio = require('Audio')();
-        npt.battle = require('Battle')();
+        npt.tiled = require('Tiled')();
     },
 });

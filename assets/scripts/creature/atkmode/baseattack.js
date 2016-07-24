@@ -1,5 +1,3 @@
-var battleTiled = require('battleTiled');
-
 var Attack = cc.Class({
     ctor: function () {
         this.name = "move";
@@ -22,7 +20,7 @@ var Attack = cc.Class({
             return true;
         };
 
-        var area = battleTiled.getArea(battleTiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Rng, invalid);
+        var area = npt.tiled.getArea(npt.tiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Rng, invalid);
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
             self.battle.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));

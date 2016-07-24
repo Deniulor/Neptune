@@ -1,5 +1,3 @@
-var battleTiled = require('battleTiled');
-
 var Teleportattack = cc.Class({
     extends: require('baseattack'),
     ctor: function () {

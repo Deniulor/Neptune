@@ -1,4 +1,3 @@
-var battleTiled = require('battleTiled');
 var splitskill = cc.Class({
     extends: require('effectskill'),
 

@@ -1,5 +1,3 @@
-var battleTiled = require('battleTiled');
-
 cc.Class({
     extends: cc.Component,
     init:function(battle, camp = 'red', data, loc){  
@@ -130,7 +128,7 @@ cc.Class({
         var self = this;
         var newborn_node = cc.instantiate(this.battle.creaturePrefab);
         var newborn = newborn_node.getComponent('creature');
-        var randomLoc = battleTiled.randPixelLoc();
+        var randomLoc = npt.tiled.randPixelLoc();
         newborn_node.getChildByName('HpLab').active = false;
         newborn_node.getChildByName('creature').getChildByName('camp').active = false;
         newborn_node.getChildByName('creature').getChildByName('selected').active = false;
@@ -196,7 +194,7 @@ cc.Class({
     },
     
     moveto:function(to_x, to_y){
-        var from = battleTiled.toHexagonLoc(this.node.getPosition());
+        var from = npt.tiled.toHexagonLoc(this.node.getPosition());
         if(from.x == to_x && from.y == to_y){
             this.action = 'attack';
             return;
@@ -220,8 +218,8 @@ cc.Class({
 
         this.movclass.moveto(to_x, to_y, function(){
             // 可以被攻击的单位进行高亮
-            var from2 = battleTiled.toHexagonLoc(self.node.getPosition());
-            battleTiled.getArea(from2, self.Rng, visit)
+            var from2 = npt.tiled.toHexagonLoc(self.node.getPosition());
+            npt.tiled.getArea(from2, self.Rng, visit)
         });
         this.action = 'moving';
         this.node.getChildByName('creature').getChildByName('selected').active = false;
@@ -244,8 +242,8 @@ cc.Class({
             if(c.HP <= 0)  return false; // 己方单位
             return true;
         };
-        var from = battleTiled.toHexagonLoc(this.node.getPosition());
-        battleTiled.getArea(from, this.Rng, visit)
+        var from = npt.tiled.toHexagonLoc(this.node.getPosition());
+        npt.tiled.getArea(from, this.Rng, visit)
 
         if(target == this){
             this.turnEnd();
@@ -287,7 +285,7 @@ cc.Class({
     },
 
     getHexLoc:function(){
-        return battleTiled.toHexagonLoc(this.node.getPosition());
+        return npt.tiled.toHexagonLoc(this.node.getPosition());
     },
 
     play:function(animation){

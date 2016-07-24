@@ -1,10 +1,9 @@
-var battleTiled = require('battleTiled');
 var splitskill = cc.Class({
     extends: require('effectskill'),
 
     effect:function(){
         // 选取周围指定范围内的单位
-        var near = battleTiled.getArea(this.creature.getHexLoc(), this.data.rng);
+        var near = npt.tiled.getArea(this.creature.getHexLoc(), this.data.rng);
 
         // 播放特效
         this.creature.play(this.data.animation);

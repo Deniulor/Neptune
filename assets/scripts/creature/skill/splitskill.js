@@ -1,4 +1,3 @@
-var battleTiled = require('battleTiled');
 var splitskill = cc.Class({
     extends: require('effectskill'),
 
@@ -22,7 +21,7 @@ var splitskill = cc.Class({
 
         // var clone = cc.instantiate(this.battle.creaturePrefab);
         // clone = clone.getComponent('creature'); 
-        // clone.init(this.battle, this.creature.camp, this.creature.data, battleTiled.randPixelLoc(this.randInvalidFunc));
+        // clone.init(this.battle, this.creature.camp, this.creature.data, npt.tiled.randPixelLoc(this.randInvalidFunc));
         // this.battle.addCreature(clone.node);
         // clone.play(this.data.animation);
         var clone = this.creature.cloneCreature(this.data.animation);

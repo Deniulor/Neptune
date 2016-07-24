@@ -1,5 +1,3 @@
-var battleTiled = require('battleTiled');
-
 var directiveskill = cc.Class({
     extends: require('skillbase'),
 
@@ -61,9 +59,9 @@ var directiveskill = cc.Class({
 
         var loc = event.getLocation();
         var temp = this.battle.node.convertToNodeSpace(loc);
-        loc = battleTiled.toHexagonLoc(temp);
-        if(battleTiled.isLocValid(loc)){
-            this.battle.funcLayer.setTileGID(4, cc.p(loc.x, battleTiled.MapHeight - 1 - loc.y));
+        loc = npt.tiled.toHexagonLoc(temp);
+        if(npt.tiled.isLocValid(loc)){
+            this.battle.funcLayer.setTileGID(4, cc.p(loc.x, npt.tiled.MapHeight - 1 - loc.y));
             this.skillTaget = loc;
         }
     },
@@ -79,7 +77,7 @@ var directiveskill = cc.Class({
         this.skilling = false;
         this.battle.stopUpdate = false;
 
-        if(!battleTiled.isLocValid(this.skillTaget)){
+        if(!npt.tiled.isLocValid(this.skillTaget)){
             return;
         }
         if(this.effect(this.skillTaget)){

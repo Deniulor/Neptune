@@ -1,4 +1,3 @@
-var battleTiled = require('battleTiled');
 var exp = cc.Class({
     extends: require('basemove'),
     ctor:function(){
@@ -10,7 +9,7 @@ var exp = cc.Class({
         var teleport = [];
         creature.play("disappear");
         teleport.push(cc.fadeOut(0.5));
-        teleport.push(cc.moveTo(0.05, battleTiled.toPixelLoc(to_x, to_y)));
+        teleport.push(cc.moveTo(0.05, npt.tiled.toPixelLoc(to_x, to_y)));
         teleport.push(cc.fadeIn(0.5));
         teleport.push(cc.callFunc(function(){
             creature.action = 'attack';
