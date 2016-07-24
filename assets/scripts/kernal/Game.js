@@ -1,10 +1,11 @@
 cc.Class({
     extends: cc.Component,
 
-    properties: {
+    onLoad: function () {
+        this.initGame();
     },
 
-    onLoad: function () {
+    initGame: function () {
         var system = window || global;
         system.npt = {};
 
@@ -12,5 +13,6 @@ cc.Class({
         npt.data = require('Data')();
         npt.storage = require('Storage')();
         npt.audio = require('Audio')();
+        npt.battle = require('Battle')();
     },
 });

@@ -98,9 +98,6 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 11
-      },
-      {
         "__id__": 12
       }
     ],
@@ -158,6 +155,9 @@
       },
       {
         "__id__": 5
+      },
+      {
+        "__id__": 11
       }
     ],
     "_prefab": null,
@@ -190,7 +190,7 @@
     "_atlas": null
   },
   {
-    "__type__": "fcad2zH/gpAuYAy3lhGBP9P",
+    "__type__": "f89feq6A9VD1ZQU2jZliO/V",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -383,6 +383,15 @@
     "_atlas": null
   },
   {
+    "__type__": "c7b7cEdd5BC+4gEDZXo55pi",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 3
+    },
+    "_enabled": true
+  },
+  {
     "__type__": "cc.Canvas",
     "_name": "",
     "_objFlags": 0,
@@ -397,16 +406,5 @@
     },
     "_fitWidth": true,
     "_fitHeight": true
-  },
-  {
-    "__type__": "56c89SBzbdAZ4cA27ORff9m",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 2
-    },
-    "_enabled": true,
-    "atkPlayer": null,
-    "defPlayer": null
   }
 ]

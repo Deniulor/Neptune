@@ -18,7 +18,7 @@ cc.Class({
         },
         battle:{
             default:null,
-            type:require('battle')
+            type:require('Battle')
         }
     },
 

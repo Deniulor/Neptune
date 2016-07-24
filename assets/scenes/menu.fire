@@ -257,6 +257,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 200,
     "_lineHeight": 200,
     "_enableWrapText": true,
@@ -394,6 +395,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 45,
     "_lineHeight": 30,
     "_enableWrapText": true,
@@ -495,7 +497,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "menu",
+    "component": "Menu",
     "handler": "details"
   },
   {
@@ -644,6 +646,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 45,
     "_fontSize": 45,
     "_lineHeight": 30,
     "_enableWrapText": false,
@@ -747,7 +750,7 @@
     "target": {
       "__id__": 2
     },
-    "component": "menu",
+    "component": "Menu",
     "handler": "practice"
   },
   {
@@ -896,6 +899,7 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
+    "_actualFontSize": 40,
     "_fontSize": 30,
     "_lineHeight": 30,
     "_enableWrapText": true,
@@ -1038,7 +1042,7 @@
     "_fitHeight": true
   },
   {
-    "__type__": "693c5pTxY1HvJepGG0SSmRB",
+    "__type__": "8c68e6pWLtB+L83ic3HnzIA",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1049,7 +1053,7 @@
       "__uuid__": "0bb4e57a-bcfa-4de8-a167-5505cbfbf31a"
     },
     "clickEffect": {
-      "__uuid__": "662d7678-c339-45e3-b574-591edb4eeea1"
+      "__uuid__": "de6d21eb-7acb-498f-8de2-2aa37b6916ba"
     }
   }
 ]

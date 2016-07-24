@@ -22,7 +22,7 @@ cc.Class({
         }
         this.stop = false;
         
-        this.battle = this.node.parent.getComponent('battle');
+        this.battle = this.node.parent.getComponent('BattleComp');
 
         this.preview = this.node.getChildByName('preview');
         this.preview.zIndex = 500;

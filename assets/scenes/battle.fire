@@ -10062,7 +10062,7 @@
     "target": {
       "__id__": 5
     },
-    "component": "battle",
+    "component": "BattleComp",
     "handler": "puase"
   },
   {

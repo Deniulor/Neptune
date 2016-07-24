@@ -101,7 +101,7 @@ cc.Class({
         for(var i = 1; i <= count; ++i){
              var unit = cc.instantiate(this.unitPrefab);
              var p = cc.p((i-count/2)*this.Item_Width-0.5*this.Item_Width,0);
-             unit.getComponent('unit').init(dataApi.creatures.findById(i),p);
+             unit.getComponent('unit').init(npt.data.creatures.findById(i),p);
              this.pLayoutNode.addChild(unit);
         }
     },
