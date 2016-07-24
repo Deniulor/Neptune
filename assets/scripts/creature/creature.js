@@ -290,6 +290,13 @@ cc.Class({
 
     play:function(animation){
         if(this.animator.play(animation)){
+            cc.loader.loadRes("sound/effects/" + animation, function (err, sound) {
+            if (err) {
+                cc.log(err);
+                return 0;
+            }
+            cc.audioEngine.playEffect(sound, false);
+        });
             return 0;
         }
         var animator = this.animator;
