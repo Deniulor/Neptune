@@ -16,5 +16,16 @@ cc.Class({
         npt.tiled = require('Tiled')();
         npt.battle = require('Battle')();
         npt.config = require('Config')();
+
+        // npt.net = require('net')();
+        // npt.sceneMgr = require('SceneMgr');
+        // npt.uiMgr = require('UIMgr');
+        // npt.msgBoxMgr = require('MsgBoxMgr');
+        // npt.toolMgr = require('ToolMgr');
+        // npt.keyWordMgr = require('KeyWordMgr');
+        // npt.rankMgr = require('RankMgr').init();
+        // npt.hookMgr = require('HookMgr').init();
+        // npt.debugMgr = require('DebugMgr').init();
+        // npt.effectMgr = require('EffectMgr');
     },
 });
