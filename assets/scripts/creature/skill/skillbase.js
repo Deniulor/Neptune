@@ -3,9 +3,8 @@ var SKill = cc.Class({
         this.data = skill;
         this.name = skill.name;
         this.creature = creature;
-        this.battle = creature.battle;
-
-        this.node = cc.instantiate(this.battle.skillPrefab);
+        
+        this.node = cc.instantiate(npt.battle.skillPrefab);
         let sprite = this.node.getComponent(cc.Sprite);
         // 加载 SpriteFrame
         cc.loader.loadRes('graphics/skill/' + skill.icon, cc.SpriteFrame, function (err, spriteFrame) {
@@ -26,7 +25,7 @@ var SKill = cc.Class({
         this.popDetail = false;
         this.touching = setTimeout(function (){
             self.popDetail = true;
-            self.battle.showSkillDetail(self);
+            npt.battle.comp.showSkillDetail(self);
         }, 1500);
     },
 

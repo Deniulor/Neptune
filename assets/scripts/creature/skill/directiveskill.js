@@ -9,14 +9,14 @@ var directiveskill = cc.Class({
     },
     
     effect:function(loc){
-        var target = this.battle.getCreatureOn(loc.x, loc.y);
+        var target = npt.battle.comp.getCreatureOn(loc.x, loc.y);
         if(!target){
             return;
         }
         // 技能效果计算
         var creature = target.getComponent('creature');
         if(creature.camp == this.creature.camp){
-            this.battle.floatMessage("你要谋害队友吗？");
+            npt.battle.comp.floatMessage("你要谋害队友吗？");
             return false;
         }
 
@@ -36,7 +36,7 @@ var directiveskill = cc.Class({
 
     beginSkill:function(event){
         if(this.creature.skillUsed){ // 用过技能了
-            this.battle.floatMessage("技能使用过了");
+            npt.battle.comp.floatMessage("技能使用过了");
             return;
         }
         
@@ -50,18 +50,18 @@ var directiveskill = cc.Class({
         }
         if(this.popDetail){ // 在长按已经生效
             this.skilling = false;
-            this.battle.stopUpdate = false;
+            npt.battle.comp.stopUpdate = false;
             return;
         }
         this.skilling = true; 
-        this.battle.stopUpdate = true;
-        this.battle.clearFuncLayer();
+        npt.battle.comp.stopUpdate = true;
+        npt.battle.comp.clearFuncLayer();
 
         var loc = event.getLocation();
-        var temp = this.battle.node.convertToNodeSpace(loc);
+        var temp = npt.battle.comp.node.convertToNodeSpace(loc);
         loc = npt.tiled.toHexagonLoc(temp);
         if(npt.tiled.isLocValid(loc)){
-            this.battle.funcLayer.setTileGID(4, cc.p(loc.x, npt.tiled.MapHeight - 1 - loc.y));
+            npt.battle.comp.funcLayer.setTileGID(4, cc.p(loc.x, npt.tiled.MapHeight - 1 - loc.y));
             this.skillTaget = loc;
         }
     },
@@ -75,7 +75,7 @@ var directiveskill = cc.Class({
         }
         this.pressed = true;
         this.skilling = false;
-        this.battle.stopUpdate = false;
+        npt.battle.comp.stopUpdate = false;
 
         if(!npt.tiled.isLocValid(this.skillTaget)){
             return;

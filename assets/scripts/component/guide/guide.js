@@ -10,6 +10,6 @@ cc.Class({
 
     beginFight:function(){
         cc.sys.localStorage.setItem('guided', true);
-        cc.director.loadScene('battle');
+        cc.director.loadScene('formation');
     }
 });

@@ -2,9 +2,9 @@ var reproduction = cc.Class({
     extends: require('directiveskill'),
     
     effect:function(loc){
-        var target = this.battle.getCreatureOn(loc.x, loc.y);
+        var target = npt.battle.comp.getCreatureOn(loc.x, loc.y);
         if(!target){
-            this.battle.floatMessage("错误的目标");
+            npt.battle.comp.floatMessage("错误的目标");
             return;
         }
         // 技能效果计算
@@ -13,7 +13,7 @@ var reproduction = cc.Class({
             this.creature.reproduce = true;
             this.creature.turnEnd();
         }else{
-            this.battle.floatMessage("你没法和对手交配啊");
+            npt.battle.comp.floatMessage("你没法和对手交配啊");
             return false;
         }
 

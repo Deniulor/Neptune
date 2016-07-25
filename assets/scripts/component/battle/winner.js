@@ -27,7 +27,7 @@ cc.Class({
     },
     
     retry:function(){
-        cc.director.loadScene('battle'); //注意通过 res.scene 获取场景实例
+        cc.director.loadScene('formation'); //注意通过 res.scene 获取场景实例
     },
     
     backToMenu:function(){

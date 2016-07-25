@@ -19,8 +19,8 @@ var effectskill = cc.Class({
 
     effect:function(){
         // 技能效果计算
-        for(var i = 0;i < this.battle.creatures.children.length; ++i){
-            var creature = this.battle.creatures.children[i].getComponent('creature');
+        for(var i = 0;i < npt.battle.comp.creatures.children.length; ++i){
+            var creature = npt.battle.comp.creatures.children[i].getComponent('creature');
             if(creature.camp != this.creature.camp){
                 creature.HP -= this.data.damage;
                 creature.runDamageAction();

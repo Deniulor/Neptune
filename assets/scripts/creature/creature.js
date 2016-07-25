@@ -1,7 +1,6 @@
 cc.Class({
     extends: cc.Component,
-    init:function(battle, camp = 'red', data, loc){  
-        this.battle = battle;
+    init:function(camp = 'red', data, loc){  
         this.camp = camp;
         this.data = data;
 
@@ -17,12 +16,10 @@ cc.Class({
         var movclass = require(data.movclass);// 返回的是一个类
         this.movclass = new movclass();
         this.movclass.creature = this;
-        this.movclass.battle = battle;
         this.id = data.id;
         var atkclass = require(data.atkclass);
         this.atkclass = new atkclass();
         this.atkclass.creature = this;
-        this.atkclass.battle = battle;
         this.curRound = 0;
         // this.everytrigger = data.everytrigger;
         this.skill = [];
@@ -79,7 +76,7 @@ cc.Class({
                 var fadeIn = cc.fadeIn(0.1);
                 
                 this.node.runAction(cc.sequence(fadeOut,finish,fadeIn,cc.callFunc(function () {
-                self.battle.checkIfWinner();
+                npt.battle.comp.checkIfWinner();
                 })));
                 this.icon.runAction(cc.spawn(cc.moveBy(2, cc.p(0, -40) ), cc.fadeOut(2)));
             }
@@ -126,15 +123,15 @@ cc.Class({
     cloneCreature :function(animation) {
         var actions = [];
         var self = this;
-        var newborn_node = cc.instantiate(this.battle.creaturePrefab);
+        var newborn_node = cc.instantiate(npt.battle.comp.creaturePrefab);
         var newborn = newborn_node.getComponent('creature');
         var randomLoc = npt.tiled.randPixelLoc();
         newborn_node.getChildByName('HpLab').active = false;
         newborn_node.getChildByName('creature').getChildByName('camp').active = false;
         newborn_node.getChildByName('creature').getChildByName('selected').active = false;
         newborn_node.getChildByName('creature').getChildByName('portrait').active = false;
-        newborn.init(this.battle, this.camp, this.data, randomLoc);
-        this.battle.addCreature(newborn.node);
+        newborn.init(this.camp, this.data, randomLoc);
+        npt.battle.comp.addCreature(newborn.node);
 
         var delay = 1.5;
         actions.push(cc.sequence(cc.callFunc(function () {
@@ -158,9 +155,9 @@ cc.Class({
 
     turnEnd: function(){
         this.curAtb = this.Atb;
-        this.battle.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
-        this.battle.setSelected(null);
-        // this.battle.checkIfWinner();
+        npt.battle.comp.node.getChildByName('atbBar').getComponent('atbBar').stop = false;
+        npt.battle.comp.setSelected(null);
+        // npt.battle.comp.checkIfWinner();
     },
 
     showCreature:function(panel){
@@ -203,7 +200,7 @@ cc.Class({
         var self = this;
         var visit = function(x,y){
             // cc.log('visit (%s, %s)', x, y);
-            var c = self.battle.getCreatureOn(x,y);
+            var c = npt.battle.comp.getCreatureOn(x,y);
             if(c == null) return false; // 无单位显示攻击区域
             c = c.getComponent('creature');
             if(c == self) return false; // 可以选择自己
@@ -230,7 +227,7 @@ cc.Class({
         //隐藏单位攻击效果
         var self = this;
         var visit = function(x,y){
-            var c = self.battle.getCreatureOn(x,y);
+            var c = npt.battle.comp.getCreatureOn(x,y);
             if(c == null) return false; // 无单位显示攻击区域
             c = c.getComponent('creature');
             if(c == self) return false; // 可以选择自己

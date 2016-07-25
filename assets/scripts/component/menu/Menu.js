@@ -29,11 +29,11 @@ cc.Class({
     },
     practice:function() {
         cc.audioEngine.playEffect(this.clickEffect, false);
-        if(cc.sys.localStorage.getItem('guided') == "true"){
-            cc.director.loadScene('battle');
-        } else {
+        // if(cc.sys.localStorage.getItem('guided') == "true"){
+        //     cc.director.loadScene('formation');
+        // } else {
             cc.director.loadScene('guide');
-        }
+        // }
     },
     resetGuide:function(){
         cc.sys.localStorage.setItem('guided', false);

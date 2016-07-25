@@ -3,7 +3,6 @@ var Teleportattack = cc.Class({
     ctor: function () {
         this.name = "teleportattack";
         this.creature = null;
-        this.battle = null;
     },
 
     attack:function(target){

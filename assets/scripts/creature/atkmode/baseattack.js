@@ -2,7 +2,6 @@ var Attack = cc.Class({
     ctor: function () {
         this.name = "move";
         this.creature = null;
-        this.battle = null;
     },
 
     showAttack:function(){
@@ -11,7 +10,7 @@ var Attack = cc.Class({
         
         // 返回false表示该区域可以攻击
         var invalid = function(x,y){
-            var c = self.battle.getCreatureOn(x,4-y);
+            var c = npt.battle.comp.getCreatureOn(x,4-y);
             if(c == null) return false; // 无单位显示攻击区域
             c = c.getComponent('creature');
             if(c == self) return false; // 可以选择自己
@@ -23,7 +22,7 @@ var Attack = cc.Class({
         var area = npt.tiled.getArea(npt.tiled.toHexagonLoc(this.creature.node.getPosition()), this.creature.Rng, invalid);
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
-            self.battle.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
+            npt.battle.comp.funcLayer.setTileGID(5, cc.p(curnode.x, 3 - curnode.y));
         }
     },
 

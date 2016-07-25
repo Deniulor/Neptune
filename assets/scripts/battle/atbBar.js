@@ -2,10 +2,6 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        creatures:{
-            default: null,
-            type: cc.Node
-        },
         atbIcon:{
             default: null,
             type: cc.Prefab
@@ -16,14 +12,12 @@ cc.Class({
     onLoad: function () {
         this.maxAtb = -1;
         this.width = this.node.getChildByName('BG').width;
-        for(var i = 0; i < this.creatures.children.length; ++i){
-            var creature = this.creatures.children[i];
+        for(var i = 0; i < npt.battle.all.length; ++i){
+            var creature = npt.battle.all[i];
             this.addCreature(creature);
         }
         this.stop = false;
         
-        this.battle = this.node.parent.getComponent('BattleComp');
-
         this.preview = this.node.getChildByName('preview');
         this.preview.zIndex = 500;
     },
@@ -73,7 +67,7 @@ cc.Class({
             creature.curAtb -= dt;
             if(creature.curAtb <= 0){
                 this.stop = true;
-                this.battle.setSelected(node.creature);
+                npt.battle.comp.setSelected(node.creature);
                 this.showPreview(creature);
             }
             node.setPositionX(creature.curAtb / this.maxAtb * this.width);

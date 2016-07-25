@@ -11,7 +11,7 @@ var splitskill = cc.Class({
         // 造成伤害
         for(var i = 0;i < near.length; ++i){
             var creature = near[i];
-            creature = this.battle.getCreatureOn(creature.x, creature.y);
+            creature = npt.battle.comp.getCreatureOn(creature.x, creature.y);
             if(creature == null)
                 continue;
             creature = creature.getComponent('creature');

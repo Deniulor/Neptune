@@ -2,7 +2,6 @@ var Move = cc.Class({
     ctor: function () {
         this.name = "move";
         this.creature = null;
-        this.battle = null;
     },
 
     showMovable:function(){
@@ -10,7 +9,7 @@ var Move = cc.Class({
 
         // 返回false表示该区域可以移动
         var invalid = function(x,y){
-            var c = self.battle.getCreatureOn(x,y);
+            var c = npt.battle.comp.getCreatureOn(x,y);
             if(c == null)
                 return false;
             c = c.getComponent('creature');
@@ -25,13 +24,13 @@ var Move = cc.Class({
         
         for(var i = 0; i < area.length; ++i){
             var curnode = area[i];
-            self.battle.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
+            npt.battle.comp.funcLayer.setTileGID(4, cc.p(curnode.x, 3 - curnode.y));
         }
     },
 
     moveto:function(to_x, to_y, cb){
         var self = this;
-        var battle = self.battle;
+        var battle = npt.battle.comp;
         var creature = self.creature;
 
         var from = npt.tiled.toHexagonLoc(this.creature.node.getPosition());
