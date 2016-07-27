@@ -43,6 +43,10 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        unitTip:{
+            default: null,
+            type: cc.Node
+        },
         playerIcon: {
             default: null,
             type: cc.Node
@@ -60,7 +64,11 @@ cc.Class({
         
         // 放置单位
         self.initBattle();
+        self.node.on('touchstart', self.onTouchStart, self);
         self.node.on("touchend", self.onTouchEnded, self);
+        self.node.on('touchmove',this.onTouchcancel,this);
+        // this.node.on('touchend',this.stopLongTouch, this);
+        self.node.on('touchcancel',this.onTouchcancel, this);
         cc.audioEngine.stopMusic();
         this.soundID = cc.audioEngine.playMusic(this.battleMusic, true);
         this.stopUpdate = true;
@@ -78,13 +86,32 @@ cc.Class({
             this.selected.getComponent('creature').showAction();
         }
     },
-
+    onTouchStart: function (event) {
+        var self = this;
+        var loc = event.getLocation();
+        var temp = this.node.convertToNodeSpace(loc);
+        loc = npt.tiled.toHexagonLoc(temp);
+        let node = this.getCreatureOn(loc.x, loc.y);
+        let creature = node ? node.getComponent('creature') : null;
+        if(creature!=null){
+        this.touching = setTimeout(function (){
+            self.showUnitDetail(creature.data);
+        }, 1000);
+        }
+    },
+    onTouchcancel: function (event) {
+        if(this.unitTip.active){
+           this.unitTip.active = false; 
+        }
+    },
     // 点击结束事件
     onTouchEnded:function(event){
         if(this.skillTip.node.active){
            this.skillTip.node.active = false; 
         }
-        
+        if(this.unitTip.active){
+           this.unitTip.active = false; 
+        }
         if(!this.selected){
             return;
         }
@@ -244,9 +271,31 @@ cc.Class({
 
     showSkillDetail:function(skill){
         this.skillTip.node.active = true;
-        this.skillTip.node.setPositionX(skill.node.getPositionX() + 20);
+        this.skillTip.node.setPositionX(50);
         this.skillTip.node.setPositionY(20);
         this.skillTip.string = skill.data.desc;
         cc.log("detail:",skill);
+    },
+    showUnitDetail:function(data){
+        this.unitTip.active = true;
+        this.unitTip.setPositionX(50);
+        this.unitTip.setPositionY(20);
+        var MaxHP = data.hp;
+        var Mov = data.mov;
+        var Rng = data.rng;
+        var Atb = data.atb;
+        var Atk = data.atk;
+        this.unitTip.getChildByName('lb_hp').getChildByName('lb_number').getComponent(cc.Label).string = MaxHP;
+        this.unitTip.getChildByName('lb_hurt').getChildByName('lb_number').getComponent(cc.Label).string = Atk;
+        this.unitTip.getChildByName('lb_move').getChildByName('lb_number').getComponent(cc.Label).string =Mov;
+        this.unitTip.getChildByName('lb_rng').getChildByName('lb_number').getComponent(cc.Label).string =Rng;
+        this.unitTip.getChildByName('lb_speed').getChildByName('lb_number').getComponent(cc.Label).string =Atb;
+        // cc.log("detail:",skill);
+    },
+    hideSkillDetail:function(){
+        this.skillTip.node.active = false;
+    },
+    hideUnitDetail:function(){
+        this.unitTip.active = true;
     },
 });

@@ -110,8 +110,27 @@ cc.Class({
             cc.director.loadScene('battle');
         }
     },
+    startLongTouch :function (event) {
+        var self = this;
+        var current = event.getCurrentTarget();
+        var data = current.getComponent('creature').data;
+        this.popDetail = false;
+        this.touching = setTimeout(function (){
+            self.popDetail = true;
+            npt.battle.comp.showUnitDetail(data);
+        }, 1000);
+    },
+    stopLongTouch:function(){
+        clearTimeout(this.touching);
+        npt.battle.comp.hideSkillDetail();
+    },
     saveCreature: function(player) {
         for(var i = this.creatures.children.length - 1; i >= 0; --i){
+            var data = this.creatures.children[i].getComponent('creature').data
+            this.creatures.children[i].off('touchstart',this.startDragDisplay, this);
+            this.creatures.children[i].off('touchmove',this.moveDisplay, this);
+            this.creatures.children[i].off('touchend',this.endDragDisplay, this);
+            this.creatures.children[i].off('touchcancel',this.endDragDisplay, this);
             npt.battle[player].push(this.creatures.children[i]);
             npt.battle.all.push(this.creatures.children[i]);
         }

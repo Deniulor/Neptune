@@ -26,11 +26,12 @@ var SKill = cc.Class({
         this.touching = setTimeout(function (){
             self.popDetail = true;
             npt.battle.comp.showSkillDetail(self);
-        }, 1500);
+        }, 1000);
     },
 
     stopLongTouch:function(){
         clearTimeout(this.touching);
+        npt.battle.comp.hideSkillDetail();
     },
 
     bindEvent:function(node){
