@@ -66,7 +66,7 @@ cc.Class({
         self.initBattle();
         self.node.on('touchstart', self.onTouchStart, self);
         self.node.on("touchend", self.onTouchEnded, self);
-        self.node.on('touchmove',this.onTouchcancel,this);
+        // self.node.on('touchmove',this.onTouchcancel,this);
         // this.node.on('touchend',this.stopLongTouch, this);
         self.node.on('touchcancel',this.onTouchcancel, this);
         cc.audioEngine.stopMusic();
@@ -75,6 +75,10 @@ cc.Class({
         // this.floatMessage("32313");
         this.setSelected(null);
         cc.director.preloadScene('menu');
+        // var loc = cc.Vec2(0,20);
+        var temp = this.node.convertToNodeSpace(cc.v2(0,20));
+        this.unitTip.setPosition(temp);
+        cc.log(this.unitTip.getPosition());
     },
     
     update:function(){
