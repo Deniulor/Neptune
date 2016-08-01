@@ -107,15 +107,15 @@ exp.addEntity = function(e) {
 var tickCount = 0;
 exp.rankUpdate = function () {
   tickCount ++;
-  if (tickCount >= 10) {
-    tickCount = 0;
-    var player = exp.getAllPlayers();
-    player.sort(function(a, b) {
-      return a.score < b.score;
-    });
-    var ids = player.slice(0, 10).map(function(a){ return a.entityId; });
-    getChannel().pushMessage({route: 'rankUpdate', entities: ids});
-  }
+  //if (tickCount >= 10) {
+  //  tickCount = 0;
+  //  var player = exp.getAllPlayers();
+  //  player.sort(function(a, b) {
+  //    return a.score < b.score;
+  //  });
+  //  var ids = player.slice(0, 10).map(function(a){ return a.entityId; });
+  //  getChannel().pushMessage({route: 'rankUpdate', entities: ids});
+  //}
 };
 
 /**

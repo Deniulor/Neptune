@@ -16,6 +16,7 @@ cc.Class({
         npt.tiled = require('Tiled')();
         npt.battle = require('Battle')();
         npt.config = require('Config')();
+        npt.net = require('Net')();
 
         // npt.net = require('net')();
         // npt.sceneMgr = require('SceneMgr');

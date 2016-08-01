@@ -62,14 +62,14 @@ ActionManager.prototype.abortAllAction = function(id){
  */
 ActionManager.prototype.update = function(){
 	var length = this.actionQueue.length;
-	
+
 	for(var i = 0; i < length; i++){
 		var action = this.actionQueue.pop();
-	
+
 		if(action.aborted){
 			continue;
 		}
-			
+
 		action.update();
 		if(!action.finished){
 			this.actionQueue.push(action);
