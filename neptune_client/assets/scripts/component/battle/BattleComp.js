@@ -167,7 +167,7 @@ cc.Class({
     },
     // 浮动弹窗    
     floatMessage:function (message) {
-        showMessage.init(this,message);
+        showMessage.init(this.node,message);
     },
     /// 基础函数 - 获取六边形坐标点x，y的上的单位，无则返回空
     getCreatureOn:function(x, y){

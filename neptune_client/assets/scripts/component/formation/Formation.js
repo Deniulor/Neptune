@@ -1,3 +1,4 @@
+var showMessage = require('showMessage');
 cc.Class({
     extends: cc.Component,
 
@@ -102,9 +103,14 @@ cc.Class({
     },
 
     buttonClick:function () {
+        if(this.creatures.children.length<=0){
+            showMessage.init(this.node.getChildByName('battle'),"布阵队伍为空,请先布阵在切换");
+            return;
+        }
         if (this.player == 'red'){
             this.saveCreature('red');
             this.swithPlayer();
+
         } else {
             this.saveCreature('blue');
             cc.director.loadScene('battle');
