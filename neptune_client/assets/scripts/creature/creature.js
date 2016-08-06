@@ -231,7 +231,7 @@ cc.Class({
             if(c == null) return false; // 无单位显示攻击区域
             c = c.getComponent('creature');
             if(c == self) return false; // 可以选择自己
-            if(c.camp != self.camp) {
+            if(c.camp == self.camp) {
                 c.stopShining();
                 // cc.log('stop shining at (%s, %s)', x,y);
                 return false; // 敌方单位 可以被攻击
