@@ -22,7 +22,11 @@ cc.Class({
         buttonLabel:{
             default:null,
             type:cc.Label
-        }
+        },
+        unitPrefab: {
+            default: null,
+            type:cc.Node
+        },
     },
 
     // use this for initialization
@@ -66,6 +70,8 @@ cc.Class({
             current.on('touchcancel',this.endDragDisplay, this);
             this.creatures.addChild(current);
         } 
+        var curData = current.getComponent('creature').data;
+        this.showdetail(curData);
         this.moving = current;
 
         var loc = event.getLocation();
@@ -73,19 +79,35 @@ cc.Class({
         this.moving.setPosition(loc);
         this.draggingDisplay = true;
     },
+    showdetail:function (data) {
+        var self = this;
+        this.touching = setTimeout(function (){
+            var unit = self.unitPrefab;
+            unit.getComponent('unit').init(data,cc.p(0.0));
+            self.unitPrefab.active = true;
+            }, 1000);
+    },
+    hideDetail: function () {
+        clearTimeout(this.touching);
+        if(this.unitPrefab.active){
+           this.unitPrefab.active = false; 
+        }
+    },
     moveDisplay:function(event){
         if(!this.moving){
             return;
         }
-
+        this.hideDetail();
         var loc = event.getLocation();
         loc = this.creatures.convertToNodeSpace(loc);
         this.moving.setPosition(loc);
     },
     endDragDisplay:function(event){
+        
         if(!this.moving){
             return;
         }
+        this.hideDetail();
         var loc = npt.tiled.toHexagonLoc(this.moving.getPosition());
         if(!npt.tiled.isLocValid(loc) || this.ground.getTileGIDAt(cc.p(loc.x, 3 - loc.y)) === 0){
             this.moving.removeFromParent();

@@ -300,6 +300,6 @@ cc.Class({
         this.skillTip.node.active = false;
     },
     hideUnitDetail:function(){
-        this.unitTip.active = true;
+        this.unitTip.active = false;
     },
 });
