@@ -6,7 +6,7 @@ module.exports = function() {
         user: {},
         handshakeCallback : function(){}
     }, function(data) {
-        cc.log('success',data);
+        cc.log('connect success:', data);
     });
     return net;
 };

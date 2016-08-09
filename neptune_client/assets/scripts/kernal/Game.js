@@ -18,7 +18,6 @@ cc.Class({
         npt.config = require('Config')();
         npt.net = require('Net')();
 
-        // npt.net = require('net')();
         // npt.sceneMgr = require('SceneMgr');
         // npt.uiMgr = require('UIMgr');
         // npt.msgBoxMgr = require('MsgBoxMgr');

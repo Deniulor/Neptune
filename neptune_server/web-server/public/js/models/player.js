@@ -27,5 +27,3 @@ __resources__["/player.js"] = {
     module.exports = Player;
   }
 };
-
-
